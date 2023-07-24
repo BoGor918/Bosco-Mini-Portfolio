@@ -1,2 +1,1 @@
-# CHEUNG_Tsz_Lai_Bosco
-This is my personal website
+This is a personal website of CHEUNG Tsz Lai Bosco
