@@ -22,7 +22,7 @@ export default function TopComponent() {
     }, []);
 
     return (
-        <div className='flex justify-center items-center font-light'>
+        <div className='flex justify-center items-center font-light mt-[5rem]'>
             {/* personal icon */}
             <div
                 ref={boxRef}
@@ -40,10 +40,10 @@ export default function TopComponent() {
             {/* info */}
             <div className='mx-10'>
                 {/* col-1 */}
-                <div className='flex justify-center items-center'>
+                <div className='flex justify-center items-center ml-[-0.15rem]'>
                     <span className='mr-5 text-[27px]'>CHEUNG Tsz Lai</span>
-                    <button className='mx-5 bg-[#4094F4] hover:bg-[#2a8dff] text-white rounded-md px-[20px] py-[3px] text-[14px] ml-4'>Download CV</button>
-                    <button className='ml-3'>
+                    <button className='mx-5 bg-[#4094F4] hover:bg-[#2a8dff] text-white rounded-md px-[20px] py-[5px] text-[14px] ml-4'>Download CV</button>
+                    <button className='ml-2'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style={{ fill: 'rgba(0, 0, 0, 1)', transform: '', msFilter: '' }}>
                             <path d="M20.742 13.045a8.088 8.088 0 0 1-2.077.271c-2.135 0-4.14-.83-5.646-2.336a8.025 8.025 0 0 1-2.064-7.723A1 1 0 0 0 9.73 2.034a10.014 10.014 0 0 0-4.489 2.582c-3.898 3.898-3.898 10.243 0 14.143a9.937 9.937 0 0 0 7.072 2.93 9.93 9.93 0 0 0 7.07-2.929 10.007 10.007 0 0 0 2.583-4.491 1.001 1.001 0 0 0-1.224-1.224zm-2.772 4.301a7.947 7.947 0 0 1-5.656 2.343 7.953 7.953 0 0 1-5.658-2.344c-3.118-3.119-3.118-8.195 0-11.314a7.923 7.923 0 0 1 2.06-1.483 10.027 10.027 0 0 0 2.89 7.848 9.972 9.972 0 0 0 7.848 2.891 8.036 8.036 0 0 1-1.484 2.059z"></path>
                         </svg>
@@ -60,9 +60,11 @@ export default function TopComponent() {
                     <span className='font-bold'>Bosco</span>
                     <span className='text-[#9A9A9A]'>Solutions Developer</span>
                     <span className='text-[#9A9A9A]'>Web / App Design + Development, Photo / Video Editing</span>
+                    <span className='text-[#9A9A9A]'>Email: cheungtszlai0918@gmail.com</span>
+                    <span className='text-[#9A9A9A]'>Phone: +852 67708560</span>
                 </div>
                 {/* col-4 */}
-                <div className='flex items-center text-[16px] my-4'>
+                <div className='flex items-center text-[16px] ml-[-0.35rem] my-4'>
                     <button className='mr-5'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" style={{ fill: '#9A9A9A', transform: '', msFilter: '' }}><path d="M11.999 7.377a4.623 4.623 0 1 0 0 9.248 4.623 4.623 0 0 0 0-9.248zm0 7.627a3.004 3.004 0 1 1 0-6.008 3.004 3.004 0 0 1 0 6.008z"></path><circle cx="16.806" cy="7.207" r="1.078"></circle><path d="M20.533 6.111A4.605 4.605 0 0 0 17.9 3.479a6.606 6.606 0 0 0-2.186-.42c-.963-.042-1.268-.054-3.71-.054s-2.755 0-3.71.054a6.554 6.554 0 0 0-2.184.42 4.6 4.6 0 0 0-2.633 2.632 6.585 6.585 0 0 0-.419 2.186c-.043.962-.056 1.267-.056 3.71 0 2.442 0 2.753.056 3.71.015.748.156 1.486.419 2.187a4.61 4.61 0 0 0 2.634 2.632 6.584 6.584 0 0 0 2.185.45c.963.042 1.268.055 3.71.055s2.755 0 3.71-.055a6.615 6.615 0 0 0 2.186-.419 4.613 4.613 0 0 0 2.633-2.633c.263-.7.404-1.438.419-2.186.043-.962.056-1.267.056-3.71s0-2.753-.056-3.71a6.581 6.581 0 0 0-.421-2.217zm-1.218 9.532a5.043 5.043 0 0 1-.311 1.688 2.987 2.987 0 0 1-1.712 1.711 4.985 4.985 0 0 1-1.67.311c-.95.044-1.218.055-3.654.055-2.438 0-2.687 0-3.655-.055a4.96 4.96 0 0 1-1.669-.311 2.985 2.985 0 0 1-1.719-1.711 5.08 5.08 0 0 1-.311-1.669c-.043-.95-.053-1.218-.053-3.654 0-2.437 0-2.686.053-3.655a5.038 5.038 0 0 1 .311-1.687c.305-.789.93-1.41 1.719-1.712a5.01 5.01 0 0 1 1.669-.311c.951-.043 1.218-.055 3.655-.055s2.687 0 3.654.055a4.96 4.96 0 0 1 1.67.311 2.991 2.991 0 0 1 1.712 1.712 5.08 5.08 0 0 1 .311 1.669c.043.951.054 1.218.054 3.655 0 2.436 0 2.698-.043 3.654h-.011z"></path>
                         </svg>
