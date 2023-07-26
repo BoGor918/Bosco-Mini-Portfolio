@@ -1,5 +1,6 @@
 import { useRef, useEffect, CSSProperties } from 'react'
 import PersonalIcon from '../images/Personal_Icon.png'
+import CountUp from 'react-countup';
 
 export default function TopComponent() {
     const boxRef = useRef<HTMLDivElement>(null);
@@ -54,9 +55,9 @@ export default function TopComponent() {
                 </div>
                 {/* col-2 */}
                 <div className='flex items-center text-[16px] my-4'>
-                    <span className='mr-5'><span className='font-bold'>{totalYear}</span> Yrs Exp</span>
-                    <span className='mx-5'><span className='font-bold'>10+</span> Projects</span>
-                    <span className='ml-5'><span className='font-bold'>10+</span> Skills</span>
+                    <span className='mr-4'><CountUp className='font-bold' start={100} end={totalYear} duration={2} /><span className='font-bold'>+</span> Yrs Exp</span>
+                    <span className='mx-4'><CountUp className='font-bold' start={100} end={10} duration={2} /><span className='font-bold'>+</span> Projects</span>
+                    <span className='ml-4'><CountUp className='font-bold' start={100} end={10} duration={2} /><span className='font-bold'>+</span> Skills</span>
                 </div>
                 {/* col-3 */}
                 <div className='flex flex-col text-[16px]'>
