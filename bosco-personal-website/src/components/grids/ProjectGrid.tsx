@@ -1,4 +1,4 @@
-import JavaScape from '../../images/JavaScape_Logo.png'
+import JavaScape from '../../images/JavaScape_Card.png'
 
 export default function ProjectGrid() {
     return (

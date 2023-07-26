@@ -1,5 +1,5 @@
-import Poly from '../../images/Poly_Logo.png'
-import HKCC from '../../images/HKCC_Logo.png'
+import Poly from '../../images/Poly_Card.png'
+import HKCC from '../../images/HKCC_Card.png'
 
 export default function EduGrid() {
     return (
