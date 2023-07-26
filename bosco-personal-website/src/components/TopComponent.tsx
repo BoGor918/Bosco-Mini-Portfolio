@@ -3,6 +3,9 @@ import PersonalIcon from '../images/Personal_Icon.png'
 
 export default function TopComponent() {
     const boxRef = useRef<HTMLDivElement>(null);
+    const workStartDate = new Date(2021, 5, 1);
+    const currentDate = new Date();
+    const totalYear = currentDate.getFullYear() - workStartDate.getFullYear();
 
     useEffect(() => {
         const boxElement = boxRef.current;
@@ -35,7 +38,7 @@ export default function TopComponent() {
                 }
                 className="flex mx-10 rounded-full border-[3.5px] border-[#0000] [background:padding-box_var(--bg-color),border-box_var(--border-color)] mr-4"
             >
-                <img src={PersonalIcon} className='rounded-full' alt='Personal Icon' width={200} />
+                <img src={PersonalIcon} className='rounded-full border-[4px] border-white' alt='Personal Icon' width={200} />
             </div>
             {/* info */}
             <div className='mx-10'>
@@ -51,7 +54,7 @@ export default function TopComponent() {
                 </div>
                 {/* col-2 */}
                 <div className='flex items-center text-[16px] my-4'>
-                    <span className='mr-5'><span className='font-bold'>2</span> Yrs Exp</span>
+                    <span className='mr-5'><span className='font-bold'>{totalYear}</span> Yrs Exp</span>
                     <span className='mx-5'><span className='font-bold'>10+</span> Projects</span>
                     <span className='ml-5'><span className='font-bold'>10+</span> Skills</span>
                 </div>
