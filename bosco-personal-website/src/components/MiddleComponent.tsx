@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import CompanyGrid from './grids/CompanyGrid'
 import EduGrid from './grids/EduGrid'
-import SkillGrid from './grids/SkillGrid'
+import ProjectGrid from './grids/ProjectGrid'
 
 export default function MiddleComponent() {
     const [selected, setSelected] = useState("1")
@@ -53,12 +53,23 @@ export default function MiddleComponent() {
                     <div className='flex mt-[8px]'>
                         <svg className='mr-1' xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" style={{ fill: '#9A9A9A', transform: '', msFilter: '' }}><path d="M20 3H4c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2zM4 19V5h7v14H4zm9 0V5h7l.001 14H13z"></path><path d="M15 7h3v2h-3zm0 4h3v2h-3z"></path>
                         </svg>
+                        <span className='ml-1 text-[#9A9A9A] mt-[0.3rem]'>PROJECTS</span>
+                    </div>
+                </button>
+                {/* option 4 */}
+                <button onClick={() => navClicked("4")} className='flex flex-col items-center content-center mx-12'>
+                    <svg className={selected === "4" ? selectedStyle : unSelectedStyle} xmlns="http://www.w3.org/2000/svg" width="100" height="3" viewBox="0 0 100 3" fill="none">
+                        <path d="M0 2H138" stroke="#A7A7A7" strokeWidth="3" />
+                    </svg>
+                    <div className='flex mt-[8px]'>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" style={{ fill: '#9A9A9A', transform: '', msFilter: '' }}><path d="M5 22h14c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2h-2a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1H5c-1.103 0-2 .897-2 2v15c0 1.103.897 2 2 2zM5 5h2v2h10V5h2v15H5V5z"></path><path d="m11 13.586-1.793-1.793-1.414 1.414L11 16.414l5.207-5.207-1.414-1.414z"></path>
+                        </svg>
                         <span className='ml-1 text-[#9A9A9A] mt-[0.3rem]'>SKILLS</span>
                     </div>
                 </button>
             </div>
             {
-                selected === "1" ? <CompanyGrid /> : selected === "2" ? <EduGrid /> : <SkillGrid />
+                selected === "1" ? <CompanyGrid /> : selected === "2" ? <EduGrid /> : <ProjectGrid />
             }
         </div>
     )
