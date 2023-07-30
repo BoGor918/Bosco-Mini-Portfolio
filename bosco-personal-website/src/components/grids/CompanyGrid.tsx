@@ -13,10 +13,10 @@ export default function CompanyGrid() {
                 {/* Modal content */}
                 <ModalComponent />
             </Modal>
-            <div onClick={open} className='mx-1'>
+            <div onClick={open} className='mx-1 cursor-pointer'>
                 <img src={PCCW} alt='PCCW' width={295} />
             </div>
-            <div className='mx-1'>
+            <div className='mx-1 cursor-pointer'>
                 <img src={SPAI} alt='PCCW' width={295} />
             </div>
             <div className='mx-1 opacity-0'>
