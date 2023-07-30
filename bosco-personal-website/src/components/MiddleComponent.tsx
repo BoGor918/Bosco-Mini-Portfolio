@@ -10,7 +10,7 @@ export default function MiddleComponent() {
         setSelected(e)
     }
 
-    const selectedStyle = "opacity-100 mr-[-6.5px]"
+    const selectedStyle = "opacity-100 mr-[-6.5px] transition duration-500 ease-in-out"
     const unSelectedStyle = "opacity-0 mr-[-6.5px]"
 
     return (
