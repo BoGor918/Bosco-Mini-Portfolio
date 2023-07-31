@@ -11,7 +11,7 @@ export default function MiddleComponent() {
     }
 
     const selectedStyle = "opacity-100 mr-[-6.5px] transition duration-500 ease-in-out"
-    const unSelectedStyle = "opacity-0 mr-[-6.5px]"
+    const unSelectedStyle = "opacity-0 mr-[-6.5px] transition duration-500 ease-in-out"
 
     return (
         <div className='flex flex-col items-center justify-center font-light mt-[4rem]'>
