@@ -2,6 +2,7 @@ import { useRef, useEffect, CSSProperties } from 'react'
 import PersonalIcon from '../images/Personal_Icon.png'
 import CountUp from 'react-countup';
 import { Button } from '@mantine/core';
+import CV from '../files/CV.pdf'
 
 export default function TopComponent() {
     const boxRef = useRef<HTMLDivElement>(null);
@@ -48,7 +49,7 @@ export default function TopComponent() {
                 <div className='flex justify-center items-center ml-[-0.15rem]'>
                     <span className='mr-5 text-[27px]'>CHEUNG Tsz Lai</span>
                     <Button className='mx-5 bg-[#4094F4] text-white rounded-md px-[20px] py-[5px] text-[14px] ml-4'>
-                        Download CV
+                        <a href={CV} download='CHEUNG_Tsz_Lai_Bosco_CV'>Download CV</a>
                     </Button>
                     <button className='ml-2'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style={{ fill: 'rgba(0, 0, 0, 1)', transform: '', msFilter: '' }}>
