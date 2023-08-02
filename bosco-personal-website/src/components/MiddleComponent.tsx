@@ -2,6 +2,7 @@ import { useState } from 'react'
 import CompanyGrid from './grids/CompanyGrid'
 import EduGrid from './grids/EduGrid'
 import ProjectGrid from './grids/ProjectGrid'
+import { BiGrid, BiObjectsVerticalBottom, BiBookContent, BiCalendarCheck } from "react-icons/bi";
 
 export default function MiddleComponent() {
     const [selected, setSelected] = useState("1")
@@ -28,10 +29,9 @@ export default function MiddleComponent() {
                     <svg className={selected === "1" ? selectedStyle : unSelectedStyle} xmlns="http://www.w3.org/2000/svg" width="100" height="3" viewBox="0 0 100 3" fill="none">
                         <path d="M0 2H138" stroke="#A7A7A7" strokeWidth="3" />
                     </svg>
-                    <div className='flex mt-[8px]'>
-                        <svg className='mr-1' xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" style={{ fill: '#9A9A9A', transform: '', msFilter: '' }}><path d="M15 3H4.984c-1.103 0-2 .897-2 2v14.016c0 1.103.897 2 2 2H19c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2h-4zm4 5h-3V5h3v3zM4.984 10h3v4.016h-3V10zm5 0H14v4.016H9.984V10zM16 10h3v4.016h-3V10zm-2-5v3H9.984V5H14zM7.984 5v3h-3V5h3zm-3 11.016h3v3h-3v-3zm5 3v-3H14v3H9.984zm6.016 0v-3h3.001v3H16z"></path>
-                        </svg>
-                        <span className='ml-1 text-[#9A9A9A] mt-[0.3rem]'>WORKS</span>
+                    <div className='flex items-center mt-[8px]'>
+                        <BiGrid size={30} color='#9A9A9A' />
+                        <span className='ml-1 text-[#9A9A9A]'>WORKS</span>
                     </div>
                 </button>
                 {/* option 2 */}
@@ -39,9 +39,8 @@ export default function MiddleComponent() {
                     <svg className={selected === "2" ? selectedStyle : unSelectedStyle} xmlns="http://www.w3.org/2000/svg" width="100" height="3" viewBox="0 0 100 3" fill="none">
                         <path d="M0 2H138" stroke="#A7A7A7" strokeWidth="3" />
                     </svg>
-                    <div className='flex mt-[8px]'>
-                        <svg className='mr-1' xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" style={{ fill: '#9A9A9A', transform: '', msFilter: '' }}><path d="M2 20h20v2H2zM4 3v14a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1zm2 1h3v12H6zM13 17a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1h-5a1 1 0 0 0-1 1zm2-9h3v8h-3z"></path>
-                        </svg>
+                    <div className='flex items-center mt-[8px]'>
+                        <BiObjectsVerticalBottom size={30} color='#9A9A9A' />
                         <span className='ml-1 text-[#9A9A9A] mt-[0.3rem]'>EDUS</span>
                     </div>
                 </button>
@@ -50,9 +49,8 @@ export default function MiddleComponent() {
                     <svg className={selected === "3" ? selectedStyle : unSelectedStyle} xmlns="http://www.w3.org/2000/svg" width="100" height="3" viewBox="0 0 100 3" fill="none">
                         <path d="M0 2H138" stroke="#A7A7A7" strokeWidth="3" />
                     </svg>
-                    <div className='flex mt-[8px]'>
-                        <svg className='mr-1' xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" style={{ fill: '#9A9A9A', transform: '', msFilter: '' }}><path d="M20 3H4c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2zM4 19V5h7v14H4zm9 0V5h7l.001 14H13z"></path><path d="M15 7h3v2h-3zm0 4h3v2h-3z"></path>
-                        </svg>
+                    <div className='flex items-center mt-[8px]'>
+                        <BiBookContent size={30} color='#9A9A9A' />
                         <span className='ml-1 text-[#9A9A9A] mt-[0.3rem]'>PROJECTS</span>
                     </div>
                 </button>
@@ -61,9 +59,8 @@ export default function MiddleComponent() {
                     <svg className={selected === "4" ? selectedStyle : unSelectedStyle} xmlns="http://www.w3.org/2000/svg" width="100" height="3" viewBox="0 0 100 3" fill="none">
                         <path d="M0 2H138" stroke="#A7A7A7" strokeWidth="3" />
                     </svg>
-                    <div className='flex mt-[8px]'>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" style={{ fill: '#9A9A9A', transform: '', msFilter: '' }}><path d="M5 22h14c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2h-2a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1H5c-1.103 0-2 .897-2 2v15c0 1.103.897 2 2 2zM5 5h2v2h10V5h2v15H5V5z"></path><path d="m11 13.586-1.793-1.793-1.414 1.414L11 16.414l5.207-5.207-1.414-1.414z"></path>
-                        </svg>
+                    <div className='flex items-center mt-[8px]'>
+                        <BiCalendarCheck size={30} color='#9A9A9A' />
                         <span className='ml-1 text-[#9A9A9A] mt-[0.3rem]'>SKILLS</span>
                     </div>
                 </button>
