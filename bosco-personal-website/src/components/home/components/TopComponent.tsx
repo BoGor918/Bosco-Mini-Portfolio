@@ -1,8 +1,8 @@
 import { useRef, useEffect, CSSProperties } from 'react'
-import PersonalIcon from '../images/Personal_Icon.png'
+import PersonalIcon from '../../../images/Personal_Icon.png'
 import CountUp from 'react-countup';
 import { Button } from '@mantine/core';
-import CV from '../files/CV.pdf'
+import CV from '../../../files/CV.pdf'
 import { BiMoon } from "react-icons/bi";
 import { BsInstagram, BsLinkedin, BsGithub } from "react-icons/bs";
 

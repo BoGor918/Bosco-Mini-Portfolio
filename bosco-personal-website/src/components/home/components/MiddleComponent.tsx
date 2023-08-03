@@ -1,4 +1,4 @@
-import Icon from "../images/Personal_Icon.png"
+import Icon from "../../../images/Personal_Icon.png"
 
 export default function MiddleComponent() {
     return (

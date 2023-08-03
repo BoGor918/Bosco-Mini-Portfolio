@@ -1,14 +1,15 @@
-import TopComponent from "./components/TopComponent";
-import MiddleComponent from "./components/MiddleComponent";
-import BottomComponent from "./components/BottomComponent";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./components/home/Home";
+import Login from "./components/login/Login";
 
 function App() {
   return (
-    <div className="flex flex-col w-full max-w-[910px] mx-auto">
-      <TopComponent />
-      <MiddleComponent />
-      <BottomComponent />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </Router>
   );
 }
 

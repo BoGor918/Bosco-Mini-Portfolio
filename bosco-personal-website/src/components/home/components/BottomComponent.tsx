@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import CompanyGrid from './grids/CompanyGrid'
-import EduGrid from './grids/EduGrid'
-import ProjectGrid from './grids/ProjectGrid'
+import CompanyGrid from '../../grids/CompanyGrid'
+import EduGrid from '../../grids/EduGrid'
+import ProjectGrid from '../../grids/ProjectGrid'
 import { BiGrid, BiObjectsVerticalBottom, BiBookContent, BiCalendarCheck } from "react-icons/bi";
 
 export default function BottomComponent() {
