@@ -42,7 +42,7 @@ export default function MapperContextProvider(props: any) {
         GetUserData()
     }, [authUser])
 
-    console.log(authUser?.email)
+    console.log(authUser)
 
     return (
         <MapperContext.Provider value={{

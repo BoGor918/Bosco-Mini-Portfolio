@@ -8,10 +8,11 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebase';
 import PersonalIcon from '../../images/Personal_Icon.png'
 
-export default function Login() {
+export default function Login(): any {
     // Get user data from context
     const {
         userArray,
+        authUser
     } = useContext(MapperContext);
 
     // Login variables
@@ -105,64 +106,64 @@ export default function Login() {
         requestAnimationFrame(updateAnimation);
     }, []);
 
-
     return (
-        <div className='flex justify-center items-center h-screen'>
-            <div className='flex flex-col justify-center items-center'>
-                {/* personal icon */}
-                <div
-                    ref={boxRef}
-                    style={
-                        {
-                            "--angle": "0deg",
-                            "--border-color": "linear-gradient(var(--angle), #00A3FF, #21FAC6)",
-                            "--bg-color": "linear-gradient(#131219, #131219)",
-                        } as CSSProperties
-                    }
-                    className="animate-fade-up animate-delay-0 animate-once flex mb-[1rem] rounded-full border-[3.5px] border-[#0000] [background:padding-box_var(--bg-color),border-box_var(--border-color)]"
-                >
-                    <img src={PersonalIcon} className='rounded-full border-[4px] border-white' alt='Personal Icon' width={200} />
-                </div>
-                {/* email or username field */}
-                <TextInput
-                    ref={loginEmailOrUsername}
-                    className='w-[300px] my-[0.2rem] animate-fade-up animate-delay-75 animate-once'
-                    size="md"
-                    label="Email or Username"
-                    inputWrapperOrder={['label', 'error', 'input', 'description']}
-                />
-                {/* password field */}
-                <TextInput
-                    ref={loginPassword}
-                    type='password'
-                    className='w-[300px] my-[0.2rem] animate-fade-up animate-delay-100 animate-once'
-                    size="md"
-                    label="Password"
-                    inputWrapperOrder={['label', 'error', 'input', 'description']}
-                />
-                {/* login button */}
-                <Button onClick={Login} size='md' className='bg-[#4094F4] w-[300px] my-[0.5rem] animate-fade-up animate-delay-150 animate-once'>Login</Button>
-                {/* sec line */}
-                <div className='animate-fade-up animate-delay-200 animate-once flex justify-center items-center w-[300px] bg-[#9A9A9A] text-[#9A9A9A] h-[0.5px] my-[1.5rem]'>
-                    <span className='bg-white px-2'>Or</span>
-                </div>
-                {/* back to home page */}
-                <div className='text-[#9A9A9A] animate-fade-up animate-delay-300 animate-once'>
-                    <span>Back To <button className='underline' onClick={() => navigate("/")}>Home Page</button></span>
-                </div>
-                {/* social icon */}
-                <div className='flex items-center mt-4 animate-fade-up animate-delay-500 animate-once'>
-                    <button className='mr-5'>
-                        <BsInstagram size={24} color='#9A9A9A' />
-                    </button>
-                    <button className='mx-5'>
-                        <BsLinkedin size={24} color='#9A9A9A' />
-                    </button>
-                    <button className='ml-5'>
-                        <BsGithub size={24} color='#9A9A9A' />
-                    </button>
+        authUser !== null ? navigate('/') :
+            <div className='flex justify-center items-center h-screen'>
+                <div className='flex flex-col justify-center items-center'>
+                    {/* personal icon */}
+                    <div
+                        ref={boxRef}
+                        style={
+                            {
+                                "--angle": "0deg",
+                                "--border-color": "linear-gradient(var(--angle), #00A3FF, #21FAC6)",
+                                "--bg-color": "linear-gradient(#131219, #131219)",
+                            } as CSSProperties
+                        }
+                        className="animate-fade-up animate-delay-0 animate-once flex mb-[1rem] rounded-full border-[3.5px] border-[#0000] [background:padding-box_var(--bg-color),border-box_var(--border-color)]"
+                    >
+                        <img src={PersonalIcon} className='rounded-full border-[4px] border-white' alt='Personal Icon' width={200} />
+                    </div>
+                    {/* email or username field */}
+                    <TextInput
+                        ref={loginEmailOrUsername}
+                        className='w-[300px] my-[0.2rem] animate-fade-up animate-delay-75 animate-once'
+                        size="md"
+                        label="Email or Username"
+                        inputWrapperOrder={['label', 'error', 'input', 'description']}
+                    />
+                    {/* password field */}
+                    <TextInput
+                        ref={loginPassword}
+                        type='password'
+                        className='w-[300px] my-[0.2rem] animate-fade-up animate-delay-100 animate-once'
+                        size="md"
+                        label="Password"
+                        inputWrapperOrder={['label', 'error', 'input', 'description']}
+                    />
+                    {/* login button */}
+                    <Button onClick={Login} size='md' className='bg-[#4094F4] w-[300px] my-[0.5rem] animate-fade-up animate-delay-150 animate-once'>Login</Button>
+                    {/* sec line */}
+                    <div className='animate-fade-up animate-delay-200 animate-once flex justify-center items-center w-[300px] bg-[#9A9A9A] text-[#9A9A9A] h-[0.5px] my-[1.5rem]'>
+                        <span className='bg-white px-2'>Or</span>
+                    </div>
+                    {/* back to home page */}
+                    <div className='text-[#9A9A9A] animate-fade-up animate-delay-300 animate-once'>
+                        <span>Back To <button className='underline' onClick={() => navigate("/")}>Home Page</button></span>
+                    </div>
+                    {/* social icon */}
+                    <div className='flex items-center mt-4 animate-fade-up animate-delay-500 animate-once'>
+                        <button className='mr-5'>
+                            <BsInstagram size={24} color='#9A9A9A' />
+                        </button>
+                        <button className='mx-5'>
+                            <BsLinkedin size={24} color='#9A9A9A' />
+                        </button>
+                        <button className='ml-5'>
+                            <BsGithub size={24} color='#9A9A9A' />
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
     )
 }
