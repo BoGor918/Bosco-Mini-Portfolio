@@ -30,7 +30,7 @@ export default function TopComponent() {
     }, []);
 
     return (
-        <div className='flex justify-center items-center font-light mt-[5rem]'>
+        <div className='flex flex-col sm:flex-col md:flex-col lg:flex-row justify-center items-center font-light mt-[5rem]'>
             {/* personal icon */}
             <div
                 ref={boxRef}
@@ -41,30 +41,32 @@ export default function TopComponent() {
                         "--bg-color": "linear-gradient(#131219, #131219)",
                     } as CSSProperties
                 }
-                className="animate-fade-up animate-delay-0 animate-once flex mx-10 rounded-full border-[3.5px] border-[#0000] [background:padding-box_var(--bg-color),border-box_var(--border-color)] mr-4"
+                className="animate-fade-up animate-delay-0 animate-once flex mx-0 sm:mx-0 md:mx-0 lg:mx-10 rounded-full border-[3.5px] border-[#0000] [background:padding-box_var(--bg-color),border-box_var(--border-color)] mr-0 sm:mr-0 md:mr-0 lg:mr-4"
             >
                 <img src={PersonalIcon} className='rounded-full border-[4px] border-white' alt='Personal Icon' width={200} />
             </div>
             {/* info */}
             <div className='animate-fade-up animate-delay-100 animate-once mx-10'>
                 {/* col-1 */}
-                <div className='flex justify-center items-center ml-[-0.15rem]'>
-                    <span className='mr-5 text-[27px]'>CHEUNG Tsz Lai</span>
-                    <Button className='mx-5 bg-[#4094F4] text-white rounded-md px-[20px] py-[5px] text-[14px] ml-4'>
-                        <a href={CV} download='CHEUNG_Tsz_Lai_Bosco_CV'>Download CV</a>
-                    </Button>
-                    <button className='ml-2'>
-                        <BiMoon size={24} />
-                    </button>
+                <div className='flex flex-col sm:flex-col md:flex-col lg:flex-row justify-center items-center ml-[-0.15rem]'>
+                    <span className='mr-0 sm:mr-0 md:mr-0 lg:mr-5 my-4 sm:my-4 md:my-4 lg:my-0 text-[27px]'>CHEUNG Tsz Lai</span>
+                    <div className='flex justify-center items-center mb-2 sm:mb-2 md:mb-2 lg:mb-0'>
+                        <Button className='mx-0 sm:mx-0 md:mx-0 lg:mx-5 bg-[#4094F4] text-white rounded-md px-[20px] py-[5px] text-[14px] ml-0 sm:ml-0 md:ml-0 lg:ml-4'>
+                            <a href={CV} download='CHEUNG_Tsz_Lai_Bosco_CV'>Download CV</a>
+                        </Button>
+                        <button className='ml-2'>
+                            <BiMoon size={24} />
+                        </button>
+                    </div>
                 </div>
                 {/* col-2 */}
-                <div className='flex items-center text-[16px] my-4'>
-                    <span className='mr-4'><CountUp className='font-bold' start={100} end={totalYear} duration={3} /><span className='font-bold'>+</span> Yrs Exp</span>
-                    <span className='mx-4'><CountUp className='font-bold' start={100} end={5} duration={3} /><span className='font-bold'>+</span> Projects</span>
-                    <span className='ml-4'><CountUp className='font-bold' start={100} end={10} duration={3} /><span className='font-bold'>+</span> Skills</span>
+                <div className='flex justify-center sm:justify-center md:justify-center lg:justify-start items-center text-[16px] my-4'>
+                    <span className='mr-3 sm:mr-3 md:mr-3 lg:mr-4'><CountUp className='font-bold' start={100} end={totalYear} duration={3} /><span className='font-bold'>+</span> Yrs Exp</span>
+                    <span className='mx-3 sm:mx-3 md:mx-3 lg:mx-4'><CountUp className='font-bold' start={100} end={5} duration={3} /><span className='font-bold'>+</span> Projects</span>
+                    <span className='ml-3 sm:ml-3 md:ml-3 lg:ml-4'><CountUp className='font-bold' start={100} end={10} duration={3} /><span className='font-bold'>+</span> Skills</span>
                 </div>
                 {/* col-3 */}
-                <div className='flex flex-col text-[16px]'>
+                <div className='flex flex-col text-center sm:text-center md:text-center lg:text-start text-[16px]'>
                     <span className='font-bold'>Bosco</span>
                     <span className='text-[#9A9A9A]'>Solutions Developer</span>
                     <span className='text-[#9A9A9A]'>Web / App Design + Development, Photo / Video Editing</span>
@@ -72,7 +74,7 @@ export default function TopComponent() {
                     <span className='text-[#9A9A9A]'>Phone: +852 67708560</span>
                 </div>
                 {/* col-4 */}
-                <div className='flex items-center text-[16px] ml-[-0.1rem] my-4'>
+                <div className='flex items-center justify-center sm:justify-center md:justify-center lg:justify-start text-[16px] ml-[0rem] sm:ml-[0rem] md:ml-[0rem] lg:ml-[-0.1rem] my-4'>
                     <button className='mr-5'>
                         <BsInstagram size={24} color='#9A9A9A' />
                     </button>
