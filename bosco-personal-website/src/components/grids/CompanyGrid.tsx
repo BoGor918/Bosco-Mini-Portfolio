@@ -8,7 +8,7 @@ export default function CompanyGrid() {
     const [opened, { open, close }] = useDisclosure(false);
 
     return (
-        <div className='flex justify-center items-center mt-[2rem] mb-[5rem]'>
+        <div className='animate-fade animate-delay-0 animate-once flex justify-center items-center mt-[2rem] mb-[5rem]'>
             <Modal opened={opened} onClose={close} size="lg" centered>
                 {/* Modal content */}
                 <ModalComponent />

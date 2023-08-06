@@ -3,7 +3,7 @@ import HKCC from '../../images/HKCC_Card.png'
 
 export default function EduGrid() {
     return (
-        <div className='flex justify-center items-center mt-[2rem] mb-[5rem]'>
+        <div className='animate-fade animate-delay-0 animate-once flex justify-center items-center mt-[2rem] mb-[5rem]'>
             <div className='mx-1'>
                 <img src={Poly} alt='PCCW' width={295} />
             </div>
