@@ -17,13 +17,13 @@ export default function BottomComponent() {
     return (
         <div className='flex flex-col items-center justify-center font-light'>
             {/* nav line */}
-            <div>
+            <div className='animate-fade-up animate-delay-200 animate-once'>
                 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="2" viewBox="0 0 900 2" fill="none">
                     <path d="M0 1H1200" stroke="#9A9A9A" strokeOpacity="0.6" />
                 </svg>
             </div>
             {/* nav button */}
-            <div className='flex mt-[-1.5px]'>
+            <div className='animate-fade-up animate-delay-200 animate-once flex mt-[-1.5px]'>
                 {/* option 1 */}
                 <button onClick={() => navClicked("1")} className='flex flex-col items-center content-center mx-12'>
                     <svg className={selected === "1" ? selectedStyle : unSelectedStyle} xmlns="http://www.w3.org/2000/svg" width="100" height="3" viewBox="0 0 100 3" fill="none">
@@ -65,9 +65,11 @@ export default function BottomComponent() {
                     </div>
                 </button>
             </div>
-            {
-                selected === "1" ? <CompanyGrid /> : selected === "2" ? <EduGrid /> : <ProjectGrid />
-            }
+            <div className='animate-fade-up animate-delay-300 animate-once '>
+                {
+                    selected === "1" ? <CompanyGrid /> : selected === "2" ? <EduGrid /> : <ProjectGrid />
+                }
+            </div>
         </div>
     )
 }

@@ -41,12 +41,12 @@ export default function TopComponent() {
                         "--bg-color": "linear-gradient(#131219, #131219)",
                     } as CSSProperties
                 }
-                className="flex mx-10 rounded-full border-[3.5px] border-[#0000] [background:padding-box_var(--bg-color),border-box_var(--border-color)] mr-4"
+                className="animate-fade-up animate-delay-0 animate-once flex mx-10 rounded-full border-[3.5px] border-[#0000] [background:padding-box_var(--bg-color),border-box_var(--border-color)] mr-4"
             >
                 <img src={PersonalIcon} className='rounded-full border-[4px] border-white' alt='Personal Icon' width={200} />
             </div>
             {/* info */}
-            <div className='mx-10'>
+            <div className='animate-fade-up animate-delay-100 animate-once mx-10'>
                 {/* col-1 */}
                 <div className='flex justify-center items-center ml-[-0.15rem]'>
                     <span className='mr-5 text-[27px]'>CHEUNG Tsz Lai</span>
