@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useRef, useContext, CSSProperties } from 'react'
+import { useEffect, useRef, useContext, CSSProperties, useState } from 'react'
 import { TextInput, Button } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
 import { BsInstagram, BsLinkedin, BsGithub } from "react-icons/bs";
@@ -16,8 +16,8 @@ export default function Login(): any {
     } = useContext(MapperContext);
 
     // Login variables
-    const loginEmailOrUsername = useRef<HTMLInputElement>(null);
-    const loginPassword = useRef<HTMLInputElement>(null);
+    const [loginEmailOrUsername, setLoginEmailOrUsername] = useState<string>('');
+    const [loginPassword, setLoginPassword] = useState<string>('');
 
     // Navigate function
     const navigate = useNavigate()
@@ -28,35 +28,21 @@ export default function Login(): any {
             let haveUsername = false;
 
             // if user is using email to login
-            if (
-                loginEmailOrUsername.current &&
-                loginEmailOrUsername.current.value &&
-                loginEmailOrUsername.current.value.includes('.') &&
-                loginEmailOrUsername.current.value.includes('@') &&
-                loginPassword.current &&
-                loginPassword.current.value
-            ) {
+            if (loginEmailOrUsername.includes('.') && loginEmailOrUsername.includes('@')) {
                 await signInWithEmailAndPassword(
                     auth,
-                    loginEmailOrUsername.current.value,
-                    loginPassword.current.value
+                    loginEmailOrUsername,
+                    loginPassword
                 );
             } else {
                 // if user is using username to login
                 for (let i = 0; i < userArray[0].length; i++) {
-                    if (
-                        loginEmailOrUsername.current &&
-                        loginEmailOrUsername.current.value &&
-                        Object.is(userArray[0][i], loginEmailOrUsername.current.value)
-                    ) {
-                        if (loginPassword.current && loginPassword.current.value) {
-                            await signInWithEmailAndPassword(
-                                auth,
-                                userArray[1][i],
-                                loginPassword.current.value
-                            );
-                        }
-
+                    if (Object.is(userArray[0][i], loginEmailOrUsername)) {
+                        await signInWithEmailAndPassword(
+                            auth,
+                            userArray[1][i],
+                            loginPassword
+                        );
                         haveUsername = true;
                         break;
                     }
@@ -70,22 +56,6 @@ export default function Login(): any {
             alert("Invalid Email / Username or Password, Plz Try Again");
         }
     };
-
-    // Enter key press event and call Login function
-    useEffect(() => {
-        const keyDownHandler = (event: any) => {
-            if (event.key === 'Enter') {
-                event.preventDefault();
-                Login();
-            }
-        };
-
-        document.addEventListener('keydown', keyDownHandler);
-
-        return () => {
-            document.removeEventListener('keydown', keyDownHandler);
-        };
-    }, []);
 
     const boxRef = useRef<HTMLDivElement>(null);
 
@@ -124,9 +94,15 @@ export default function Login(): any {
                     >
                         <img src={PersonalIcon} className='rounded-full border-[4px] border-white' alt='Personal Icon' width={200} />
                     </div>
-                    {/* email or username field */}
+                    {/* email field */}
                     <TextInput
-                        ref={loginEmailOrUsername}
+                        onChange={(event) => setLoginEmailOrUsername(event.currentTarget.value)}
+                        onKeyDown={(event) => {
+                            if (event.key === 'Enter') {
+                                event.preventDefault();
+                                Login();
+                            }
+                        }}
                         className='w-[300px] my-[0.2rem] animate-fade-up animate-delay-75 animate-once'
                         size="md"
                         label="Email or Username"
@@ -134,7 +110,13 @@ export default function Login(): any {
                     />
                     {/* password field */}
                     <TextInput
-                        ref={loginPassword}
+                        onChange={(event) => setLoginPassword(event.currentTarget.value)}
+                        onKeyDown={(event) => {
+                            if (event.key === 'Enter') {
+                                event.preventDefault();
+                                Login();
+                            }
+                        }}
                         type='password'
                         className='w-[300px] my-[0.2rem] animate-fade-up animate-delay-100 animate-once'
                         size="md"
