@@ -4,7 +4,7 @@ import CountUp from 'react-countup';
 import { Button } from '@mantine/core';
 import CV from '../../../files/CV.pdf'
 import { BiMoon } from "react-icons/bi";
-import { BsInstagram, BsLinkedin, BsGithub } from "react-icons/bs";
+import { BsInstagram, BsLinkedin, BsGithub, BsWhatsapp, BsEnvelope } from "react-icons/bs";
 
 export default function TopComponent() {
     const boxRef = useRef<HTMLDivElement>(null);
@@ -54,7 +54,7 @@ export default function TopComponent() {
                         <a href={CV} download='CHEUNG_Tsz_Lai_Bosco_CV'>Download CV</a>
                     </Button>
                     <button className='ml-2'>
-                        <BiMoon size={24}/>
+                        <BiMoon size={24} />
                     </button>
                 </div>
                 {/* col-2 */}
@@ -79,8 +79,14 @@ export default function TopComponent() {
                     <button className='mx-5'>
                         <BsLinkedin size={24} color='#9A9A9A' />
                     </button>
-                    <button className='ml-5'>
+                    <button className='mx-5'>
                         <BsGithub size={24} color='#9A9A9A' />
+                    </button>
+                    <button className='mx-5'>
+                        <BsWhatsapp size={24} color='#9A9A9A' />
+                    </button>
+                    <button className='ml-5'>
+                        <BsEnvelope size={24} color='#9A9A9A' />
                     </button>
                 </div>
             </div>

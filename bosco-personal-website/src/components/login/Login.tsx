@@ -2,7 +2,7 @@
 import { useEffect, useRef, useContext, CSSProperties, useState } from 'react'
 import { TextInput, Button } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
-import { BsInstagram, BsLinkedin, BsGithub } from "react-icons/bs";
+import { BsInstagram, BsLinkedin, BsGithub, BsWhatsapp, BsEnvelope } from "react-icons/bs";
 import { MapperContext } from '../../globalVariable/MapperContextProvider';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebase';
@@ -141,8 +141,14 @@ export default function Login(): any {
                         <button className='mx-5'>
                             <BsLinkedin size={24} color='#9A9A9A' />
                         </button>
-                        <button className='ml-5'>
+                        <button className='mx-5'>
                             <BsGithub size={24} color='#9A9A9A' />
+                        </button>
+                        <button className='mx-5'>
+                            <BsWhatsapp size={24} color='#9A9A9A' />
+                        </button>
+                        <button className='ml-5'>
+                            <BsEnvelope size={24} color='#9A9A9A' />
                         </button>
                     </div>
                 </div>
