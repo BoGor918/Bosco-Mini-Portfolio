@@ -1,11 +1,17 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import CompanyGrid from '../../grids/CompanyGrid'
 import EduGrid from '../../grids/EduGrid'
 import ProjectGrid from '../../grids/ProjectGrid'
 import { BiGrid, BiObjectsVerticalBottom, BiBookContent, BiCalendarCheck } from "react-icons/bi";
+import { Button } from '@mantine/core';
+import { MapperContext } from "../../../globalVariable/MapperContextProvider";
 
 export default function BottomComponent() {
-    const [selected, setSelected] = useState("1")
+    const {
+        authUser
+    } = useContext(MapperContext);
+
+    const [selected, setSelected] = useState<string | number>("1");
 
     const navClicked = (e: any) => {
         setSelected(e)
@@ -16,6 +22,22 @@ export default function BottomComponent() {
 
     return (
         <div className='flex flex-col items-center justify-center font-light'>
+            {/* Add Button= */}
+            {
+                authUser !== null ?
+                    <Button className='mr-[-1.1rem] sm:mr-[-1.1rem] md:mr-[-1.1rem] lg:mr-[-0.7rem] hover:bg-transparent self-end text-[#9A9A9A] font-normal animate-fade-up animate-delay-200 animate-once'>
+                        {
+                            selected === "1" ?
+                                "+ Add Work" :
+                                selected === "2" ?
+                                    "+ Add Education" :
+                                    selected === "3" ?
+                                        "+ Add Project" :
+                                        "+ Add Skill"
+                        }
+                    </Button> :
+                    <></>
+            }
             {/* nav line */}
             <div className='animate-fade-up animate-delay-200 animate-once w-[385px] sm:w-[385px] md:w-[385px] lg:w-[900px] h-[1px] bg-[#9a9a9a60]' />
             {/* nav button pc */}
