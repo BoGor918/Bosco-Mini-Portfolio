@@ -8,11 +8,13 @@ import { auth, firestore } from "../firebase";
 interface MapperContextType {
     userArray: any;
     authUser: any;
+    companyData: any;
 }
 
 export const MapperContext = createContext<MapperContextType>({
     userArray: [],
     authUser: null,
+    companyData: [],
 });
 
 export default function MapperContextProvider(props: any) {
@@ -26,8 +28,12 @@ export default function MapperContextProvider(props: any) {
         userData.length,
     ]
 
+    const [companyData, setCompanyData] = useState<{ id: string }[]>([]);
     // get users collection from firestore
     const usersCollectionRef = collection(firestore, "Users")
+
+    // get company info
+    const companyCollectionRef = collection(firestore, "Company")
 
     // set logged user data for authentication
     onAuthStateChanged(auth, (currentUser) => {
@@ -42,10 +48,21 @@ export default function MapperContextProvider(props: any) {
         GetUserData()
     }, [authUser])
 
+    useEffect(() => {
+        const GetCompanyData = async () => {
+            const companyDataRef = await getDocs(companyCollectionRef)
+            setCompanyData(companyDataRef.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+        }
+        GetCompanyData()
+    }, [])
+
+    console.log(companyData)
+
     return (
         <MapperContext.Provider value={{
             userArray,
             authUser,
+            companyData,
         }}>
             {props.children}
         </MapperContext.Provider>
