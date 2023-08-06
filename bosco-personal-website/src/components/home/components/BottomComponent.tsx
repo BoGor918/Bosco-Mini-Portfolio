@@ -5,11 +5,16 @@ import ProjectGrid from '../../grids/ProjectGrid'
 import { BiGrid, BiObjectsVerticalBottom, BiBookContent, BiCalendarCheck } from "react-icons/bi";
 import { Button } from '@mantine/core';
 import { MapperContext } from "../../../globalVariable/MapperContextProvider";
+import { Modal } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
+import AddItemModalComponent from '../../modal/AddCompanyModalComponent';
 
 export default function BottomComponent() {
     const {
         authUser
     } = useContext(MapperContext);
+
+    const [opened, { open, close }] = useDisclosure(false);
 
     const [selected, setSelected] = useState<string | number>("1");
 
@@ -25,7 +30,7 @@ export default function BottomComponent() {
             {/* Add Button= */}
             {
                 authUser !== null ?
-                    <Button className='mr-[-1.1rem] sm:mr-[-1.1rem] md:mr-[-1.1rem] lg:mr-[-0.7rem] hover:bg-transparent self-end text-[#9A9A9A] font-normal animate-fade-up animate-delay-200 animate-once'>
+                    <Button onClick={open} className='mr-[-1.1rem] sm:mr-[-1.1rem] md:mr-[-1.1rem] lg:mr-[-0.7rem] hover:bg-transparent self-end text-[#9A9A9A] font-normal animate-fade-up animate-delay-200 animate-once'>
                         {
                             selected === "1" ?
                                 "+ Add Work" :
@@ -75,11 +80,16 @@ export default function BottomComponent() {
                     </div>
                 </button>
             </div>
+            {/* display grid */}
             <div className='animate-fade-up animate-delay-300 animate-once '>
                 {
                     selected === "1" ? <CompanyGrid /> : selected === "2" ? <EduGrid /> : <ProjectGrid />
                 }
             </div>
+            {/* add item modal */}
+            <Modal opened={opened} onClose={close} size="lg" centered>
+                <AddItemModalComponent />
+            </Modal>
         </div>
     )
 }
