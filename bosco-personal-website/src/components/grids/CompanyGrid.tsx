@@ -41,6 +41,36 @@ export default function CompanyGrid() {
             years: "01/05/2022 - 01/05/2023",
             logo: SPAI_Logo,
         },
+        {
+            companyName: "Sisters Pro AI Solutions Limited",
+            team: "Project Team",
+            position: "Project Developer",
+            jobDuties: "Web / App Development & Customer Management",
+            projects: "Vendor Projects",
+            skillSets: "React JS",
+            years: "01/05/2022 - 01/05/2023",
+            logo: SPAI_Logo,
+        },
+        {
+            companyName: "Sisters Pro AI Solutions Limited",
+            team: "Project Team",
+            position: "Project Developer",
+            jobDuties: "Web / App Development & Customer Management",
+            projects: "Vendor Projects",
+            skillSets: "React JS",
+            years: "01/05/2022 - 01/05/2023",
+            logo: SPAI_Logo,
+        },
+        {
+            companyName: "Sisters Pro AI Solutions Limited",
+            team: "Project Team",
+            position: "Project Developer",
+            jobDuties: "Web / App Development & Customer Management",
+            projects: "Vendor Projects",
+            skillSets: "React JS",
+            years: "01/05/2022 - 01/05/2023",
+            logo: SPAI_Logo,
+        },
     ];
 
     const openModal = (company: Company) => {
@@ -50,9 +80,9 @@ export default function CompanyGrid() {
 
     return (
         <div className='animate-fade animate-delay-0 animate-once flex justify-center items-center mt-[1rem] sm:mt-[1rem] md:mt-[1rem] lg:mt-[2rem] mb-[5rem]'>
-            <div className='mx-2 grid grid-cols-3 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-0 lg:gap-2'>
+            <div className='mx-2 grid grid-cols-3 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-1 sm:gap-1 md:gap-1 lg:gap-2'>
                 {companyData.map((company, i) => (
-                    <div key={i} onClick={() => openModal(company)} className='flex justify-center items-center shadow-md w-[292px] h-[292px] cursor-pointer'>
+                    <div key={i} onClick={() => openModal(company)} className='flex justify-center items-center shadow-md w-[125px] sm:w-[125px] md:w-[125px] lg:w-[292px] h-[125px] sm:h-[125px] md:h-[125px] lg:h-[292px] cursor-pointer'>
                         <img className='w-full p-5' src={company.logo} alt={company.companyName} />
                     </div>
                 ))}
