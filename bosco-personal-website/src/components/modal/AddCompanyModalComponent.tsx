@@ -1,9 +1,14 @@
-import { TextInput, Button, Checkbox, FileInput } from '@mantine/core';
+import { TextInput, Button, Checkbox, FileInput, Notification } from '@mantine/core';
 import { DateInput } from '@mantine/dates';
 import { useForm } from '@mantine/form';
+import { uploadBytes, ref, getStorage, getDownloadURL } from "firebase/storage"
+import { firestore } from '../../firebase';
+import { doc, setDoc } from 'firebase/firestore'
 import { useState } from 'react';
 
 export default function AddCompanyModalComponent() {
+  const [showNotification, setShowNotification] = useState(false);
+
   const form = useForm({
     initialValues: {
       startDate: '',
@@ -27,9 +32,45 @@ export default function AddCompanyModalComponent() {
     },
   });
 
+  if (form.values.present === true) {
+    form.values.endDate = ""
+  }
+
+  // Firebase storage
+  const storage = getStorage()
+
+  const AddWork = (work: any) => {
+    setShowNotification(true);
+
+    const companyLogoRef = ref(storage, "CompanyLogo/" + work.companyName);
+
+    uploadBytes(companyLogoRef, work.logo).then(() => {
+      getDownloadURL(companyLogoRef).then((url) => {
+        setDoc(doc(firestore, "Company", work.companyName), {
+          CompanyName: work.companyName,
+          Team: work.team,
+          Position: work.position,
+          JobDuties: work.jobDuties,
+          Projects: work.projects,
+          SkillSets: work.skillSets,
+          Logo: url,
+          StartDate: work.startDate,
+          EndDate: work.endDate,
+          Present: work.present,
+          CreateDate: new Date(),
+        }).then(() => {
+          setTimeout(() => {
+            setShowNotification(false)
+            window.location.reload()
+          }, 1000)
+        })
+      })
+    })
+  }
+
   return (
     <div className='flex flex-col font-light'>
-      <form onSubmit={form.onSubmit((values) => console.log(values))}>
+      <form onSubmit={form.onSubmit((values) => AddWork(values))}>
         <div className='flex'>
           {/* start date field */}
           <DateInput
@@ -150,6 +191,18 @@ export default function AddCompanyModalComponent() {
           <Button type="submit" size='md' className='bg-[#4094F4] w-[300px] my-[0.8rem]'>Add Work</Button>
         </div>
       </form>
+      {
+        showNotification && (
+          <Notification
+            loading
+            title="Adding New Work"
+            withCloseButton={false}
+          >
+            Please wait until data is uploaded, you cannot close this modal
+          </Notification>
+        )
+      }
+
     </div>
   )
 }
