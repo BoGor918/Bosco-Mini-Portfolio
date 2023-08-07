@@ -56,8 +56,6 @@ export default function MapperContextProvider(props: any) {
         GetCompanyData()
     }, [])
 
-    console.log(companyData)
-
     return (
         <MapperContext.Provider value={{
             userArray,
