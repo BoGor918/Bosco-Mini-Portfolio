@@ -87,7 +87,7 @@ export default function BottomComponent() {
                 }
             </div>
             {/* add item modal */}
-            <Modal opened={opened} onClose={close} size="lg" centered>
+            <Modal opened={opened} onClose={close} size="lg" padding="xl" title="Add Work" centered>
                 <AddItemModalComponent />
             </Modal>
         </div>
