@@ -17,6 +17,14 @@ export default function AddCompanyModalComponent() {
       logo: '',
       present: false,
     },
+    validate: {
+      logo: (value: any) => {
+        if (!value) {
+          return 'Please Upload a Company Logo';
+        }
+        return undefined;
+      },
+    },
   });
 
   return (
@@ -127,13 +135,14 @@ export default function AddCompanyModalComponent() {
         <div className='flex'>
           {/* company logo */}
           <FileInput
-            className='my-[0.8rem]'
+            className='my-[0.8rem] w-[202.3px]'
             placeholder='Select Image'
             size="md"
-            label="Compahny Logo"
+            label="Company Logo"
             withAsterisk
             accept="image/*"
             required
+            {...form.getInputProps('logo')}
           />
         </div>
         <div className='flex justify-center'>
