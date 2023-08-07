@@ -17,6 +17,7 @@ export default function MiddleComponent() {
                             <button className="border-[1.5px] border-[#9a9a9a62] rounded-full p-[2px]">
                                 <AiOutlinePlus className="p-[20px] text-[75px] sm:text-[75px] md:text-[75px] lg:text-[95px]" color="#9A9A9A" />
                             </button>
+                            <span className="self-center mt-[0.5rem] text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px]">Add New</span>
                         </div> : <></>
                 }
                 <div className="flex flex-col mx-[0.7rem] sm:mx-[1rem] md:mx-[1rem] lg:mx-[2rem]" style={{ flexBasis: "auto", flexGrow: 0, flexShrink: 0 }}>
@@ -49,7 +50,12 @@ export default function MiddleComponent() {
                     </button>
                     <span className="self-center mt-[0.5rem] text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px]">Hobbie 01</span>
                 </div>
-
+                <div className="flex flex-col mx-[0.7rem] sm:mx-[1rem] md:mx-[1rem] lg:mx-[2rem]" style={{ flexBasis: "auto", flexGrow: 0, flexShrink: 0 }}>
+                    <button className="border-[1.5px] border-[#9a9a9a62] rounded-full p-[2px]">
+                        <img className="rounded-full w-[75px] sm:w-[75px] md:w-[75px] lg:w-[95px]" src={Icon} alt="img" />
+                    </button>
+                    <span className="self-center mt-[0.5rem] text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px]">Hobbie 01</span>
+                </div>
             </div>
         </div>
     );
