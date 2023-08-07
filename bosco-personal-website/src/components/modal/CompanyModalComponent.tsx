@@ -41,9 +41,8 @@ export default function CompanyModalComponent({
     } else {
       setToStartDate(new Date(startDate.seconds * 1000).toLocaleDateString('en-US', { day: '2-digit', month: '2-digit', year: 'numeric' }))
       setToEndDate(new Date(endDate.seconds * 1000).toLocaleDateString('en-US', { day: '2-digit', month: '2-digit', year: 'numeric' }))
-      const today = new Date()
-      const tempTotalYear = today.getFullYear() - startDate.toDate().getFullYear()
-      const tempTotalMonth = today.getMonth() - startDate.toDate().getMonth()
+      const tempTotalYear = endDate.toDate().getFullYear() - startDate.toDate().getFullYear()
+      const tempTotalMonth = endDate.toDate().getMonth() - startDate.toDate().getMonth()
       setTotalYear(tempTotalYear)
       setTotalMonth(tempTotalMonth)
     }

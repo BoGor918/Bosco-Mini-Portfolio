@@ -42,11 +42,14 @@ export default function AddCompanyModalComponent() {
   const AddWork = (work: any) => {
     setShowNotification(true);
 
-    const companyLogoRef = ref(storage, "CompanyLogo/" + work.companyName);
+    const today = new Date()
+    const timeCode = work.companyName.replace(/\s+/g, '-') + "-" + today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate() + "-" + today.getHours() + "-" + today.getMinutes() + "-" + today.getSeconds()
+
+    const companyLogoRef = ref(storage, "CompanyLogo/" + timeCode);
 
     uploadBytes(companyLogoRef, work.logo).then(() => {
       getDownloadURL(companyLogoRef).then((url) => {
-        setDoc(doc(firestore, "Company", work.companyName), {
+        setDoc(doc(firestore, "Company", timeCode), {
           CompanyName: work.companyName,
           Team: work.team,
           Position: work.position,
