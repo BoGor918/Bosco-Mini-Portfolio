@@ -11,8 +11,10 @@ interface Company {
     JobDuties: string;
     Projects: string;
     SkillSets: string;
-    Years: string;
-    LogoURL: string;
+    StartDate: any;
+    EndDate: any;
+    Present: boolean;
+    Logo: string;
 }
 
 export default function CompanyGrid() {
@@ -33,7 +35,7 @@ export default function CompanyGrid() {
             <div className='mx-2 grid grid-cols-3 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-1 sm:gap-1 md:gap-1 lg:gap-2'>
                 {companyData.map((company: any, i: any) => (
                     <div key={i} onClick={() => openModal(company)} className='flex justify-center items-center shadow-md w-[125px] sm:w-[125px] md:w-[125px] lg:w-[292px] h-[125px] sm:h-[125px] md:h-[125px] lg:h-[292px] cursor-pointer'>
-                        <img className='w-full p-5' src={company.LogoURL} alt={company.CompanyName} />
+                        <img className='w-full p-5' src={company.Logo} alt={company.CompanyName} />
                     </div>
                 ))}
             </div>
@@ -46,8 +48,10 @@ export default function CompanyGrid() {
                         jobDuties={selectedCompany.JobDuties}
                         projects={selectedCompany.Projects}
                         skillSets={selectedCompany.SkillSets}
-                        years={selectedCompany.Years}
-                        logo={selectedCompany.LogoURL}
+                        startDate={selectedCompany.StartDate}
+                        endDate={selectedCompany.EndDate}
+                        present={selectedCompany.Present}
+                        logo={selectedCompany.Logo}
                     />
                 )}
             </Modal>
