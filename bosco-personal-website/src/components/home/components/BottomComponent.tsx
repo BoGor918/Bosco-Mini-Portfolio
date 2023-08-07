@@ -44,7 +44,7 @@ export default function BottomComponent() {
                     <></>
             }
             {/* nav line */}
-            <div className='animate-fade-up animate-delay-200 animate-once w-[385px] sm:w-[385px] md:w-[385px] lg:w-[900px] h-[1px] bg-[#9a9a9a60]' />
+            <div className='animate-fade-up animate-delay-200 animate-once w-[355px] sm:w-[355px] md:w-[355px] lg:w-[900px] h-[1px] bg-[#9a9a9a60]' />
             {/* nav button pc */}
             <div className='flex animate-fade-up animate-delay-200 animate-once mt-[-1px]'>
                 {/* option 1 */}
