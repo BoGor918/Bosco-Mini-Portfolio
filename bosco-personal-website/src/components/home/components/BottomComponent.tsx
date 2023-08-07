@@ -30,7 +30,7 @@ export default function BottomComponent() {
             {/* Add Button= */}
             {
                 authUser !== null ?
-                    <Button onClick={open} className='mr-[-1.1rem] sm:mr-[-1.1rem] md:mr-[-1.1rem] lg:mr-[-0.7rem] hover:bg-transparent self-end text-[#9A9A9A] font-normal animate-fade-up animate-delay-200 animate-once'>
+                    <Button onClick={open} className='mt-[-0.5rem] mr-[-1.1rem] sm:mr-[-1.1rem] md:mr-[-1.1rem] lg:mr-[-0.7rem] hover:bg-transparent self-end text-[#9A9A9A] font-normal animate-fade-up animate-delay-200 animate-once'>
                         {
                             selected === "1" ?
                                 "+ Add Work" :

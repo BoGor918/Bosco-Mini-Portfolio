@@ -10,7 +10,7 @@ export default function MiddleComponent() {
 
     return (
         <div className="animate-fade-up animate-delay-150 animate-once ml-[0px] sm:md:ml-[0px] md:ml-[0px] lg:ml-[30px] mt-[2rem] mb-[3rem] w-full">
-            <div className="flex overflow-x-scroll scroll-smooth">
+            <div className="flex overflow-x-scroll scroll-smooth no-scrollbar">
                 {
                     authUser !== null ?
                         <div className="flex flex-col mx-[0.7rem] sm:mx-[1rem] md:mx-[1rem] lg:mx-[2rem]" style={{ flexBasis: "auto", flexGrow: 0, flexShrink: 0 }}>
