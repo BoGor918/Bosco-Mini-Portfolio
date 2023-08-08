@@ -26,25 +26,38 @@ export default function CompanyModalComponent({
 
   const [toStartDate, setToStartDate] = useState('')
   const [toEndDate, setToEndDate] = useState('')
-  const [totalYear, setTotalYear] = useState(0)
-  const [totalMonth, setTotalMonth] = useState(0)
+  const [yearsRemaining, setYearsRemaining] = useState<number>(0);
+  const [monthsRemaining, setMonthsRemaining] = useState<number>(0);
+  const [daysRemaining, setDaysRemaining] = useState<number>(0);
 
   useEffect(() => {
     if (present === true) {
       setToStartDate(new Date(startDate.seconds * 1000).toLocaleDateString('en-US', { day: '2-digit', month: '2-digit', year: 'numeric' }))
       setToEndDate("Present")
       const today = new Date()
-      const tempTotalYear = today.getFullYear() - startDate.toDate().getFullYear()
-      const tempTotalMonth = today.getMonth() - startDate.toDate().getMonth()
-      setTotalYear(tempTotalYear)
-      setTotalMonth(tempTotalMonth)
+      const timeDifference = Math.abs(today.getTime() - startDate.toDate().getTime());
+      const totalDays = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+      const years = Math.floor(totalDays / 365);
+      const months = Math.floor((totalDays % 365) / 30);
+      const days = totalDays % 30;
+
+      setYearsRemaining(years);
+      setMonthsRemaining(months);
+      setDaysRemaining(days);
     } else {
       setToStartDate(new Date(startDate.seconds * 1000).toLocaleDateString('en-US', { day: '2-digit', month: '2-digit', year: 'numeric' }))
       setToEndDate(new Date(endDate.seconds * 1000).toLocaleDateString('en-US', { day: '2-digit', month: '2-digit', year: 'numeric' }))
-      const tempTotalYear = endDate.toDate().getFullYear() - startDate.toDate().getFullYear()
-      const tempTotalMonth = endDate.toDate().getMonth() - startDate.toDate().getMonth()
-      setTotalYear(tempTotalYear)
-      setTotalMonth(tempTotalMonth)
+      const timeDifference = Math.abs(endDate.toDate().getTime() - startDate.toDate().getTime());
+      const totalDays = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+      const years = Math.floor(totalDays / 365);
+      const months = Math.floor((totalDays % 365) / 30);
+      const days = totalDays % 30;
+
+      setYearsRemaining(years);
+      setMonthsRemaining(months);
+      setDaysRemaining(days);
+
+      console.log(totalDays)
     }
   }, [])
 
@@ -64,7 +77,10 @@ export default function CompanyModalComponent({
       <span className='text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] text-[#9A9A9A]'><span className='font-medium'>Skill Sets: </span>{skillSets}</span>
       <span className='text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] text-[#9A9A9A]'>
         <span className='font-medium'>Period: </span>
-        {totalYear.toString()} {totalYear > 1 ? "Years" : "Year"} {totalMonth.toString()} {totalMonth > 1 ? "Months" : "Month"}, {toStartDate} - {toEndDate}
+        <span>{yearsRemaining.toString()} {yearsRemaining > 1 ? "Years" : "Year"} </span>
+        <span>{monthsRemaining.toString()} {monthsRemaining > 1 ? "Months" : "Month"} </span>
+        <span>{daysRemaining.toString()} {daysRemaining > 1 ? "Days" : "Day"}, </span>
+        <span>{toStartDate} - {toEndDate}</span>
       </span>
     </div>
   )
