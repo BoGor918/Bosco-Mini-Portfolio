@@ -26,6 +26,7 @@ export default function CompanyModalComponent({
 
   const [toStartDate, setToStartDate] = useState('')
   const [toEndDate, setToEndDate] = useState('')
+  const [resultDate, setResultDate] = useState('')
   const [yearsRemaining, setYearsRemaining] = useState<number>(0);
   const [monthsRemaining, setMonthsRemaining] = useState<number>(0);
   const [daysRemaining, setDaysRemaining] = useState<number>(0);
@@ -34,30 +35,90 @@ export default function CompanyModalComponent({
     if (present === true) {
       setToStartDate(new Date(startDate.seconds * 1000).toLocaleDateString('en-US', { day: '2-digit', month: '2-digit', year: 'numeric' }))
       setToEndDate("Present")
-      const today = new Date()
-      const timeDifference = Math.abs(today.getTime() - startDate.toDate().getTime());
-      const totalDays = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
-      const years = Math.floor(totalDays / 365);
-      const months = Math.floor((totalDays % 365) / 30);
-      const days = totalDays % 30;
+      // New date instances
+      const dt_date1 = new Date(startDate.toDate());
+      const dt_date2 = new Date();
 
-      setYearsRemaining(years);
-      setMonthsRemaining(months);
-      setDaysRemaining(days);
+      // Get the Timestamp
+      const date1_time_stamp = dt_date1.getTime();
+      const date2_time_stamp = dt_date2.getTime();
+
+      let calc: Date;
+
+      // Check which timestamp is greater
+      if (date1_time_stamp > date2_time_stamp) {
+        calc = new Date(date1_time_stamp - date2_time_stamp);
+      } else {
+        calc = new Date(date2_time_stamp - date1_time_stamp);
+      }
+
+      // Retrieve the date, month, and year
+      const calcFormatTmp = calc.getDate() + '-' + (calc.getMonth() + 1) + '-' + calc.getFullYear();
+      // Convert to an array and store
+      const calcFormat = calcFormatTmp.split("-");
+      // Subtract each member of our array from the default date
+      const days_passed = Math.abs(Number(calcFormat[0]) - 2);
+      const months_passed = Math.abs(Number(calcFormat[1]) - 1);
+      const years_passed = Math.abs(Number(calcFormat[2]) - 1970);
+
+      // Set up custom text
+      const yrsTxt = ["Year", "Years"];
+      const mnthsTxt = ["Month", "Months"];
+      const daysTxt = ["Day", "Days"];
+
+      // Display the result with custom text
+      const result = ((years_passed === 1) ? years_passed + ' ' + yrsTxt[0] + ' ' : (years_passed > 1) ?
+        years_passed + ' ' + yrsTxt[1] + ' ' : '') +
+        ((months_passed === 1) ? months_passed + ' ' + mnthsTxt[0] + ' ' : (months_passed > 1) ?
+          months_passed + ' ' + mnthsTxt[1] + ' ' : '') +
+        ((days_passed === 1) ? days_passed + ' ' + daysTxt[0] : (days_passed > 1) ?
+          days_passed + ' ' + daysTxt[1] : '');
+
+      setResultDate(result.trim())
     } else {
-      setToStartDate(new Date(startDate.seconds * 1000).toLocaleDateString('en-US', { day: '2-digit', month: '2-digit', year: 'numeric' }))
-      setToEndDate(new Date(endDate.seconds * 1000).toLocaleDateString('en-US', { day: '2-digit', month: '2-digit', year: 'numeric' }))
-      const timeDifference = Math.abs(endDate.toDate().getTime() - startDate.toDate().getTime());
-      const totalDays = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
-      const years = Math.floor(totalDays / 365);
-      const months = Math.floor((totalDays % 365) / 30);
-      const days = totalDays % 30;
+      setToStartDate(new Date(startDate.seconds * 1000).toLocaleDateString('en-US', { day: '2-digit', month: '2-digit', year: 'numeric' }));
+      setToEndDate(new Date(endDate.seconds * 1000).toLocaleDateString('en-US', { day: '2-digit', month: '2-digit', year: 'numeric' }));
 
-      setYearsRemaining(years);
-      setMonthsRemaining(months);
-      setDaysRemaining(days);
+      // New date instances
+      const dt_date1 = new Date(startDate.toDate());
+      const dt_date2 = new Date(endDate.toDate());
 
-      console.log(totalDays)
+      // Get the Timestamp
+      const date1_time_stamp = dt_date1.getTime();
+      const date2_time_stamp = dt_date2.getTime();
+
+      let calc: Date;
+
+      // Check which timestamp is greater
+      if (date1_time_stamp > date2_time_stamp) {
+        calc = new Date(date1_time_stamp - date2_time_stamp);
+      } else {
+        calc = new Date(date2_time_stamp - date1_time_stamp);
+      }
+
+      // Retrieve the date, month, and year
+      const calcFormatTmp = calc.getDate() + '-' + (calc.getMonth() + 1) + '-' + calc.getFullYear();
+      // Convert to an array and store
+      const calcFormat = calcFormatTmp.split("-");
+      // Subtract each member of our array from the default date
+      const days_passed = Math.abs(Number(calcFormat[0]) - 2);
+      const months_passed = Math.abs(Number(calcFormat[1]) - 1);
+      const years_passed = Math.abs(Number(calcFormat[2]) - 1970);
+
+      // Set up custom text
+      const yrsTxt = ["Year", "Years"];
+      const mnthsTxt = ["Month", "Months"];
+      const daysTxt = ["Day", "Days"];
+
+      // Display the result with custom text
+      const result = ((years_passed === 1) ? years_passed + ' ' + yrsTxt[0] + ' ' : (years_passed > 1) ?
+        years_passed + ' ' + yrsTxt[1] + ' ' : '') +
+        ((months_passed === 1) ? months_passed + ' ' + mnthsTxt[0] + ' ' : (months_passed > 1) ?
+          months_passed + ' ' + mnthsTxt[1] + ' ' : '') +
+        ((days_passed === 1) ? days_passed + ' ' + daysTxt[0] : (days_passed > 1) ?
+          days_passed + ' ' + daysTxt[1] : '');
+
+      setResultDate(result.trim())
     }
   }, [])
 
@@ -77,9 +138,7 @@ export default function CompanyModalComponent({
       <span className='text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] text-[#9A9A9A]'><span className='font-medium'>Skill Sets: </span>{skillSets}</span>
       <span className='text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] text-[#9A9A9A]'>
         <span className='font-medium'>Period: </span>
-        <span>{yearsRemaining.toString()} {yearsRemaining > 1 ? "Years" : "Year"} </span>
-        <span>{monthsRemaining.toString()} {monthsRemaining > 1 ? "Months" : "Month"} </span>
-        <span>{daysRemaining.toString()} {daysRemaining > 1 ? "Days" : "Day"}, </span>
+        <span>{resultDate}, </span>
         <span>{toStartDate} - {toEndDate}</span>
       </span>
     </div>
