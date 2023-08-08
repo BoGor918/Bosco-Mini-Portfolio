@@ -26,7 +26,7 @@ export default function Home() {
     }, []);
 
     return (
-        <div className="flex flex-col w-full max-w-[355px] sm:max-w-[355px] md:max-w-[355px] lg:max-w-[910px] mx-auto">
+        <div className="flex flex-col mx-auto">
             <TopComponent />
             <MiddleComponent />
             <BottomComponent />
