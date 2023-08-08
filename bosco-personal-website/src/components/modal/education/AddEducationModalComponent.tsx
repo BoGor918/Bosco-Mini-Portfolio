@@ -1,4 +1,4 @@
-import { TextInput, Button, Checkbox, FileInput, Notification, Select } from '@mantine/core';
+import { TextInput, Button, Checkbox, FileInput, Notification, Select, NumberInput } from '@mantine/core';
 import { DateInput } from '@mantine/dates';
 import { useForm } from '@mantine/form';
 import { uploadBytes, ref, getStorage, getDownloadURL } from "firebase/storage"
@@ -152,11 +152,16 @@ export default function AddEducationModalComponent() {
             {...form.getInputProps('title')}
           />
           {/* job duties field */}
-          <TextInput
+          <NumberInput
             className='w-full my-[0.8rem] ml-0 sm:ml-0 md:ml-0 lg:ml-3'
             size="md"
             label="CGPA / WGPA"
             inputWrapperOrder={['label', 'error', 'input', 'description']}
+            defaultValue={0.00}
+            precision={2}
+            min={0.00}
+            step={0.01}
+            max={4.50}
             required
             {...form.getInputProps('gpa')}
           />
