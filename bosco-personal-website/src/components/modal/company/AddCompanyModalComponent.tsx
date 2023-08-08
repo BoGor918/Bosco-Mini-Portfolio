@@ -2,7 +2,7 @@ import { TextInput, Button, Checkbox, FileInput, Notification } from '@mantine/c
 import { DateInput } from '@mantine/dates';
 import { useForm } from '@mantine/form';
 import { uploadBytes, ref, getStorage, getDownloadURL } from "firebase/storage"
-import { firestore } from '../../firebase';
+import { firestore } from '../../../firebase';
 import { doc, setDoc } from 'firebase/firestore'
 import { useState } from 'react';
 

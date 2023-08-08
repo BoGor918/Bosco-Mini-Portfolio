@@ -7,7 +7,8 @@ import { Button } from '@mantine/core';
 import { MapperContext } from "../../../globalVariable/MapperContextProvider";
 import { Modal } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import AddItemModalComponent from '../../modal/AddCompanyModalComponent';
+import AddCompanyModalComponent from '../../modal/company/AddCompanyModalComponent';
+import AddEducationModalComponent from '../../modal/education/AddEducationModalComponent';
 
 export default function BottomComponent() {
     const {
@@ -89,8 +90,13 @@ export default function BottomComponent() {
                 }
             </div>
             {/* add item modal */}
-            <Modal opened={opened} onClose={close} size="lg" padding="xl" title="Add Work" centered>
-                <AddItemModalComponent />
+            <Modal opened={opened} onClose={close} size="lg" padding="xl" title={selected === "1" ? "Add Work" : selected === "2" ? "Add Education" : ""} centered>
+                {
+                    selected === "1" ? <AddCompanyModalComponent /> :
+                        selected === "2" ?
+                            <AddEducationModalComponent /> :
+                            <></>
+                }
             </Modal>
         </div>
     )
