@@ -57,12 +57,12 @@ export default function CompanyModalComponent({
       {/* headline */}
       <span className='text-[25px] font-medium mt-5 mb-1'>{companyName}</span>
       {/* description */}
-      <span className='text-[16px] text-[#9A9A9A] text-justify'><span className='font-medium'>Team: </span>{team}</span>
-      <span className='text-[16px] text-[#9A9A9A] text-justify'><span className='font-medium'>Position: </span>{position}</span>
-      <span className='text-[16px] text-[#9A9A9A] text-justify'><span className='font-medium'>Job Duties: </span>{jobDuties}</span>
-      <span className='text-[16px] text-[#9A9A9A] text-justify'><span className='font-medium'>Projects: </span>{projects}</span>
-      <span className='text-[16px] text-[#9A9A9A] text-justify'><span className='font-medium'>Skill Sets: </span>{skillSets}</span>
-      <span className='text-[16px] text-[#9A9A9A] text-justify'>
+      <span className='text-[16px] text-[#9A9A9A]'><span className='font-medium'>Team: </span>{team}</span>
+      <span className='text-[16px] text-[#9A9A9A]'><span className='font-medium'>Position: </span>{position}</span>
+      <span className='text-[16px] text-[#9A9A9A]'><span className='font-medium'>Job Duties: </span>{jobDuties}</span>
+      <span className='text-[16px] text-[#9A9A9A]'><span className='font-medium'>Projects: </span>{projects}</span>
+      <span className='text-[16px] text-[#9A9A9A]'><span className='font-medium'>Skill Sets: </span>{skillSets}</span>
+      <span className='text-[16px] text-[#9A9A9A]'>
         <span className='font-medium'>Period: </span>
         {totalYear.toString()} {totalYear > 1 ? "Years" : "Year"} {totalMonth.toString()} {totalMonth > 1 ? "Months" : "Month"}, {toStartDate} - {toEndDate}
       </span>

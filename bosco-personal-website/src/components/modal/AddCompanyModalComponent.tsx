@@ -74,7 +74,7 @@ export default function AddCompanyModalComponent() {
   return (
     <div className='flex flex-col font-light'>
       <form onSubmit={form.onSubmit((values) => AddWork(values))}>
-        <div className='flex'>
+        <div className='flex flex-col sm:flex-col md:flex-col lg:flex-row'>
           {/* start date field */}
           <DateInput
             dateParser={(input: any) => {
@@ -86,7 +86,7 @@ export default function AddCompanyModalComponent() {
             valueFormat="DD/MM/YYYY"
             label="Start Date"
             size='md'
-            className='w-full my-[0.8rem] mr-3'
+            className='w-full my-[0.8rem] mr-0 sm:mr-0 md:mr-0 lg:mr-3'
             required
             {...form.getInputProps('startDate')}
           />
@@ -101,7 +101,7 @@ export default function AddCompanyModalComponent() {
             valueFormat="DD/MM/YYYY"
             label="End Date"
             size='md'
-            className='w-full my-[0.8rem] ml-3'
+            className='w-full my-[0.8rem] ml-0 sm:ml-0 md:ml-0 lg:ml-3'
             disabled={form.values.present}
             required
             {...form.getInputProps('endDate')}
@@ -116,10 +116,10 @@ export default function AddCompanyModalComponent() {
             {...form.getInputProps('present')}
           />
         </div>
-        <div className='flex'>
+        <div className='flex flex-col sm:flex-col md:flex-col lg:flex-row'>
           {/* company name field */}
           <TextInput
-            className='w-full my-[0.8rem] mr-3'
+            className='w-full my-[0.8rem] mr-0 sm:mr-0 md:mr-0 lg:mr-3'
             size="md"
             label="Company Name"
             inputWrapperOrder={['label', 'error', 'input', 'description']}
@@ -128,7 +128,7 @@ export default function AddCompanyModalComponent() {
           />
           {/* team field */}
           <TextInput
-            className='w-full my-[0.8rem] ml-3'
+            className='w-full my-[0.8rem] ml-0 sm:ml-0 md:ml-0 lg:ml-3'
             size="md"
             label="Team"
             inputWrapperOrder={['label', 'error', 'input', 'description']}
@@ -136,10 +136,10 @@ export default function AddCompanyModalComponent() {
             {...form.getInputProps('team')}
           />
         </div>
-        <div className='flex'>
+        <div className='flex flex-col sm:flex-col md:flex-col lg:flex-row'>
           {/* position field */}
           <TextInput
-            className='w-full my-[0.8rem] mr-3'
+            className='w-full my-[0.8rem] mr-0 sm:mr-0 md:mr-0 lg:mr-3'
             size="md"
             label="Position"
             inputWrapperOrder={['label', 'error', 'input', 'description']}
@@ -148,7 +148,7 @@ export default function AddCompanyModalComponent() {
           />
           {/* job duties field */}
           <TextInput
-            className='w-full my-[0.8rem] ml-3'
+            className='w-full my-[0.8rem] ml-0 sm:ml-0 md:ml-0 lg:ml-3'
             size="md"
             label="Job Duties"
             inputWrapperOrder={['label', 'error', 'input', 'description']}
@@ -156,10 +156,10 @@ export default function AddCompanyModalComponent() {
             {...form.getInputProps('jobDuties')}
           />
         </div>
-        <div className='flex'>
+        <div className='flex flex-col sm:flex-col md:flex-col lg:flex-row'>
           {/* projects field */}
           <TextInput
-            className='w-full my-[0.8rem] mr-3'
+            className='w-full my-[0.8rem] mr-0 sm:mr-0 md:mr-0 lg:mr-3'
             size="md"
             label="Projects"
             inputWrapperOrder={['label', 'error', 'input', 'description']}
@@ -168,7 +168,7 @@ export default function AddCompanyModalComponent() {
           />
           {/* skill sets field */}
           <TextInput
-            className='w-full my-[0.8rem] ml-3'
+            className='w-full my-[0.8rem] ml-0 sm:ml-0 md:ml-0 lg:ml-3'
             size="md"
             label="Skill Sets"
             inputWrapperOrder={['label', 'error', 'input', 'description']}
@@ -176,7 +176,7 @@ export default function AddCompanyModalComponent() {
             {...form.getInputProps('skillSets')}
           />
         </div>
-        <div className='flex'>
+        <div className='flex flex-col sm:flex-col md:flex-col lg:flex-row'>
           {/* company logo */}
           <FileInput
             className='my-[0.8rem] w-[202.3px]'
