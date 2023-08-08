@@ -9,7 +9,7 @@ export default function MiddleComponent() {
     } = useContext(MapperContext);
 
     return (
-        <div className="self-center w-full max-w-[375px] sm:max-w-[375px] md:max-w-[375px] lg:max-w-[910px] animate-fade-up animate-delay-150 animate-once ml-[0px] sm:md:ml-[0px] md:ml-[0px] lg:ml-[30px] mt-[2rem] mb-[3rem]">
+        <div className="self-center w-full max-w-[400px] sm:max-w-[400px] md:max-w-[400px] lg:max-w-[910px] animate-fade-up animate-delay-150 animate-once ml-[0px] sm:md:ml-[0px] md:ml-[0px] lg:ml-[30px] mt-[2rem] mb-[3rem]">
             <div className="flex overflow-x-scroll scroll-smooth no-scrollbar">
                 {
                     authUser !== null ?
