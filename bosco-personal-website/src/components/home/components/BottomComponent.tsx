@@ -27,24 +27,26 @@ export default function BottomComponent() {
 
     return (
         <div className='flex flex-col items-center justify-center font-light'>
-            {/* Add Button= */}
-            {
-                authUser !== null ?
-                    <Button onClick={open} className='mt-[-0.5rem] mr-[-1.1rem] sm:mr-[-1.1rem] md:mr-[-1.1rem] lg:mr-[-0.7rem] hover:bg-transparent self-end text-[#9A9A9A] font-normal animate-fade-up animate-delay-200 animate-once'>
-                        {
-                            selected === "1" ?
-                                "+ Add Work" :
-                                selected === "2" ?
-                                    "+ Add Education" :
-                                    selected === "3" ?
-                                        "+ Add Project" :
-                                        "+ Add Skill"
-                        }
-                    </Button> :
-                    <></>
-            }
             {/* nav line */}
-            <div className='animate-fade-up animate-delay-200 animate-once w-[355px] sm:w-[355px] md:w-[355px] lg:w-[900px] h-[1px] bg-[#9a9a9a60]' />
+            <div className='animate-fade-up animate-delay-200 animate-once flex flex-col justify-end items-end'>
+                {/* Add Button= */}
+                {
+                    authUser !== null ?
+                        <Button onClick={open} className='mt-[-0.5rem] mr-[-1.1rem] hover:bg-transparent text-[#9A9A9A] font-normal'>
+                            {
+                                selected === "1" ?
+                                    "+ Add Work" :
+                                    selected === "2" ?
+                                        "+ Add Education" :
+                                        selected === "3" ?
+                                            "+ Add Project" :
+                                            "+ Add Skill"
+                            }
+                        </Button> :
+                        <></>
+                }
+                <div className='w-[355px] sm:w-[355px] md:w-[355px] lg:w-[900px] h-[1px] bg-[#9a9a9a60]' />
+            </div>
             {/* nav button pc */}
             <div className='flex animate-fade-up animate-delay-200 animate-once mt-[-1px]'>
                 {/* option 1 */}
