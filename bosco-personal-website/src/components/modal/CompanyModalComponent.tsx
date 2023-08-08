@@ -27,9 +27,6 @@ export default function CompanyModalComponent({
   const [toStartDate, setToStartDate] = useState('')
   const [toEndDate, setToEndDate] = useState('')
   const [resultDate, setResultDate] = useState('')
-  const [yearsRemaining, setYearsRemaining] = useState<number>(0);
-  const [monthsRemaining, setMonthsRemaining] = useState<number>(0);
-  const [daysRemaining, setDaysRemaining] = useState<number>(0);
 
   useEffect(() => {
     if (present === true) {
