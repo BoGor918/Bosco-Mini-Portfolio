@@ -9,12 +9,14 @@ interface MapperContextType {
     userArray: any;
     authUser: any;
     companyData: any;
+    schoolData: any;
 }
 
 export const MapperContext = createContext<MapperContextType>({
     userArray: [],
     authUser: null,
     companyData: [],
+    schoolData: [],
 });
 
 export default function MapperContextProvider(props: any) {
@@ -29,11 +31,13 @@ export default function MapperContextProvider(props: any) {
     ]
 
     const [companyData, setCompanyData] = useState<{ id: string }[]>([]);
+    const [schoolData, setSchoolData] = useState<{ id: string }[]>([]);
     // get users collection from firestore
     const usersCollectionRef = collection(firestore, "Users")
 
     // get company info
     const companyCollectionRef = collection(firestore, "Company")
+    const schoolCollectionRef = collection(firestore, "School")
 
     // set logged user data for authentication
     onAuthStateChanged(auth, (currentUser) => {
@@ -41,26 +45,23 @@ export default function MapperContextProvider(props: any) {
     })
 
     useEffect(() => {
-        const GetUserData = async () => {
+        const GetData = async () => {
             const userDataRef = await getDocs(usersCollectionRef)
-            setUserData(userDataRef.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-        }
-        GetUserData()
-    }, [authUser])
-
-    useEffect(() => {
-        const GetCompanyData = async () => {
             const companyDataRef = await getDocs(companyCollectionRef)
+            const schoolDataRef = await getDocs(schoolCollectionRef)
+            setUserData(userDataRef.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
             setCompanyData(companyDataRef.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+            setSchoolData(schoolDataRef.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
         }
-        GetCompanyData()
-    }, [])
+        GetData()
+    }, [authUser])
 
     return (
         <MapperContext.Provider value={{
             userArray,
             authUser,
             companyData,
+            schoolData,
         }}>
             {props.children}
         </MapperContext.Provider>

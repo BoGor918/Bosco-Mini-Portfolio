@@ -37,27 +37,25 @@ export default function AddEducationModalComponent() {
   // Firebase storage
   const storage = getStorage()
 
-  const AddWork = (work: any) => {
+  const AddEdu = (edu: any) => {
     setShowNotification(true);
 
     const today = new Date()
-    const timeCode = work.companyName.replace(/\s+/g, '-') + "-" + today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate() + "-" + today.getHours() + "-" + today.getMinutes() + "-" + today.getSeconds()
+    const timeCode = edu.schoolName.replace(/\s+/g, '-') + "-" + today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate() + "-" + today.getHours() + "-" + today.getMinutes() + "-" + today.getSeconds()
 
-    const companyLogoRef = ref(storage, "SchoolLogo/" + timeCode);
+    const schoolLogoRef = ref(storage, "SchoolLogo/" + timeCode);
 
-    uploadBytes(companyLogoRef, work.logo).then(() => {
-      getDownloadURL(companyLogoRef).then((url) => {
-        setDoc(doc(firestore, "Company", timeCode), {
-          CompanyName: work.companyName,
-          Team: work.team,
-          Position: work.position,
-          JobDuties: work.jobDuties,
-          Projects: work.projects,
-          SkillSets: work.skillSets,
+    uploadBytes(schoolLogoRef, edu.logo).then(() => {
+      getDownloadURL(schoolLogoRef).then((url) => {
+        setDoc(doc(firestore, "School", timeCode), {
+          SchoolName: edu.schoolName,
+          Type: edu.type,
+          Title: edu.title,
+          GPA: edu.gpa,
           Logo: url,
-          StartDate: work.startDate,
-          EndDate: work.endDate,
-          Present: work.present,
+          StartDate: edu.startDate,
+          EndDate: edu.endDate,
+          Present: edu.present,
           CreateDate: new Date(),
         }).then(() => {
           setTimeout(() => {
@@ -71,7 +69,7 @@ export default function AddEducationModalComponent() {
 
   return (
     <div className='flex flex-col font-light'>
-      <form onSubmit={form.onSubmit((values) => AddWork(values))}>
+      <form onSubmit={form.onSubmit((values) => AddEdu(values))}>
         <div className='flex flex-col sm:flex-col md:flex-col lg:flex-row'>
           {/* start date field */}
           <DateInput
@@ -131,11 +129,11 @@ export default function AddEducationModalComponent() {
             label="Type"
             inputWrapperOrder={['label', 'error', 'input', 'description']}
             data={[
-              { value: 'doctor', label: 'Doctor Degree' },
-              { value: 'master', label: 'Master Degree' },
-              { value: 'bachelor', label: 'Bachelor Degree' },
-              { value: 'asso', label: 'Associate Degree' },
-              { value: 'secondary', label: 'Secondary' },
+              { value: 'Doctor Degree', label: 'Doctor Degree' },
+              { value: 'Master Degree', label: 'Master Degree' },
+              { value: 'Bachelor Degree', label: 'Bachelor Degree' },
+              { value: 'Associate Degree', label: 'Associate Degree' },
+              { value: 'Secondary', label: 'Secondary' },
             ]}
             required
             {...form.getInputProps('type')}

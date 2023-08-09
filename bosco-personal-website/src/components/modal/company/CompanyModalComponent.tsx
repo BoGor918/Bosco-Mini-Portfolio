@@ -54,7 +54,7 @@ export default function CompanyModalComponent({
       // Convert to an array and store
       const calcFormat = calcFormatTmp.split("-");
       // Subtract each member of our array from the default date
-      const days_passed = Math.abs(Number(calcFormat[0]) - 2);
+      const days_passed = Math.abs(Number(calcFormat[0]) - 1);
       const months_passed = Math.abs(Number(calcFormat[1]) - 1);
       const years_passed = Math.abs(Number(calcFormat[2]) - 1970);
 

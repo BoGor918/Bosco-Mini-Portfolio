@@ -2,22 +2,18 @@
 import { useState, useEffect } from "react";
 
 export default function EducationModalComponent({
-  companyName,
-  team,
-  position,
-  jobDuties,
-  projects,
-  skillSets,
+  schoolName,
+  type,
+  title,
+  gpa,
   startDate,
   endDate,
   present,
   logo }: {
-    companyName: string;
-    team: string;
-    position: string;
-    jobDuties: string;
-    projects: string;
-    skillSets: string;
+    schoolName: string;
+    type: string;
+    title: string;
+    gpa: string;
     startDate: any;
     endDate: any;
     present: boolean;
@@ -122,17 +118,15 @@ export default function EducationModalComponent({
   return (
     <div className='flex flex-col font-light p-1 sm:p-1 md:p-1 lg:p-5'>
       {/* company logo */}
-      <div className='bg-[#9a9a9a17] p-5 sm:p-5 md:p-5 lg:p-10 rounded-lg'>
+      <div className='bg-[#9a9a9a17] p-[3rem] sm:p-[3rem] md:p-[3rem] lg:p-[6rem] rounded-lg'>
         <img src={logo} alt="JavaScape" width={500} />
       </div>
       {/* headline */}
-      <span className='text-[20px] sm:text-[20px] md:text-[20px] lg:text-[25px] font-medium mt-5 mb-1'>{companyName}</span>
+      <span className='text-[20px] sm:text-[20px] md:text-[20px] lg:text-[25px] font-medium mt-5 mb-1'>{schoolName}</span>
       {/* description */}
-      <span className='text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] text-[#9A9A9A]'><span className='font-medium'>Team: </span>{team}</span>
-      <span className='text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] text-[#9A9A9A]'><span className='font-medium'>Position: </span>{position}</span>
-      <span className='text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] text-[#9A9A9A]'><span className='font-medium'>Job Duties: </span>{jobDuties}</span>
-      <span className='text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] text-[#9A9A9A]'><span className='font-medium'>Projects: </span>{projects}</span>
-      <span className='text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] text-[#9A9A9A]'><span className='font-medium'>Skill Sets: </span>{skillSets}</span>
+      <span className='text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] text-[#9A9A9A]'><span className='font-medium'>Type: </span>{type}</span>
+      <span className='text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] text-[#9A9A9A]'><span className='font-medium'>Title: </span>{title}</span>
+      <span className='text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] text-[#9A9A9A]'><span className='font-medium'>CGPA / WGPA: </span>{gpa}</span>
       <span className='text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] text-[#9A9A9A]'>
         <span className='font-medium'>Period: </span>
         <span>{resultDate}, </span>
