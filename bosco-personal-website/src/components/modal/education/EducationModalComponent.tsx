@@ -126,7 +126,7 @@ export default function EducationModalComponent({
       {/* description */}
       <span className='text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] text-[#9A9A9A]'><span className='font-medium'>Type: </span>{type}</span>
       <span className='text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] text-[#9A9A9A]'><span className='font-medium'>Title: </span>{title}</span>
-      <span className='text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] text-[#9A9A9A]'><span className='font-medium'>CGPA / WGPA: </span>{gpa}</span>
+      <span className='text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] text-[#9A9A9A]'><span className='font-medium'>CGPA / WGPA / Best Five: </span>{gpa}</span>
       <span className='text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] text-[#9A9A9A]'>
         <span className='font-medium'>Period: </span>
         <span>{resultDate}, </span>

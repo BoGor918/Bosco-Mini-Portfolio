@@ -159,7 +159,7 @@ export default function AddEducationModalComponent() {
             precision={2}
             min={0.00}
             step={0.01}
-            max={4.50}
+            max={30.00}
             required
             {...form.getInputProps('gpa')}
           />
