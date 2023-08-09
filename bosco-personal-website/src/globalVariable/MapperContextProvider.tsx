@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, createContext, useEffect } from "react";
-import { collection, getDocs } from 'firebase/firestore'
+import { collection, getDocs, query, orderBy, onSnapshot } from 'firebase/firestore'
 import { onAuthStateChanged } from "firebase/auth";
 import { auth, firestore } from "../firebase";
 
@@ -47,14 +47,23 @@ export default function MapperContextProvider(props: any) {
     useEffect(() => {
         const GetData = async () => {
             const userDataRef = await getDocs(usersCollectionRef)
-            const companyDataRef = await getDocs(companyCollectionRef)
-            const schoolDataRef = await getDocs(schoolCollectionRef)
+            // const companyDataRef = await getDocs(companyCollectionRef)
+            // const schoolDataRef = await getDocs(schoolCollectionRef)
             setUserData(userDataRef.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-            setCompanyData(companyDataRef.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-            setSchoolData(schoolDataRef.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+            // setCompanyData(companyDataRef.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+            // setSchoolData(schoolDataRef.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
         }
         GetData()
     }, [authUser])
+
+    useEffect(() => {
+        const q = query(companyCollectionRef, orderBy("CreateDate", "asc"));
+        const w = query(schoolCollectionRef, orderBy("CreateDate", "asc"));
+        onSnapshot(q, (snapshot) =>
+        setCompanyData(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))));
+        onSnapshot(w, (snapshot) =>
+        setSchoolData(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))));
+    }, [authUser]);
 
     return (
         <MapperContext.Provider value={{
