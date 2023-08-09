@@ -45,15 +45,11 @@ export default function MapperContextProvider(props: any) {
     })
 
     useEffect(() => {
-        const GetData = async () => {
+        const GetUserData = async () => {
             const userDataRef = await getDocs(usersCollectionRef)
-            // const companyDataRef = await getDocs(companyCollectionRef)
-            // const schoolDataRef = await getDocs(schoolCollectionRef)
             setUserData(userDataRef.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-            // setCompanyData(companyDataRef.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-            // setSchoolData(schoolDataRef.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
         }
-        GetData()
+        GetUserData()
     }, [authUser])
 
     useEffect(() => {
