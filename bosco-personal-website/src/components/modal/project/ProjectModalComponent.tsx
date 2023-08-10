@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
 
-export default function EducationModalComponent({
+export default function ProjectModalComponent({
   schoolName,
   type,
   title,

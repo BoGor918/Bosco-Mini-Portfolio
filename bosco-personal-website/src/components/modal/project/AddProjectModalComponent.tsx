@@ -6,7 +6,7 @@ import { firestore } from '../../../firebase';
 import { doc, setDoc } from 'firebase/firestore'
 import { useState } from 'react';
 
-export default function AddEducationModalComponent() {
+export default function AddProjectModalComponent() {
   const [showNotification, setShowNotification] = useState(false);
 
   const form = useForm({

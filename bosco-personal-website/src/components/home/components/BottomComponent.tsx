@@ -9,6 +9,7 @@ import { Modal } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import AddCompanyModalComponent from '../../modal/company/AddCompanyModalComponent';
 import AddEducationModalComponent from '../../modal/education/AddEducationModalComponent';
+import AddProjectModalComponent from '../../modal/project/AddProjectModalComponent';
 
 export default function BottomComponent() {
     const {
@@ -90,12 +91,14 @@ export default function BottomComponent() {
                 }
             </div>
             {/* add item modal */}
-            <Modal opened={opened} onClose={close} size="lg" padding="xl" title={selected === "1" ? "Add Work" : selected === "2" ? "Add Education" : ""} centered>
+            <Modal opened={opened} onClose={close} size="lg" padding="xl" title={selected === "1" ? "Add Work" : selected === "2" ? "Add Education" : selected ===  "3" ? "Add Project" : ""} centered>
                 {
                     selected === "1" ? <AddCompanyModalComponent /> :
                         selected === "2" ?
                             <AddEducationModalComponent /> :
-                            <></>
+                            selected === "3" ?
+                                <AddProjectModalComponent /> :
+                                <></>
                 }
             </Modal>
         </div>
