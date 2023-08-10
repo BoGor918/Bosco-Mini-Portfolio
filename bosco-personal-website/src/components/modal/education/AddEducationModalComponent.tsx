@@ -160,6 +160,8 @@ export default function AddEducationModalComponent() {
             min={0.00}
             step={0.01}
             max={30.00}
+            stepHoldDelay={500}
+            stepHoldInterval={(t) => Math.max(1000 / t ** 2, 25)}
             required
             {...form.getInputProps('gpa')}
           />
