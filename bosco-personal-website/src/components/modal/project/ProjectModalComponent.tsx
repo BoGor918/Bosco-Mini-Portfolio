@@ -16,7 +16,6 @@ export default function ProjectModalComponent({
 
   const [techStackList, setTechStackList] = useState('')
 
-
   useEffect(() => {
     var tempTechStackList = ''
 
