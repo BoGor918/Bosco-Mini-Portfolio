@@ -115,18 +115,23 @@ export default function EducationModalComponent({
     }
   }, [])
 
+  console.log(logo)
+
   return (
-    <div className='flex flex-col font-light p-1 sm:p-1 md:p-1 lg:p-5'>
-      {/* company logo */}
-      <div className='bg-[#9a9a9a17] p-[3rem] sm:p-[3rem] md:p-[3rem] lg:p-[6rem] rounded-lg'>
-        <img src={logo} alt="JavaScape" width={500} />
+    <div className='flex flex-col font-light p-3'>
+      {/* school logo */}
+      <div className='flex justify-center items-center bg-[#9a9a9a17] p-[2rem] rounded-lg'>
+        <img src={logo} alt={schoolName} />
       </div>
-      {/* headline */}
+      {/* school name */}
       <span className='text-[20px] sm:text-[20px] md:text-[20px] lg:text-[25px] font-medium mt-5 mb-1'>{schoolName}</span>
-      {/* description */}
+      {/* type */}
       <span className='text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] text-[#9A9A9A]'><span className='font-medium'>Type: </span>{type}</span>
+      {/* title */}
       <span className='text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] text-[#9A9A9A]'><span className='font-medium'>Title: </span>{title}</span>
+      {/* gpa */}
       <span className='text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] text-[#9A9A9A]'><span className='font-medium'>CGPA / WGPA / Best Five: </span>{gpa}</span>
+      {/* period */}
       <span className='text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] text-[#9A9A9A]'>
         <span className='font-medium'>Period: </span>
         <span>{resultDate}, </span>
