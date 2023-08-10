@@ -10,6 +10,7 @@ interface MapperContextType {
     authUser: any;
     companyData: any;
     schoolData: any;
+    openURL: (url: string) => void;
 }
 
 export const MapperContext = createContext<MapperContextType>({
@@ -17,6 +18,7 @@ export const MapperContext = createContext<MapperContextType>({
     authUser: null,
     companyData: [],
     schoolData: [],
+    openURL: () => { },
 });
 
 export default function MapperContextProvider(props: any) {
@@ -61,12 +63,17 @@ export default function MapperContextProvider(props: any) {
         setSchoolData(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))));
     }, [authUser]);
 
+    const openURL = (url: string) => {
+        window.open(url, "_blank");
+    }
+
     return (
         <MapperContext.Provider value={{
             userArray,
             authUser,
             companyData,
             schoolData,
+            openURL
         }}>
             {props.children}
         </MapperContext.Provider>

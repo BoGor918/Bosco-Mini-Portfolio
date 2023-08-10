@@ -12,7 +12,8 @@ export default function Login(): any {
     // Get user data from context
     const {
         userArray,
-        authUser
+        authUser,
+        openURL
     } = useContext(MapperContext);
 
     // Login variables
@@ -135,20 +136,20 @@ export default function Login(): any {
                     </div>
                     {/* social icon */}
                     <div className='flex items-center mt-4 animate-fade-up animate-delay-500 animate-once'>
-                        <button className='mr-5'>
-                            <BsInstagram size={24} color='#9A9A9A' />
+                        <button onClick={() => openURL("https://www.instagram.com/cheungtszlai/")} className='mr-5'>
+                            <BsInstagram className='text-[24px]' color='#9A9A9A' />
                         </button>
-                        <button className='mx-5'>
-                            <BsLinkedin size={24} color='#9A9A9A' />
+                        <button onClick={() => openURL("https://www.linkedin.com/in/tsz-lai-bosco-cheung-2476791b2/")} className='mx-5'>
+                            <BsLinkedin className='text-[24px]' color='#9A9A9A' />
                         </button>
-                        <button className='mx-5'>
-                            <BsGithub size={24} color='#9A9A9A' />
+                        <button onClick={() => openURL("https://github.com/BoGor918")} className='mx-5'>
+                            <BsGithub className='text-[24px]' color='#9A9A9A' />
                         </button>
-                        <button className='mx-5'>
-                            <BsWhatsapp size={24} color='#9A9A9A' />
+                        <button onClick={() => openURL("https://wa.link/mthj8s")} className='mx-5'>
+                            <BsWhatsapp className='text-[24px]' color='#9A9A9A' />
                         </button>
-                        <button className='ml-5'>
-                            <BsEnvelope size={24} color='#9A9A9A' />
+                        <button onClick={() => openURL("mailto:cheungtszlai@gmail.com")} className='ml-5'>
+                            <BsEnvelope className='text-[24px]' color='#9A9A9A' />
                         </button>
                     </div>
                 </div>
