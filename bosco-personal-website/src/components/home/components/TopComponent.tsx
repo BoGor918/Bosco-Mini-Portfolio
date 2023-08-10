@@ -59,7 +59,7 @@ export default function TopComponent() {
                         <Button className='mx-0 sm:mx-0 md:mx-0 lg:mx-5 bg-[#4094F4] text-white rounded-md px-[15px] sm:px-[15px] md:px-[15px] lg:px-[20px] py-[5px] text-[12px] sm:text-[12px] md:text-[12px] lg:text-[14px] ml-0 sm:ml-0 md:ml-0 lg:ml-4'>
                             <a href={CV} download='CHEUNG_Tsz_Lai_Bosco_CV'>Download CV</a>
                         </Button>
-                        <button className='ml-5 sm:ml-5 md:ml-5 lg:ml-2'>
+                        <button className='ml-3 sm:ml-3 md:ml-3 lg:ml-2'>
                             <BiMoon className='text-[22px] sm:text-[22px] md:text-[22px] lg:text-[24px]' />
                         </button>
                     </div>
