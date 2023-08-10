@@ -4,12 +4,12 @@ import { collection, getDocs, query, orderBy, onSnapshot } from 'firebase/firest
 import { onAuthStateChanged } from "firebase/auth";
 import { auth, firestore } from "../firebase";
 
-
 interface MapperContextType {
     userArray: any;
     authUser: any;
     companyData: any;
     schoolData: any;
+    projectData: any;
     openURL: (url: string) => void;
 }
 
@@ -18,7 +18,8 @@ export const MapperContext = createContext<MapperContextType>({
     authUser: null,
     companyData: [],
     schoolData: [],
-    openURL: () => { },
+    projectData: [],
+    openURL: () => {},
 });
 
 export default function MapperContextProvider(props: any) {
@@ -34,12 +35,14 @@ export default function MapperContextProvider(props: any) {
 
     const [companyData, setCompanyData] = useState<{ id: string }[]>([]);
     const [schoolData, setSchoolData] = useState<{ id: string }[]>([]);
+    const [projectData, setProjectData] = useState<{ id: string }[]>([]);
     // get users collection from firestore
     const usersCollectionRef = collection(firestore, "Users")
 
     // get company info
     const companyCollectionRef = collection(firestore, "Company")
     const schoolCollectionRef = collection(firestore, "School")
+    const projectCollectionRef = collection(firestore, "Project")
 
     // set logged user data for authentication
     onAuthStateChanged(auth, (currentUser) => {
@@ -57,10 +60,13 @@ export default function MapperContextProvider(props: any) {
     useEffect(() => {
         const q = query(companyCollectionRef, orderBy("CreateDate", "desc"));
         const w = query(schoolCollectionRef, orderBy("CreateDate", "desc"));
+        const r = query(projectCollectionRef, orderBy("CreateDate", "desc"));
         onSnapshot(q, (snapshot) =>
         setCompanyData(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))));
         onSnapshot(w, (snapshot) =>
         setSchoolData(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))));
+        onSnapshot(r, (snapshot) =>
+        setProjectData(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))));
     }, [authUser]);
 
     const openURL = (url: string) => {
@@ -73,6 +79,7 @@ export default function MapperContextProvider(props: any) {
             authUser,
             companyData,
             schoolData,
+            projectData,
             openURL
         }}>
             {props.children}
