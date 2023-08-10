@@ -53,8 +53,8 @@ export default function MapperContextProvider(props: any) {
     }, [authUser])
 
     useEffect(() => {
-        const q = query(companyCollectionRef, orderBy("CreateDate", "asc"));
-        const w = query(schoolCollectionRef, orderBy("CreateDate", "asc"));
+        const q = query(companyCollectionRef, orderBy("CreateDate", "desc"));
+        const w = query(schoolCollectionRef, orderBy("CreateDate", "desc"));
         onSnapshot(q, (snapshot) =>
         setCompanyData(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))));
         onSnapshot(w, (snapshot) =>
