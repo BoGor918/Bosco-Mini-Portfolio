@@ -1,4 +1,4 @@
-import { TextInput, Button, Checkbox, FileInput, Notification } from '@mantine/core';
+import { TextInput, Button, Checkbox, FileInput, Notification, MultiSelect } from '@mantine/core';
 import { DateInput } from '@mantine/dates';
 import { useForm } from '@mantine/form';
 import { uploadBytes, ref, getStorage, getDownloadURL } from "firebase/storage"
@@ -157,10 +157,10 @@ export default function AddCompanyModalComponent() {
             {...form.getInputProps('jobDuties')}
           />
         </div>
-        <div className='flex flex-col sm:flex-col md:flex-col lg:flex-row'>
+        <div className='flex flex-col'>
           {/* projects field */}
           <TextInput
-            className='w-full my-[0.8rem] mr-0 sm:mr-0 md:mr-0 lg:mr-3'
+            className='w-full my-[0.8rem]'
             size="md"
             label="Projects"
             inputWrapperOrder={['label', 'error', 'input', 'description']}
@@ -168,11 +168,36 @@ export default function AddCompanyModalComponent() {
             {...form.getInputProps('projects')}
           />
           {/* skill sets field */}
-          <TextInput
-            className='w-full my-[0.8rem] ml-0 sm:ml-0 md:ml-0 lg:ml-3'
+          <MultiSelect
+            data={[
+              'HTML',
+              'CSS',
+              'JavaScript',
+              'TypeScript',
+              'React',
+              'Tailwind CSS',
+              'Node.js',
+              'Express',
+              'Firebase',
+              'SQL',
+              'Unity',
+              'C#',
+              'C++',
+              'Java',
+              'Python',
+              'PHP',
+              'WordPress',
+              'Photoshop',
+              'Premiere',
+              'Figma',
+              'Power Director',
+              'Corel Video Studio'
+            ]}
+            className='w-full my-[0.8rem]'
             size="md"
-            label="Skill Sets"
-            inputWrapperOrder={['label', 'error', 'input', 'description']}
+            label="Tech Stack(s)"
+            searchable
+            nothingFound="No Result"
             required
             {...form.getInputProps('skillSets')}
           />

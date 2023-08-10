@@ -10,6 +10,7 @@ interface MapperContextType {
     companyData: any;
     schoolData: any;
     projectData: any;
+    skillData: any;
     openURL: (url: string) => void;
 }
 
@@ -19,6 +20,7 @@ export const MapperContext = createContext<MapperContextType>({
     companyData: [],
     schoolData: [],
     projectData: [],
+    skillData: [],
     openURL: () => {},
 });
 
@@ -36,6 +38,7 @@ export default function MapperContextProvider(props: any) {
     const [companyData, setCompanyData] = useState<{ id: string }[]>([]);
     const [schoolData, setSchoolData] = useState<{ id: string }[]>([]);
     const [projectData, setProjectData] = useState<{ id: string }[]>([]);
+    const [skillData, setSkillData] = useState<{ id: string }[]>([]);
     // get users collection from firestore
     const usersCollectionRef = collection(firestore, "Users")
 
@@ -43,6 +46,7 @@ export default function MapperContextProvider(props: any) {
     const companyCollectionRef = collection(firestore, "Company")
     const schoolCollectionRef = collection(firestore, "School")
     const projectCollectionRef = collection(firestore, "Project")
+    const skillCollectionRef = collection(firestore, "Skill")
 
     // set logged user data for authentication
     onAuthStateChanged(auth, (currentUser) => {
@@ -61,12 +65,15 @@ export default function MapperContextProvider(props: any) {
         const q = query(companyCollectionRef, orderBy("CreateDate", "desc"));
         const w = query(schoolCollectionRef, orderBy("CreateDate", "desc"));
         const r = query(projectCollectionRef, orderBy("CreateDate", "desc"));
+        const t = query(skillCollectionRef, orderBy("CreateDate", "desc"));
         onSnapshot(q, (snapshot) =>
         setCompanyData(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))));
         onSnapshot(w, (snapshot) =>
         setSchoolData(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))));
         onSnapshot(r, (snapshot) =>
         setProjectData(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))));
+        onSnapshot(t, (snapshot) =>
+        setSkillData(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))));
     }, [authUser]);
 
     const openURL = (url: string) => {
@@ -80,6 +87,7 @@ export default function MapperContextProvider(props: any) {
             companyData,
             schoolData,
             projectData,
+            skillData,
             openURL
         }}>
             {props.children}

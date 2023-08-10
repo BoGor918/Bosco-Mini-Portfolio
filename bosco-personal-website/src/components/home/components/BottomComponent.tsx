@@ -2,6 +2,7 @@ import { useState, useContext } from 'react'
 import CompanyGrid from '../../grids/CompanyGrid'
 import EduGrid from '../../grids/EduGrid'
 import ProjectGrid from '../../grids/ProjectGrid'
+import SkillGrid from '../../grids/SkillGrid'
 import { BiGrid, BiObjectsVerticalBottom, BiBookContent, BiCalendarCheck } from "react-icons/bi";
 import { Button } from '@mantine/core';
 import { MapperContext } from "../../../globalVariable/MapperContextProvider";
@@ -10,6 +11,7 @@ import { useDisclosure } from '@mantine/hooks';
 import AddCompanyModalComponent from '../../modal/company/AddCompanyModalComponent';
 import AddEducationModalComponent from '../../modal/education/AddEducationModalComponent';
 import AddProjectModalComponent from '../../modal/project/AddProjectModalComponent';
+import AddSkillModalComponent from '../../modal/skill/AddSkillModalComponent';
 
 export default function BottomComponent() {
     const {
@@ -87,18 +89,19 @@ export default function BottomComponent() {
             {/* display grid */}
             <div className='animate-fade-up animate-delay-300 animate-once '>
                 {
-                    selected === "1" ? <CompanyGrid /> : selected === "2" ? <EduGrid /> : <ProjectGrid />
+                    selected === "1" ? <CompanyGrid /> : selected === "2" ? <EduGrid /> : selected === "3" ? <ProjectGrid /> : <SkillGrid />
                 }
             </div>
             {/* add item modal */}
-            <Modal opened={opened} onClose={close} size="lg" padding="xl" title={selected === "1" ? "Add Work" : selected === "2" ? "Add Education" : selected ===  "3" ? "Add Project" : ""} centered>
+            <Modal opened={opened} onClose={close} size="lg" padding="xl" title={selected === "1" ? "Add Work" : selected === "2" ? "Add Education" : selected === "3" ? "Add Project" : "Add Skill"} centered>
                 {
                     selected === "1" ? <AddCompanyModalComponent /> :
                         selected === "2" ?
                             <AddEducationModalComponent /> :
                             selected === "3" ?
                                 <AddProjectModalComponent /> :
-                                <></>
+                                <AddSkillModalComponent />
+
                 }
             </Modal>
         </div>

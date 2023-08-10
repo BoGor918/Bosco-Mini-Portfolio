@@ -20,7 +20,7 @@ export default function AddProjectModalComponent() {
     validate: {
       logo: (value: any) => {
         if (!value) {
-          return 'Please Upload a School Logo';
+          return 'Please Upload a Project Logo';
         }
         return undefined;
       },
@@ -36,10 +36,10 @@ export default function AddProjectModalComponent() {
     const today = new Date()
     const timeCode = project.projectName.replace(/\s+/g, '-') + "-" + today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate() + "-" + today.getHours() + "-" + today.getMinutes() + "-" + today.getSeconds()
 
-    const schoolLogoRef = ref(storage, "ProjectLogo/" + timeCode);
+    const projectLogoRef = ref(storage, "ProjectLogo/" + timeCode);
 
-    uploadBytes(schoolLogoRef, project.logo).then(() => {
-      getDownloadURL(schoolLogoRef).then((url) => {
+    uploadBytes(projectLogoRef, project.logo).then(() => {
+      getDownloadURL(projectLogoRef).then((url) => {
         setDoc(doc(firestore, "Project", timeCode), {
           ProjectName: project.projectName,
           TechStack: project.techStack,
@@ -101,6 +101,7 @@ export default function AddProjectModalComponent() {
             label="Tech Stack(s)"
             searchable
             nothingFound="No Result"
+            required
             {...form.getInputProps('techStack')}
           />
         </div>
