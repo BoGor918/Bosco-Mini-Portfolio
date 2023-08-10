@@ -103,6 +103,7 @@ export default function AddCompanyModalComponent() {
             size='md'
             className='w-full my-[0.8rem] ml-0 sm:ml-0 md:ml-0 lg:ml-3'
             disabled={form.values.present}
+            minDate={new Date(form.values.startDate)}
             required
             {...form.getInputProps('endDate')}
           />
