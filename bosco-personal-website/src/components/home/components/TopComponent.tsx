@@ -49,24 +49,24 @@ export default function TopComponent() {
             <div className='animate-fade-up animate-delay-100 animate-once mx-10'>
                 {/* col-1 */}
                 <div className='flex flex-col sm:flex-col md:flex-col lg:flex-row justify-center items-center ml-[-0.15rem]'>
-                    <span className='mr-0 sm:mr-0 md:mr-0 lg:mr-5 my-4 sm:my-4 md:my-4 lg:my-0 text-[27px]'>CHEUNG Tsz Lai</span>
+                    <span className='mr-0 sm:mr-0 md:mr-0 lg:mr-5 my-4 sm:my-4 md:my-4 lg:my-0 text-[24px] sm:text-[24px] md:text-[24px] lg:text-[27px]'>CHEUNG Tsz Lai</span>
                     <div className='flex justify-center items-center mb-2 sm:mb-2 md:mb-2 lg:mb-0'>
-                        <Button className='mx-0 sm:mx-0 md:mx-0 lg:mx-5 bg-[#4094F4] text-white rounded-md px-[20px] py-[5px] text-[14px] ml-0 sm:ml-0 md:ml-0 lg:ml-4'>
+                        <Button className='mx-0 sm:mx-0 md:mx-0 lg:mx-5 bg-[#4094F4] text-white rounded-md px-[15px] sm:px-[15px] md:px-[15px] lg:px-[20px] py-[5px] text-[12px] sm:text-[12px] md:text-[12px] lg:text-[14px] ml-0 sm:ml-0 md:ml-0 lg:ml-4'>
                             <a href={CV} download='CHEUNG_Tsz_Lai_Bosco_CV'>Download CV</a>
                         </Button>
                         <button className='ml-5 sm:ml-5 md:ml-5 lg:ml-2'>
-                            <BiMoon size={24} />
+                            <BiMoon className='text-[22px] sm:text-[22px] md:text-[22px] lg:text-[24px]' />
                         </button>
                     </div>
                 </div>
                 {/* col-2 */}
-                <div className='flex justify-center sm:justify-center md:justify-center lg:justify-start items-center text-[16px] my-4'>
-                    <span className='mr-3 sm:mr-3 md:mr-3 lg:mr-4'><CountUp className='font-bold' start={100} end={totalYear} duration={3} /><span className='font-bold'>+</span> Yrs Exp</span>
-                    <span className='mx-3 sm:mx-3 md:mx-3 lg:mx-4'><CountUp className='font-bold' start={100} end={5} duration={3} /><span className='font-bold'>+</span> Projects</span>
-                    <span className='ml-3 sm:ml-3 md:ml-3 lg:ml-4'><CountUp className='font-bold' start={100} end={10} duration={3} /><span className='font-bold'>+</span> Skills</span>
+                <div className='flex justify-center sm:justify-center md:justify-center lg:justify-start items-center text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] my-4'>
+                    <span className='mr-4'><CountUp className='font-bold' start={100} end={totalYear} duration={3} /><span className='font-bold'>+</span> Yrs Exp</span>
+                    <span className='mx-4'><CountUp className='font-bold' start={100} end={5} duration={3} /><span className='font-bold'>+</span> Projects</span>
+                    <span className='ml-4'><CountUp className='font-bold' start={100} end={10} duration={3} /><span className='font-bold'>+</span> Skills</span>
                 </div>
                 {/* col-3 */}
-                <div className='flex flex-col text-center sm:text-center md:text-center lg:text-start text-[16px]'>
+                <div className='flex flex-col text-center sm:text-center md:text-center lg:text-start text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px]'>
                     <span className='font-bold'>Bosco</span>
                     <span className='text-[#9A9A9A]'>Solutions Developer</span>
                     <span className='text-[#9A9A9A]'>Web / App Design + Development, Photo / Video Editing</span>
@@ -76,19 +76,19 @@ export default function TopComponent() {
                 {/* col-4 */}
                 <div className='flex items-center justify-center sm:justify-center md:justify-center lg:justify-start text-[16px] ml-[0rem] sm:ml-[0rem] md:ml-[0rem] lg:ml-[-0.1rem] my-4'>
                     <button className='mr-5'>
-                        <BsInstagram size={24} color='#9A9A9A' />
+                        <BsInstagram className='text-[22px] sm:text-[22px] md:text-[22px] lg:text-[24px]' color='#9A9A9A' />
                     </button>
                     <button className='mx-5'>
-                        <BsLinkedin size={24} color='#9A9A9A' />
+                        <BsLinkedin className='text-[22px] sm:text-[22px] md:text-[22px] lg:text-[24px]' color='#9A9A9A' />
                     </button>
                     <button className='mx-5'>
-                        <BsGithub size={24} color='#9A9A9A' />
+                        <BsGithub className='text-[22px] sm:text-[22px] md:text-[22px] lg:text-[24px]' color='#9A9A9A' />
                     </button>
                     <button className='mx-5'>
-                        <BsWhatsapp size={24} color='#9A9A9A' />
+                        <BsWhatsapp className='text-[22px] sm:text-[22px] md:text-[22px] lg:text-[24px]' color='#9A9A9A' />
                     </button>
                     <button className='ml-5'>
-                        <BsEnvelope size={24} color='#9A9A9A' />
+                        <BsEnvelope className='text-[22px] sm:text-[22px] md:text-[22px] lg:text-[24px]' color='#9A9A9A' />
                     </button>
                 </div>
             </div>
