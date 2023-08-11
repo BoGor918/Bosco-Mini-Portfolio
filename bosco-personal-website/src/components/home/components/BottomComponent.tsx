@@ -26,8 +26,11 @@ export default function BottomComponent() {
         setSelected(e)
     }
 
-    const selectedStyle = "opacity-100 w-[50px] sm:w-[50px] md:w-[50px] lg:w-[125px] h-[2px] bg-[#9a9a9a] mt-[0.5px] rounded-full transition duration-500 ease-in-out"
-    const unSelectedStyle = "opacity-0 w-[50px] sm:w-[50px] md:w-[50px] lg:w-[125px] h-[2px] bg-[#9a9a9a] mt-[0.5px] rounded-full transition duration-500 ease-in-out"
+    const selectedStyle = "opacity-100 w-[50px] sm:w-[50px] md:w-[50px] lg:w-[125px] h-[2px] bg-[#9a9a9a] dark:bg-white mt-[0.5px] rounded-full transition duration-500 ease-in-out"
+    const unSelectedStyle = "opacity-0 w-[50px] sm:w-[50px] md:w-[50px] lg:w-[125px] h-[2px] bg-[#9a9a9a] dark:bg-[#94A3B8] mt-[0.5px] rounded-full transition duration-500 ease-in-out"
+
+    const iconStyleSelected = "text-[#9A9A9A] dark:text-white"
+    const iconStyleUnSelected = "text-[#9A9A9A] dark:text-[#94A3B8]"
 
     return (
         <div className='self-center w-full max-w-[355px] sm:max-w-[355px] md:max-w-[355px] lg:max-w-[910px] flex flex-col items-center justify-center font-light'>
@@ -36,7 +39,7 @@ export default function BottomComponent() {
                 {/* Add Button= */}
                 {
                     authUser !== null ?
-                        <Button onClick={open} className='text-[12px] sm:text-[12px] md:text-[12px] lg:text-[14px] mt-[-0.5rem] mr-[-1.1rem] hover:bg-transparent text-[#9A9A9A] font-normal'>
+                        <Button onClick={open} className='text-[12px] sm:text-[12px] md:text-[12px] lg:text-[14px] mt-[-0.5rem] mr-[-1.1rem] hover:bg-transparent text-[#9A9A9A] dark:text-[#94A3B8] font-normal'>
                             {
                                 selected === "1" ?
                                     "+ Add Work" :
@@ -49,7 +52,7 @@ export default function BottomComponent() {
                         </Button> :
                         <></>
                 }
-                <div className='w-[355px] sm:w-[355px] md:w-[355px] lg:w-[900px] h-[1px] bg-[#9a9a9a60]' />
+                <div className='w-[355px] sm:w-[355px] md:w-[355px] lg:w-[900px] h-[1px] bg-[#9a9a9a60] dark:bg-[#94A3B860]' />
             </div>
             {/* nav button pc */}
             <div className='flex animate-fade-up animate-delay-200 animate-once mt-[-1px]'>
@@ -57,7 +60,7 @@ export default function BottomComponent() {
                 <button onClick={() => navClicked("1")} className='flex flex-col items-center content-center mr-5 sm:mr-5 md:mr-5 lg:mr-12'>
                     <div className={selected === "1" ? selectedStyle : unSelectedStyle} />
                     <div className='flex items-center mt-[8px] mr-[0rem] sm:mr-[0rem] md:mr-[0rem] lg:mr-[0.4rem]'>
-                        <BiGrid size={30} color='#9A9A9A' />
+                        <BiGrid className={selected === "1" ? iconStyleSelected : iconStyleUnSelected} size={30} />
                         <span className='ml-1 text-[#9A9A9A] hidden sm:hidden md:hidden lg:block'>WORKS</span>
                     </div>
                 </button>
@@ -65,7 +68,7 @@ export default function BottomComponent() {
                 <button onClick={() => navClicked("2")} className='flex flex-col items-center content-center mx-5 sm:mx-5 md:mx-5 lg:mx-12'>
                     <div className={selected === "2" ? selectedStyle : unSelectedStyle} />
                     <div className='flex items-center mt-[8px] mr-[0rem] sm:mr-[0rem] md:mr-[0rem] lg:mr-[0.4rem]'>
-                        <BiObjectsVerticalBottom size={30} color='#9A9A9A' />
+                        <BiObjectsVerticalBottom className={selected === "2" ? iconStyleSelected : iconStyleUnSelected} size={30}  />
                         <span className='ml-1 text-[#9A9A9A] mt-[0.3rem] hidden sm:hidden md:hidden lg:block'>EDUS</span>
                     </div>
                 </button>
@@ -73,7 +76,7 @@ export default function BottomComponent() {
                 <button onClick={() => navClicked("3")} className='flex flex-col items-center content-center mx-5 sm:mx-5 md:mx-5 lg:mx-12'>
                     <div className={selected === "3" ? selectedStyle : unSelectedStyle} />
                     <div className='flex items-center mt-[8px] mr-[0rem] sm:mr-[0rem] md:mr-[0rem] lg:mr-[0.4rem]'>
-                        <BiBookContent size={30} color='#9A9A9A' />
+                        <BiBookContent className={selected === "3" ? iconStyleSelected : iconStyleUnSelected} size={30}  />
                         <span className='ml-1 text-[#9A9A9A] mt-[0.3rem] hidden sm:hidden md:hidden lg:block'>PROJECTS</span>
                     </div>
                 </button>
@@ -81,7 +84,7 @@ export default function BottomComponent() {
                 <button onClick={() => navClicked("4")} className='flex flex-col items-center content-center ml-5 sm:ml-5 md:ml-5 lg:ml-12'>
                     <div className={selected === "4" ? selectedStyle : unSelectedStyle} />
                     <div className='flex items-center mt-[8px] mr-[0rem] sm:mr-[0rem] md:mr-[0rem] lg:mr-[0.5rem]'>
-                        <BiCalendarCheck size={30} color='#9A9A9A' />
+                        <BiCalendarCheck className={selected === "4" ? iconStyleSelected : iconStyleUnSelected} size={30}  />
                         <span className='ml-1 text-[#9A9A9A] mt-[0.3rem] hidden sm:hidden md:hidden lg:block'>SKILLS</span>
                     </div>
                 </button>
