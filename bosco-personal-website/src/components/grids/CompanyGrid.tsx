@@ -10,7 +10,7 @@ interface Company {
     Position: string;
     JobDuties: string;
     Projects: string;
-    SkillSets: string;
+    SkillSets: [];
     StartDate: any;
     EndDate: any;
     Present: boolean;

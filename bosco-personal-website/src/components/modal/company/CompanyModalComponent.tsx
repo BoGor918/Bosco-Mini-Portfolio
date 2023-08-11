@@ -17,7 +17,7 @@ export default function CompanyModalComponent({
     position: string;
     jobDuties: string;
     projects: string;
-    skillSets: string;
+    skillSets: [];
     startDate: any;
     endDate: any;
     present: boolean;
@@ -119,6 +119,22 @@ export default function CompanyModalComponent({
     }
   }, [])
 
+  const [techStackList, setTechStackList] = useState('')
+
+  useEffect(() => {
+    var tempTechStackList = ''
+
+    for (let i = 0; i < skillSets.length; i++) {
+      if (i === skillSets.length - 1) {
+        tempTechStackList += skillSets[i]
+      } else {
+        tempTechStackList += skillSets[i] + ' / '
+      }
+    }
+
+    setTechStackList(tempTechStackList)
+  }, [])
+
   return (
     <div className='flex flex-col font-light p-3'>
       {/* company logo */}
@@ -136,7 +152,7 @@ export default function CompanyModalComponent({
       {/* projects */}
       <span className='text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] text-[#9A9A9A]'><span className='font-medium'>Projects: </span>{projects}</span>
       {/* skill sets */}
-      <span className='text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] text-[#9A9A9A]'><span className='font-medium'>Skill Sets: </span>{skillSets}</span>
+      <span className='text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] text-[#9A9A9A]'><span className='font-medium'>Tech Stacks: </span>{techStackList}</span>
       {/* period */}
       <span className='text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] text-[#9A9A9A]'>
         <span className='font-medium'>Period: </span>
