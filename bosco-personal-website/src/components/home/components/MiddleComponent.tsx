@@ -7,9 +7,9 @@ export default function MiddleComponent() {
         openURL 
     } = useContext(MapperContext);
 
-    const buttonStyle = "border-[1.5px] border-[#9a9a9a62] dark:border-[#b9b9b9] rounded-full p-[2px]"
-    const textStyle = "text-black dark:text-[#b9b9b9] self-center mt-[0.5rem] text-[12px] sm:text-[12px] md:text-[12px] lg:text-[14px]"
-    const iconStyle = "text-[#9A9A9A] dark:text-[#b9b9b9] p-[20px] text-[67px] sm:text-[67px] md:text-[67px] lg:text-[75px]"
+    const buttonStyle = "border-[1.5px] border-[#9a9a9a62] dark:border-[#94A3B8] rounded-full p-[2px]"
+    const textStyle = "text-black dark:text-[#94A3B8] self-center mt-[0.5rem] text-[12px] sm:text-[12px] md:text-[12px] lg:text-[14px]"
+    const iconStyle = "text-[#9A9A9A] dark:text-[#94A3B8] p-[20px] text-[67px] sm:text-[67px] md:text-[67px] lg:text-[75px]"
 
     return (
         <div className="self-center w-full max-w-[415px] sm:max-w-[415px] md:max-w-[415px] lg:max-w-[910px] animate-fade-up animate-delay-150 animate-once ml-[0px] sm:md:ml-[0px] md:ml-[0px] lg:ml-[30px] mt-[2rem] sm:mt-[2rem] md:mt-[2rem] lg:mt-[4rem] mb-[3rem]">

@@ -2,7 +2,6 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="theme-color" content="#FFFFFF" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
@@ -19,3 +18,30 @@
     <div id="root"></div>
   </body>
 </html>
+
+<style>
+  :root {
+    --theme-color-light: #FFFFFF;
+    --theme-color-dark: #0B1A33;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --theme-color-light: #0B1A33;
+      --theme-color-dark: #FFFFFF;
+    }
+  }
+
+  body {
+    --theme-color: var(--theme-color-light);
+  }
+
+  body.dark {
+    --theme-color: var(--theme-color-dark);
+  }
+
+  /* Apply the theme color to elements */
+  body {
+    background-color: var(--theme-color);
+  }
+</style>

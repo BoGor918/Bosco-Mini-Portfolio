@@ -96,10 +96,10 @@ export default function TopComponent() {
                 {/* col-3 */}
                 <div className='flex flex-col text-center sm:text-center md:text-center lg:text-start text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px]'>
                     <span className='text-black dark:text-white font-bold'>Bosco</span>
-                    <span className='text-[#9A9A9A] dark:text-[#b9b9b9]'>Solutions Developer</span>
-                    <span className='text-[#9A9A9A] dark:text-[#b9b9b9]'>Web / App Design + Development, Photo / Video Editing</span>
-                    <span className='text-[#9A9A9A] dark:text-[#b9b9b9]'>Email: cheungtszlai0918@gmail.com</span>
-                    <span className='text-[#9A9A9A] dark:text-[#b9b9b9]'>Phone: +852 6770 8560</span>
+                    <span className='text-[#9A9A9A] dark:text-[#94A3B8]'>Solutions Developer</span>
+                    <span className='text-[#9A9A9A] dark:text-[#94A3B8]'>Web / App Design + Development, Photo / Video Editing</span>
+                    <span className='text-[#9A9A9A] dark:text-[#94A3B8]'>Email: cheungtszlai0918@gmail.com</span>
+                    <span className='text-[#9A9A9A] dark:text-[#94A3B8]'>Phone: +852 6770 8560</span>
                 </div>
             </div>
         </div>
