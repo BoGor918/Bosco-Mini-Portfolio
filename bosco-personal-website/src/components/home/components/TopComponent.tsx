@@ -53,12 +53,12 @@ export default function TopComponent() {
 
     useEffect(() => {
         const handleThemeColorChange = () => {
-          const themeColorMeta = document.querySelector('meta[name="theme-color"]');
-          if (themeColorMeta && theme === 'dark') {
-            themeColorMeta.setAttribute('content', '#0B1A33'); // Set the new theme color
-          } else if (themeColorMeta && theme === 'light') {
-            themeColorMeta?.setAttribute('content', '#FFFFFF'); // Set the new theme color
-          }
+            const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+            if (themeColorMeta && theme === 'dark') {
+                themeColorMeta.setAttribute('content', '#0B1A33'); // Set the new theme color
+            } else if (themeColorMeta && theme === 'light') {
+                themeColorMeta?.setAttribute('content', '#FFFFFF'); // Set the new theme color
+            }
         };
         handleThemeColorChange();
     }, [theme]);
@@ -88,14 +88,12 @@ export default function TopComponent() {
                         <Button className='mx-1 sm:mx-1 md:mx-1 lg:mx-5 bg-[#4094F4] text-white rounded-md px-[15px] sm:px-[15px] md:px-[15px] lg:px-[20px] py-[5px] text-[12px] sm:text-[12px] md:text-[12px] lg:text-[14px] ml-0 sm:ml-0 md:ml-0 lg:ml-4'>
                             <a href={CV} download='CHEUNG_Tsz_Lai_Bosco_CV'>Download CV</a>
                         </Button>
-
                         <button onClick={handleThemeSwitch} className='ml-3 sm:ml-3 md:ml-3 lg:ml-2'>
                             {
                                 theme === 'light' ?
                                     <BiMoon className='text-[22px] sm:text-[22px] md:text-[22px] lg:text-[24px]' /> :
                                     <BiSolidMoon className='text-white text-[22px] sm:text-[22px] md:text-[22px] lg:text-[24px]' />
                             }
-
                         </button>
                     </div>
                 </div>

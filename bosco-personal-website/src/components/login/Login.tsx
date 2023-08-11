@@ -2,18 +2,17 @@
 import { useEffect, useRef, useContext, CSSProperties, useState } from 'react'
 import { TextInput, Button } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
-import { BsInstagram, BsLinkedin, BsGithub, BsWhatsapp, BsEnvelope } from "react-icons/bs";
 import { MapperContext } from '../../globalVariable/MapperContextProvider';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebase';
 import PersonalIcon from '../../images/Personal_Icon.png'
+import { BiMoon, BiSolidMoon } from "react-icons/bi";
 
 export default function Login(): any {
     // Get user data from context
     const {
         userArray,
         authUser,
-        openURL
     } = useContext(MapperContext);
 
     // Login variables
@@ -77,9 +76,44 @@ export default function Login(): any {
         requestAnimationFrame(updateAnimation);
     }, []);
 
+    const [theme, setTheme] = useState('');
+
+    useEffect(() => {
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            setTheme('dark');
+        }
+        else {
+            setTheme('light');
+        }
+    }, [])
+
+    useEffect(() => {
+        if (theme === "dark") {
+            document.documentElement.classList.add("dark");
+        } else {
+            document.documentElement.classList.remove("dark");
+        }
+    }, [theme]);
+
+    const handleThemeSwitch = () => {
+        setTheme(theme === "dark" ? "light" : "dark");
+    };
+
+    useEffect(() => {
+        const handleThemeColorChange = () => {
+            const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+            if (themeColorMeta && theme === 'dark') {
+                themeColorMeta.setAttribute('content', '#0B1A33'); // Set the new theme color
+            } else if (themeColorMeta && theme === 'light') {
+                themeColorMeta?.setAttribute('content', '#FFFFFF'); // Set the new theme color
+            }
+        };
+        handleThemeColorChange();
+    }, [theme]);
+
     return (
         authUser !== null ? navigate('/') :
-            <div className='flex justify-center items-center h-screen'>
+            <div className='bg-white dark:bg-[#0B1A33] flex justify-center items-center h-screen'>
                 <div className='flex flex-col justify-center items-center'>
                     {/* personal icon */}
                     <div
@@ -96,60 +130,96 @@ export default function Login(): any {
                         <img src={PersonalIcon} className='rounded-full border-[4px] border-white' alt='Personal Icon' width={190} />
                     </div>
                     {/* email field */}
-                    <TextInput
-                        onChange={(event) => setLoginEmailOrUsername(event.currentTarget.value)}
-                        onKeyDown={(event) => {
-                            if (event.key === 'Enter') {
-                                event.preventDefault();
-                                Login();
-                            }
-                        }}
-                        className='w-[300px] my-[0.2rem] animate-fade-up animate-delay-75 animate-once'
-                        size="md"
-                        label="Email or Username"
-                        inputWrapperOrder={['label', 'error', 'input', 'description']}
-                    />
+                    {
+                        theme === 'dark' ?
+                            <TextInput
+                                onChange={(event) => setLoginEmailOrUsername(event.currentTarget.value)}
+                                onKeyDown={(event) => {
+                                    if (event.key === 'Enter') {
+                                        event.preventDefault();
+                                        Login();
+                                    }
+                                }}
+                                className='w-[300px] my-[0.2rem] animate-fade-up animate-delay-75 animate-once'
+                                size="md"
+                                label="Email or Username"
+                                inputWrapperOrder={['label', 'error', 'input', 'description']}
+                                styles={{
+                                    label: {
+                                        color: "white",
+                                    },
+                                }}
+                            /> :
+                            <TextInput
+                                onChange={(event) => setLoginEmailOrUsername(event.currentTarget.value)}
+                                onKeyDown={(event) => {
+                                    if (event.key === 'Enter') {
+                                        event.preventDefault();
+                                        Login();
+                                    }
+                                }}
+                                className='w-[300px] my-[0.2rem] animate-fade-up animate-delay-75 animate-once'
+                                size="md"
+                                label="Email or Username"
+                                inputWrapperOrder={['label', 'error', 'input', 'description']}
+                            />
+                    }
                     {/* password field */}
-                    <TextInput
-                        onChange={(event) => setLoginPassword(event.currentTarget.value)}
-                        onKeyDown={(event) => {
-                            if (event.key === 'Enter') {
-                                event.preventDefault();
-                                Login();
-                            }
-                        }}
-                        type='password'
-                        className='w-[300px] my-[0.2rem] animate-fade-up animate-delay-100 animate-once'
-                        size="md"
-                        label="Password"
-                        inputWrapperOrder={['label', 'error', 'input', 'description']}
-                    />
+                    {
+                        theme === 'dark' ?
+                            <TextInput
+                                onChange={(event) => setLoginPassword(event.currentTarget.value)}
+                                onKeyDown={(event) => {
+                                    if (event.key === 'Enter') {
+                                        event.preventDefault();
+                                        Login();
+                                    }
+                                }}
+                                type='password'
+                                className='w-[300px] my-[0.2rem] animate-fade-up animate-delay-100 animate-once'
+                                size="md"
+                                label="Password"
+                                inputWrapperOrder={['label', 'error', 'input', 'description']}
+                                styles={{
+                                    label: {
+                                        color: "white",
+                                    },
+                                }}
+                            /> :
+                            <TextInput
+                                onChange={(event) => setLoginPassword(event.currentTarget.value)}
+                                onKeyDown={(event) => {
+                                    if (event.key === 'Enter') {
+                                        event.preventDefault();
+                                        Login();
+                                    }
+                                }}
+                                type='password'
+                                className='w-[300px] my-[0.2rem] animate-fade-up animate-delay-100 animate-once'
+                                size="md"
+                                label="Password"
+                                inputWrapperOrder={['label', 'error', 'input', 'description']}
+                            />
+                    }
+
                     {/* login button */}
                     <Button onClick={Login} size='md' className='bg-[#4094F4] w-[300px] my-[0.5rem] animate-fade-up animate-delay-150 animate-once'>Login</Button>
                     {/* sec line */}
-                    <div className='animate-fade-up animate-delay-200 animate-once flex justify-center items-center w-[300px] bg-[#9A9A9A] text-[#9A9A9A] h-[0.5px] my-[1.5rem]'>
-                        <span className='bg-white px-2'>Or</span>
+                    <div className='text-[#9A9A9A] dark:text-[#94A3B8] animate-fade-up animate-delay-200 animate-once flex justify-center items-center w-[300px] bg-[#9A9A9A] dark:bg-[#94A3B8] h-[0.5px] my-[1.5rem]'>
+                        <span className='bg-white dark:bg-[#0B1A33] px-2'>Or</span>
                     </div>
                     {/* back to home page */}
-                    <div className='text-[#9A9A9A] animate-fade-up animate-delay-300 animate-once'>
+                    <div className='text-[#9A9A9A] dark:text-[#94A3B8] animate-fade-up animate-delay-300 animate-once'>
                         <span>Back To <button className='underline' onClick={() => navigate("/")}>Home Page</button></span>
                     </div>
                     {/* social icon */}
                     <div className='flex items-center mt-4 animate-fade-up animate-delay-500 animate-once'>
-                        <button onClick={() => openURL("https://www.instagram.com/cheungtszlai/")} className='mr-5'>
-                            <BsInstagram className='text-[24px]' color='#9A9A9A' />
-                        </button>
-                        <button onClick={() => openURL("https://www.linkedin.com/in/tsz-lai-bosco-cheung-2476791b2/")} className='mx-5'>
-                            <BsLinkedin className='text-[24px]' color='#9A9A9A' />
-                        </button>
-                        <button onClick={() => openURL("https://github.com/BoGor918")} className='mx-5'>
-                            <BsGithub className='text-[24px]' color='#9A9A9A' />
-                        </button>
-                        <button onClick={() => openURL("https://wa.link/mthj8s")} className='mx-5'>
-                            <BsWhatsapp className='text-[24px]' color='#9A9A9A' />
-                        </button>
-                        <button onClick={() => openURL("mailto:cheungtszlai@gmail.com")} className='ml-5'>
-                            <BsEnvelope className='text-[24px]' color='#9A9A9A' />
+                        <button onClick={handleThemeSwitch}>
+                            {
+                                theme === 'light' ?
+                                    <BiMoon className='text-[22px] sm:text-[22px] md:text-[22px] lg:text-[24px]' /> :
+                                    <BiSolidMoon className='text-white text-[22px] sm:text-[22px] md:text-[22px] lg:text-[24px]' />
+                            }
                         </button>
                     </div>
                 </div>
