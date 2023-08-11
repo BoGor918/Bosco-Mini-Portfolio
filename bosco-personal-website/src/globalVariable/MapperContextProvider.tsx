@@ -95,7 +95,7 @@ export default function MapperContextProvider(props: any) {
             projectData,
             skillData,
             techStackDataSet,
-            openURL,
+            openURL
         }}>
             {props.children}
         </MapperContext.Provider>
