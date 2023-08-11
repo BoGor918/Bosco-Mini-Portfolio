@@ -29,7 +29,7 @@ export default function TopComponent() {
     }, []);
 
     return (
-        <div className='flex flex-col sm:flex-col md:flex-col lg:flex-row justify-center items-center font-light mt-[5rem]'>
+        <div className='self-center w-full max-w-[355px] sm:max-w-[355px] md:max-w-[355px] lg:max-w-[910px] flex flex-col sm:flex-col md:flex-col lg:flex-row justify-center items-center font-light mt-[5rem]'>
             {/* personal icon */}
             <div
                 ref={boxRef}
