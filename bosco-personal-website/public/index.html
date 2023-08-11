@@ -1,47 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <title>CHEUNG Tsz Lai Resume</title>
-  </head>
-  <body className="dark">
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-  </body>
-</html>
 
-<style>
-  :root {
-    --theme-color-light: #FFFFFF;
-    --theme-color-dark: #0B1A33;
-  }
+<head>
+  <meta charset="utf-8" />
+  <meta name="theme-color" content="#FFFFFF" id="theme-color-meta" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Web site created using create-react-app" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <title>CHEUNG Tsz Lai Resume</title>
 
-  @media (prefers-color-scheme: dark) {
+  <style>
     :root {
-      --theme-color-light: #0B1A33;
-      --theme-color-dark: #FFFFFF;
+      --theme-color: #FFFFFF;
     }
-  }
+  </style>
 
-  body {
-    --theme-color: var(--theme-color-light);
-  }
+  <script>
+    // Get the <meta> tag for theme-color
+    const themeColorMeta = document.getElementById('theme-color-meta');
 
-  body.dark {
-    --theme-color: var(--theme-color-dark);
-  }
+    // Function to set the theme color
+    function setThemeColor(color) {
+      themeColorMeta.setAttribute('content', color);
+      document.documentElement.style.setProperty('--theme-color', color);
+    }
 
-  /* Apply the theme color to elements */
-  body {
-    background-color: var(--theme-color);
-  }
-</style>
+    // Set the initial theme color based on the user's preference
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      setThemeColor('#0B1A33'); // Dark theme color
+    }
+
+    // Add event listener for changes in the user's preference
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+      const newColor = e.matches ? '#0B1A33' : '#FFFFFF';
+      setThemeColor(newColor);
+    });
+  </script>
+
+</head>
+
+<body className="dark">
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+</body>
+
+</html>

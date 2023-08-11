@@ -73,7 +73,7 @@ export default function TopComponent() {
                 <div className='flex flex-col sm:flex-col md:flex-col lg:flex-row justify-center items-center ml-[-0.15rem]'>
                     <span className='text-black dark:text-white mr-0 sm:mr-0 md:mr-0 lg:mr-5 my-4 sm:my-4 md:my-4 lg:my-0 text-[24px] sm:text-[24px] md:text-[24px] lg:text-[27px]'>CHEUNG Tsz Lai</span>
                     <div className='flex justify-center items-center mb-2 sm:mb-2 md:mb-2 lg:mb-0'>
-                        <Button className='mx-0 sm:mx-0 md:mx-0 lg:mx-5 bg-[#4094F4] text-white rounded-md px-[15px] sm:px-[15px] md:px-[15px] lg:px-[20px] py-[5px] text-[12px] sm:text-[12px] md:text-[12px] lg:text-[14px] ml-0 sm:ml-0 md:ml-0 lg:ml-4'>
+                        <Button className='mx-1 sm:mx-1 md:mx-1 lg:mx-5 bg-[#4094F4] text-white rounded-md px-[15px] sm:px-[15px] md:px-[15px] lg:px-[20px] py-[5px] text-[12px] sm:text-[12px] md:text-[12px] lg:text-[14px] ml-0 sm:ml-0 md:ml-0 lg:ml-4'>
                             <a href={CV} download='CHEUNG_Tsz_Lai_Bosco_CV'>Download CV</a>
                         </Button>
 
