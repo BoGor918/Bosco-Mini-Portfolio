@@ -91,9 +91,9 @@ export default function Login(): any {
                                 "--bg-color": "linear-gradient(#131219, #131219)",
                             } as CSSProperties
                         }
-                        className="animate-fade-up animate-delay-0 animate-once flex mb-[1rem] rounded-full border-[3.5px] border-[#0000] [background:padding-box_var(--bg-color),border-box_var(--border-color)]"
+                        className="animate-fade-up animate-delay-0 animate-once flex mb-[1rem] rounded-full border-[3px] border-[#0000] [background:padding-box_var(--bg-color),border-box_var(--border-color)]"
                     >
-                        <img src={PersonalIcon} className='rounded-full border-[4px] border-white' alt='Personal Icon' width={200} />
+                        <img src={PersonalIcon} className='rounded-full border-[4px] border-white' alt='Personal Icon' width={190} />
                     </div>
                     {/* email field */}
                     <TextInput
