@@ -4,9 +4,14 @@ import { useForm } from '@mantine/form';
 import { uploadBytes, ref, getStorage, getDownloadURL } from "firebase/storage"
 import { firestore } from '../../../firebase';
 import { doc, setDoc } from 'firebase/firestore'
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { MapperContext } from '../../../globalVariable/MapperContextProvider';
 
 export default function AddCompanyModalComponent() {
+  const {
+    techStackDataSet,
+  } = useContext(MapperContext);
+
   const [showNotification, setShowNotification] = useState(false);
 
   const form = useForm({
@@ -169,30 +174,7 @@ export default function AddCompanyModalComponent() {
           />
           {/* skill sets field */}
           <MultiSelect
-            data={[
-              'HTML',
-              'CSS',
-              'JavaScript',
-              'TypeScript',
-              'React',
-              'Tailwind CSS',
-              'Node.js',
-              'Express',
-              'Firebase',
-              'SQL',
-              'Unity',
-              'C#',
-              'C++',
-              'Java',
-              'Python',
-              'PHP',
-              'WordPress',
-              'Photoshop',
-              'Premiere',
-              'Figma',
-              'Power Director',
-              'Corel Video Studio'
-            ]}
+            data={techStackDataSet}
             className='w-full my-[0.8rem]'
             size="md"
             label="Tech Stack(s)"

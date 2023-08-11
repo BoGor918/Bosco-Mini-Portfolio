@@ -11,6 +11,7 @@ interface MapperContextType {
     schoolData: any;
     projectData: any;
     skillData: any;
+    techStackDataSet: any;
     openURL: (url: string) => void;
 }
 
@@ -21,6 +22,7 @@ export const MapperContext = createContext<MapperContextType>({
     schoolData: [],
     projectData: [],
     skillData: [],
+    techStackDataSet: [],
     openURL: () => {},
 });
 
@@ -39,6 +41,10 @@ export default function MapperContextProvider(props: any) {
     const [schoolData, setSchoolData] = useState<{ id: string }[]>([]);
     const [projectData, setProjectData] = useState<{ id: string }[]>([]);
     const [skillData, setSkillData] = useState<{ id: string }[]>([]);
+
+    const techStackDataSet = skillData.map((skill: any) => skill.SkillName)
+    
+
     // get users collection from firestore
     const usersCollectionRef = collection(firestore, "Users")
 
@@ -67,13 +73,13 @@ export default function MapperContextProvider(props: any) {
         const r = query(projectCollectionRef, orderBy("CreateDate", "desc"));
         const t = query(skillCollectionRef, orderBy("CreateDate", "desc"));
         onSnapshot(q, (snapshot) =>
-        setCompanyData(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))));
+            setCompanyData(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))));
         onSnapshot(w, (snapshot) =>
-        setSchoolData(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))));
+            setSchoolData(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))));
         onSnapshot(r, (snapshot) =>
-        setProjectData(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))));
+            setProjectData(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))));
         onSnapshot(t, (snapshot) =>
-        setSkillData(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))));
+            setSkillData(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))));
     }, [authUser]);
 
     const openURL = (url: string) => {
@@ -88,7 +94,8 @@ export default function MapperContextProvider(props: any) {
             schoolData,
             projectData,
             skillData,
-            openURL
+            techStackDataSet,
+            openURL,
         }}>
             {props.children}
         </MapperContext.Provider>
