@@ -31,13 +31,17 @@ export default function TopComponent() {
     const [theme, setTheme] = useState('');
 
     useEffect(() => {
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        // Retrieve the theme color from local storage
+        const storedTheme = localStorage.getItem('theme');
+
+        if (storedTheme) {
+            setTheme(storedTheme);
+        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
             setTheme('dark');
-        }
-        else {
+        } else {
             setTheme('light');
         }
-    }, [])
+    }, []);
 
     useEffect(() => {
         if (theme === "dark") {
@@ -45,8 +49,11 @@ export default function TopComponent() {
         } else {
             document.documentElement.classList.remove("dark");
         }
-    }, [theme]);
 
+        // Save the current theme color to local storage
+        localStorage.setItem('theme', theme);
+    }, [theme]);
+    
     const handleThemeSwitch = () => {
         setTheme(theme === "dark" ? "light" : "dark");
     };
@@ -54,7 +61,7 @@ export default function TopComponent() {
     useEffect(() => {
         const handleThemeColorChange = () => {
             const themeColorMeta = document.querySelector('meta[name="theme-color"]');
-            
+
             if (themeColorMeta && theme === 'dark') {
                 themeColorMeta.setAttribute('content', '#0B1A33'); // Set the new theme color
                 document.body.style.backgroundColor = '#0B1A33';
