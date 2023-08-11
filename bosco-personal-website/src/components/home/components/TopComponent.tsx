@@ -29,7 +29,7 @@ export default function TopComponent() {
     }, []);
 
     return (
-        <div className='self-center w-full max-w-[375px] sm:max-w-[375px] md:max-w-[375px] lg:max-w-[910px] flex flex-col sm:flex-col md:flex-col lg:flex-row justify-center items-center font-light mt-[5rem]'>
+        <div className='flex flex-col sm:flex-col md:flex-col lg:flex-row justify-center items-center font-light mt-[5rem]'>
             {/* personal icon */}
             <div
                 ref={boxRef}
@@ -37,12 +37,12 @@ export default function TopComponent() {
                     {
                         "--angle": "0deg",
                         "--border-color": "linear-gradient(var(--angle), #00A3FF, #21FAC6)",
-                        "--bg-color": "linear-gradient(#131219, #131219)",
+                        "--bg-color": "linear-gradient(#FFFFFF, #FFFFFF)",
                     } as CSSProperties
                 }
                 className="animate-fade-up animate-delay-0 animate-once flex mx-0 sm:mx-0 md:mx-0 lg:mx-10 rounded-full border-[3px] border-[#0000] [background:padding-box_var(--bg-color),border-box_var(--border-color)] mr-0 sm:mr-0 md:mr-0 lg:mr-4"
             >
-                <img src={PersonalIcon} className='rounded-full border-[4px] border-white' alt='Personal Icon' width={190} />
+                <img src={PersonalIcon} className='rounded-full p-[2px]' alt='Personal Icon' width={190} />
             </div>
             {/* info */}
             <div className='animate-fade-up animate-delay-100 animate-once mx-10'>

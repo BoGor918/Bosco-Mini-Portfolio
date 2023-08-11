@@ -30,7 +30,7 @@ export default function BottomComponent() {
     const unSelectedStyle = "opacity-0 w-[50px] sm:w-[50px] md:w-[50px] lg:w-[125px] h-[2px] bg-[#9a9a9a] mt-[0.5px] rounded-full transition duration-500 ease-in-out"
 
     return (
-        <div className='self-center w-full max-w-[355px] sm:max-w-[355px] md:max-w-[355px] lg:max-w-[910px] flex flex-col items-center justify-center font-light'>
+        <div className='flex flex-col items-center justify-center font-light'>
             {/* nav line */}
             <div className='animate-fade-up animate-delay-200 animate-once flex flex-col justify-end items-end'>
                 {/* Add Button= */}

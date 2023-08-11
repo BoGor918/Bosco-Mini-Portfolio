@@ -26,7 +26,7 @@ export default function Home() {
     }, []);
 
     return (
-        <div className="flex flex-col overflow-x-hidden">
+        <div className="mx-auto w-full max-w-[355px] sm:max-w-[355px] md:max-w-[355px] lg:max-w-[910px] flex flex-col overflow-hidden">
             <TopComponent />
             <MiddleComponent />
             <BottomComponent />
