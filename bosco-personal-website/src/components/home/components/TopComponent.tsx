@@ -1,17 +1,11 @@
-import { useRef, useEffect, CSSProperties, useContext } from 'react'
+import { useRef, useEffect, CSSProperties } from 'react'
 import PersonalIcon from '../../../images/Personal_Icon.png'
 import CountUp from 'react-countup';
 import { Button } from '@mantine/core';
 import CV from '../../../files/CV.pdf'
 import { BiMoon } from "react-icons/bi";
-import { BsInstagram, BsLinkedin, BsGithub, BsWhatsapp, BsEnvelope } from "react-icons/bs";
-import { MapperContext } from '../../../globalVariable/MapperContextProvider';
 
-export default function TopComponent() {
-    const {
-        openURL
-    } = useContext(MapperContext);
-    
+export default function TopComponent() {    
     const boxRef = useRef<HTMLDivElement>(null);
     const workStartDate = new Date(2021, 5, 1);
     const currentDate = new Date();
@@ -76,25 +70,7 @@ export default function TopComponent() {
                     <span className='text-[#9A9A9A]'>Solutions Developer</span>
                     <span className='text-[#9A9A9A]'>Web / App Design + Development, Photo / Video Editing</span>
                     <span className='text-[#9A9A9A]'>Email: cheungtszlai0918@gmail.com</span>
-                    <span className='text-[#9A9A9A]'>Phone: +852 67708560</span>
-                </div>
-                {/* col-4 */}
-                <div className='flex items-center justify-center sm:justify-center md:justify-center lg:justify-start text-[16px] ml-[0rem] sm:ml-[0rem] md:ml-[0rem] lg:ml-[-0.1rem] my-4'>
-                    <button onClick={() => openURL("https://www.instagram.com/cheungtszlai/")} className='mr-5'>
-                        <BsInstagram className='text-[22px] sm:text-[22px] md:text-[22px] lg:text-[24px]' color='#9A9A9A' />
-                    </button>
-                    <button onClick={() => openURL("https://www.linkedin.com/in/tsz-lai-bosco-cheung-2476791b2/")} className='mx-5'>
-                        <BsLinkedin className='text-[22px] sm:text-[22px] md:text-[22px] lg:text-[24px]' color='#9A9A9A' />
-                    </button>
-                    <button onClick={() => openURL("https://github.com/BoGor918")} className='mx-5'>
-                        <BsGithub className='text-[22px] sm:text-[22px] md:text-[22px] lg:text-[24px]' color='#9A9A9A' />
-                    </button>
-                    <button onClick={() => openURL("https://wa.link/mthj8s")} className='mx-5'>
-                        <BsWhatsapp className='text-[22px] sm:text-[22px] md:text-[22px] lg:text-[24px]' color='#9A9A9A' />
-                    </button>
-                    <button onClick={() => openURL("mailto:cheungtszlai@gmail.com")} className='ml-5'>
-                        <BsEnvelope className='text-[22px] sm:text-[22px] md:text-[22px] lg:text-[24px]' color='#9A9A9A' />
-                    </button>
+                    <span className='text-[#9A9A9A]'>Phone: +852 6770 8560</span>
                 </div>
             </div>
         </div>
