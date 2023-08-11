@@ -32,6 +32,9 @@ export default function BottomComponent() {
     const iconStyleSelected = "text-[#9A9A9A] dark:text-white"
     const iconStyleUnSelected = "text-[#9A9A9A] dark:text-[#94A3B8]"
 
+    const textSytleSelected = "ml-1 mt-[0.3rem] hidden sm:hidden md:hidden lg:block text-[#9A9A9A] dark:text-white"
+    const textSytleUnSelected = "ml-1 mt-[0.3rem] hidden sm:hidden md:hidden lg:block text-[#9A9A9A] dark:text-[#94A3B8]"
+
     return (
         <div className='self-center w-full max-w-[355px] sm:max-w-[355px] md:max-w-[355px] lg:max-w-[910px] flex flex-col items-center justify-center font-light'>
             {/* nav line */}
@@ -61,7 +64,7 @@ export default function BottomComponent() {
                     <div className={selected === "1" ? selectedStyle : unSelectedStyle} />
                     <div className='flex items-center mt-[8px] mr-[0rem] sm:mr-[0rem] md:mr-[0rem] lg:mr-[0.4rem]'>
                         <BiGrid className={selected === "1" ? iconStyleSelected : iconStyleUnSelected} size={30} />
-                        <span className='ml-1 text-[#9A9A9A] hidden sm:hidden md:hidden lg:block'>WORKS</span>
+                        <span className={selected === "1" ? textSytleSelected : textSytleUnSelected}>WORKS</span>
                     </div>
                 </button>
                 {/* option 2 */}
@@ -69,7 +72,7 @@ export default function BottomComponent() {
                     <div className={selected === "2" ? selectedStyle : unSelectedStyle} />
                     <div className='flex items-center mt-[8px] mr-[0rem] sm:mr-[0rem] md:mr-[0rem] lg:mr-[0.4rem]'>
                         <BiObjectsVerticalBottom className={selected === "2" ? iconStyleSelected : iconStyleUnSelected} size={30}  />
-                        <span className='ml-1 text-[#9A9A9A] mt-[0.3rem] hidden sm:hidden md:hidden lg:block'>EDUS</span>
+                        <span className={selected === "2" ? textSytleSelected : textSytleUnSelected}>EDUS</span>
                     </div>
                 </button>
                 {/* option 3 */}
@@ -77,7 +80,7 @@ export default function BottomComponent() {
                     <div className={selected === "3" ? selectedStyle : unSelectedStyle} />
                     <div className='flex items-center mt-[8px] mr-[0rem] sm:mr-[0rem] md:mr-[0rem] lg:mr-[0.4rem]'>
                         <BiBookContent className={selected === "3" ? iconStyleSelected : iconStyleUnSelected} size={30}  />
-                        <span className='ml-1 text-[#9A9A9A] mt-[0.3rem] hidden sm:hidden md:hidden lg:block'>PROJECTS</span>
+                        <span className={selected === "3" ? textSytleSelected : textSytleUnSelected}>PROJECTS</span>
                     </div>
                 </button>
                 {/* option 4 */}
@@ -85,7 +88,7 @@ export default function BottomComponent() {
                     <div className={selected === "4" ? selectedStyle : unSelectedStyle} />
                     <div className='flex items-center mt-[8px] mr-[0rem] sm:mr-[0rem] md:mr-[0rem] lg:mr-[0.5rem]'>
                         <BiCalendarCheck className={selected === "4" ? iconStyleSelected : iconStyleUnSelected} size={30}  />
-                        <span className='ml-1 text-[#9A9A9A] mt-[0.3rem] hidden sm:hidden md:hidden lg:block'>SKILLS</span>
+                        <span className={selected === "4" ? textSytleSelected : textSytleUnSelected}>SKILLS</span>
                     </div>
                 </button>
             </div>
