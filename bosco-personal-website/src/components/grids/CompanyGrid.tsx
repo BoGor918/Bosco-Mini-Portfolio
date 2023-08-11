@@ -3,7 +3,6 @@ import { useDisclosure } from '@mantine/hooks';
 import { Modal } from '@mantine/core';
 import CompanyModalComponent from '../modal/company/CompanyModalComponent';
 import { MapperContext } from '../../globalVariable/MapperContextProvider';
-import { Tooltip } from '@mantine/core';
 
 interface Company {
     CompanyName: string;
