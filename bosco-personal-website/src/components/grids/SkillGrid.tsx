@@ -31,14 +31,35 @@ export default function SkillGrid() {
                     </div>
                 ))}
             </div>
-            <Modal opened={opened} onClose={close} size="xs" centered>
-                {selectedSkill && (
-                    <SkillModalComponent
-                        skillName={selectedSkill.SkillName}
-                        logo={selectedSkill.Logo}
-                    />
-                )}
-            </Modal>
+            {
+                localStorage.getItem('theme') === "light" ?
+                    <Modal opened={opened} onClose={close} size="xs" centered>
+                        {selectedSkill && (
+                            <SkillModalComponent
+                                skillName={selectedSkill.SkillName}
+                                logo={selectedSkill.Logo}
+                            />
+                        )}
+                    </Modal> :
+                    <Modal opened={opened} onClose={close} size="xs" centered
+                        styles={{
+                            header: {
+                                backgroundColor: "#0B1A33",
+                            },
+                            content: {
+                                backgroundColor: "#0B1A33",
+                            },
+                        }}
+                    >
+                        {selectedSkill && (
+                            <SkillModalComponent
+                                skillName={selectedSkill.SkillName}
+                                logo={selectedSkill.Logo}
+                            />
+                        )}
+                    </Modal>
+            }
+
         </div>
 
     );

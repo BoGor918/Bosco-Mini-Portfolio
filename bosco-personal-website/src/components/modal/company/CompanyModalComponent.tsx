@@ -135,6 +135,8 @@ export default function CompanyModalComponent({
     setTechStackList(tempTechStackList)
   }, [])
 
+  const textStyle = 'text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] text-[#9A9A9A] dark:text-[#94A3B8]'
+
   return (
     <div className='flex flex-col font-light p-3'>
       {/* company logo */}
@@ -142,19 +144,19 @@ export default function CompanyModalComponent({
         <img src={logo} alt={companyName} />
       </div>
       {/* company name */}
-      <span className='text-[20px] sm:text-[20px] md:text-[20px] lg:text-[25px] font-medium mt-5 mb-1'>{companyName}</span>
+      <span className='text-black dark:text-white text-[20px] sm:text-[20px] md:text-[20px] lg:text-[25px] font-medium mt-5 mb-1'>{companyName}</span>
       {/* team */}
-      <span className='text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] text-[#9A9A9A]'><span className='font-medium'>Team: </span>{team}</span>
+      <span className={textStyle}><span className='font-medium'>Team: </span>{team}</span>
       {/* position */}
-      <span className='text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] text-[#9A9A9A]'><span className='font-medium'>Position: </span>{position}</span>
+      <span className={textStyle}><span className='font-medium'>Position: </span>{position}</span>
       {/* job duties */}
-      <span className='text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] text-[#9A9A9A]'><span className='font-medium'>Job Duties: </span>{jobDuties}</span>
+      <span className={textStyle}><span className='font-medium'>Job Duties: </span>{jobDuties}</span>
       {/* projects */}
-      <span className='text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] text-[#9A9A9A]'><span className='font-medium'>Projects: </span>{projects}</span>
+      <span className={textStyle}><span className='font-medium'>Projects: </span>{projects}</span>
       {/* skill sets */}
-      <span className='text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] text-[#9A9A9A]'><span className='font-medium'>Tech Stacks: </span>{techStackList}</span>
+      <span className={textStyle}><span className='font-medium'>Tech Stacks: </span>{techStackList}</span>
       {/* period */}
-      <span className='text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] text-[#9A9A9A]'>
+      <span className={textStyle}>
         <span className='font-medium'>Period: </span>
         <span>{resultDate}, </span>
         <span>{toStartDate} - {toEndDate}</span>

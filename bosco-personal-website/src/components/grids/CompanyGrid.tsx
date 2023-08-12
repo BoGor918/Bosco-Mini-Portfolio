@@ -39,22 +39,51 @@ export default function CompanyGrid() {
                     </div>
                 ))}
             </div>
-            <Modal opened={opened} onClose={close} size="lg" centered>
-                {selectedCompany && (
-                    <CompanyModalComponent
-                        companyName={selectedCompany.CompanyName}
-                        team={selectedCompany.Team}
-                        position={selectedCompany.Position}
-                        jobDuties={selectedCompany.JobDuties}
-                        projects={selectedCompany.Projects}
-                        skillSets={selectedCompany.SkillSets}
-                        startDate={selectedCompany.StartDate}
-                        endDate={selectedCompany.EndDate}
-                        present={selectedCompany.Present}
-                        logo={selectedCompany.Logo}
-                    />
-                )}
-            </Modal>
+            {
+                localStorage.getItem('theme') === "light" ?
+                    <Modal opened={opened} onClose={close} size="lg" centered>
+                        {selectedCompany && (
+                            <CompanyModalComponent
+                                companyName={selectedCompany.CompanyName}
+                                team={selectedCompany.Team}
+                                position={selectedCompany.Position}
+                                jobDuties={selectedCompany.JobDuties}
+                                projects={selectedCompany.Projects}
+                                skillSets={selectedCompany.SkillSets}
+                                startDate={selectedCompany.StartDate}
+                                endDate={selectedCompany.EndDate}
+                                present={selectedCompany.Present}
+                                logo={selectedCompany.Logo}
+                            />
+                        )}
+                    </Modal> :
+                    <Modal opened={opened} onClose={close} size="lg" centered
+                        styles={{
+                            header: {
+                                backgroundColor: "#0B1A33",
+                            },
+                            content: {
+                                backgroundColor: "#0B1A33", 
+                            },
+                        }}
+                    >
+                        {selectedCompany && (
+                            <CompanyModalComponent
+                                companyName={selectedCompany.CompanyName}
+                                team={selectedCompany.Team}
+                                position={selectedCompany.Position}
+                                jobDuties={selectedCompany.JobDuties}
+                                projects={selectedCompany.Projects}
+                                skillSets={selectedCompany.SkillSets}
+                                startDate={selectedCompany.StartDate}
+                                endDate={selectedCompany.EndDate}
+                                present={selectedCompany.Present}
+                                logo={selectedCompany.Logo}
+                            />
+                        )}
+                    </Modal>
+            }
+
         </div>
     );
 }

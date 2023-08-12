@@ -115,7 +115,7 @@ export default function EducationModalComponent({
     }
   }, [])
 
-  console.log(logo)
+  const textStyle = 'text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] text-[#9A9A9A] dark:text-[#94A3B8]'
 
   return (
     <div className='flex flex-col font-light p-3'>
@@ -124,15 +124,15 @@ export default function EducationModalComponent({
         <img src={logo} alt={schoolName} />
       </div>
       {/* school name */}
-      <span className='text-[20px] sm:text-[20px] md:text-[20px] lg:text-[25px] font-medium mt-5 mb-1'>{schoolName}</span>
+      <span className='text-black dark:text-white text-[20px] sm:text-[20px] md:text-[20px] lg:text-[25px] font-medium mt-5 mb-1'>{schoolName}</span>
       {/* type */}
-      <span className='text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] text-[#9A9A9A]'><span className='font-medium'>Type: </span>{type}</span>
+      <span className={textStyle}><span className='font-medium'>Type: </span>{type}</span>
       {/* title */}
-      <span className='text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] text-[#9A9A9A]'><span className='font-medium'>Title: </span>{title}</span>
+      <span className={textStyle}><span className='font-medium'>Title: </span>{title}</span>
       {/* gpa */}
-      <span className='text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] text-[#9A9A9A]'><span className='font-medium'>CGPA / WGPA / Best Five: </span>{gpa}</span>
+      <span className={textStyle}><span className='font-medium'>CGPA / WGPA / Best Five: </span>{gpa}</span>
       {/* period */}
-      <span className='text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] text-[#9A9A9A]'>
+      <span className={textStyle}>
         <span className='font-medium'>Period: </span>
         <span>{resultDate}, </span>
         <span>{toStartDate} - {toEndDate}</span>

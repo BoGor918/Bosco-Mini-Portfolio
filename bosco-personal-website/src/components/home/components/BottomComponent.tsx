@@ -71,7 +71,7 @@ export default function BottomComponent() {
                 <button onClick={() => navClicked("2")} className='flex flex-col items-center content-center mx-5 sm:mx-5 md:mx-5 lg:mx-12'>
                     <div className={selected === "2" ? selectedStyle : unSelectedStyle} />
                     <div className='flex items-center mt-[8px] mr-[0rem] sm:mr-[0rem] md:mr-[0rem] lg:mr-[0.4rem]'>
-                        <BiObjectsVerticalBottom className={selected === "2" ? iconStyleSelected : iconStyleUnSelected} size={30}  />
+                        <BiObjectsVerticalBottom className={selected === "2" ? iconStyleSelected : iconStyleUnSelected} size={30} />
                         <span className={selected === "2" ? textSytleSelected : textSytleUnSelected}>EDUS</span>
                     </div>
                 </button>
@@ -79,7 +79,7 @@ export default function BottomComponent() {
                 <button onClick={() => navClicked("3")} className='flex flex-col items-center content-center mx-5 sm:mx-5 md:mx-5 lg:mx-12'>
                     <div className={selected === "3" ? selectedStyle : unSelectedStyle} />
                     <div className='flex items-center mt-[8px] mr-[0rem] sm:mr-[0rem] md:mr-[0rem] lg:mr-[0.4rem]'>
-                        <BiBookContent className={selected === "3" ? iconStyleSelected : iconStyleUnSelected} size={30}  />
+                        <BiBookContent className={selected === "3" ? iconStyleSelected : iconStyleUnSelected} size={30} />
                         <span className={selected === "3" ? textSytleSelected : textSytleUnSelected}>PROJECTS</span>
                     </div>
                 </button>
@@ -87,7 +87,7 @@ export default function BottomComponent() {
                 <button onClick={() => navClicked("4")} className='flex flex-col items-center content-center ml-5 sm:ml-5 md:ml-5 lg:ml-12'>
                     <div className={selected === "4" ? selectedStyle : unSelectedStyle} />
                     <div className='flex items-center mt-[8px] mr-[0rem] sm:mr-[0rem] md:mr-[0rem] lg:mr-[0.5rem]'>
-                        <BiCalendarCheck className={selected === "4" ? iconStyleSelected : iconStyleUnSelected} size={30}  />
+                        <BiCalendarCheck className={selected === "4" ? iconStyleSelected : iconStyleUnSelected} size={30} />
                         <span className={selected === "4" ? textSytleSelected : textSytleUnSelected}>SKILLS</span>
                     </div>
                 </button>
@@ -99,17 +99,44 @@ export default function BottomComponent() {
                 }
             </div>
             {/* add item modal */}
-            <Modal opened={opened} onClose={close} size="lg" padding="xl" title={selected === "1" ? "Add Work" : selected === "2" ? "Add Education" : selected === "3" ? "Add Project" : "Add Skill"} centered>
-                {
-                    selected === "1" ? <AddCompanyModalComponent /> :
-                        selected === "2" ?
-                            <AddEducationModalComponent /> :
-                            selected === "3" ?
-                                <AddProjectModalComponent /> :
-                                <AddSkillModalComponent />
+            {
+                localStorage.getItem('theme') === "light" ?
+                    <Modal opened={opened} onClose={close} size="lg" padding="xl" title={selected === "1" ? "Add Work" : selected === "2" ? "Add Education" : selected === "3" ? "Add Project" : "Add Skill"} centered>
+                        {
+                            selected === "1" ? <AddCompanyModalComponent /> :
+                                selected === "2" ?
+                                    <AddEducationModalComponent /> :
+                                    selected === "3" ?
+                                        <AddProjectModalComponent /> :
+                                        <AddSkillModalComponent />
 
-                }
-            </Modal>
+                        }
+                    </Modal> :
+                    <Modal opened={opened} onClose={close} size="lg" padding="xl" title={selected === "1" ? "Add Work" : selected === "2" ? "Add Education" : selected === "3" ? "Add Project" : "Add Skill"} centered
+                        styles={{
+                            header: {
+                                backgroundColor: "#0B1A33",
+                            },
+                            content: {
+                                backgroundColor: "#0B1A33",
+                            },
+                            title: {
+                                color: "white",
+                            }
+                        }}
+                    >
+                        {
+                            selected === "1" ? <AddCompanyModalComponent /> :
+                                selected === "2" ?
+                                    <AddEducationModalComponent /> :
+                                    selected === "3" ?
+                                        <AddProjectModalComponent /> :
+                                        <AddSkillModalComponent />
+
+                        }
+                    </Modal>
+            }
+
         </div>
     )
 }

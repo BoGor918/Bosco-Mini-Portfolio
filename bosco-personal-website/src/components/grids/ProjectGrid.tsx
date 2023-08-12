@@ -34,17 +34,40 @@ export default function ProjectGrid() {
                     </div>
                 ))}
             </div>
-            <Modal opened={opened} onClose={close} size="lg" centered>
-                {selectedProject && (
-                    <ProjectModalComponent
-                        projectName={selectedProject.ProjectName}
-                        description={selectedProject.Description}
-                        techStack={selectedProject.TechStack}
-                        link={selectedProject.Link}
-                        logo={selectedProject.Logo}
-                    />
-                )}
-            </Modal>
+            {
+                localStorage.getItem('theme') === "light" ?
+                    <Modal opened={opened} onClose={close} size="lg" centered>
+                        {selectedProject && (
+                            <ProjectModalComponent
+                                projectName={selectedProject.ProjectName}
+                                description={selectedProject.Description}
+                                techStack={selectedProject.TechStack}
+                                link={selectedProject.Link}
+                                logo={selectedProject.Logo}
+                            />
+                        )}
+                    </Modal> :
+                    <Modal opened={opened} onClose={close} size="lg" centered
+                        styles={{
+                            header: {
+                                backgroundColor: "#0B1A33",
+                            },
+                            content: {
+                                backgroundColor: "#0B1A33",
+                            },
+                        }}
+                    >
+                        {selectedProject && (
+                            <ProjectModalComponent
+                                projectName={selectedProject.ProjectName}
+                                description={selectedProject.Description}
+                                techStack={selectedProject.TechStack}
+                                link={selectedProject.Link}
+                                logo={selectedProject.Logo}
+                            />
+                        )}
+                    </Modal>
+            }
         </div>
     );
 }

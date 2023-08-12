@@ -37,20 +37,46 @@ export default function EduGrid() {
                     </div>
                 ))}
             </div>
-            <Modal opened={opened} onClose={close} size="lg" centered>
-                {selectedSchool && (
-                    <EducationModalComponent
-                        schoolName={selectedSchool.SchoolName}
-                        type={selectedSchool.Type}
-                        title={selectedSchool.Title}
-                        gpa={selectedSchool.GPA}
-                        startDate={selectedSchool.StartDate}
-                        endDate={selectedSchool.EndDate}
-                        present={selectedSchool.Present}
-                        logo={selectedSchool.Logo}
-                    />
-                )}
-            </Modal>
+            {
+                localStorage.getItem('theme') === "light" ?
+                    <Modal opened={opened} onClose={close} size="lg" centered>
+                        {selectedSchool && (
+                            <EducationModalComponent
+                                schoolName={selectedSchool.SchoolName}
+                                type={selectedSchool.Type}
+                                title={selectedSchool.Title}
+                                gpa={selectedSchool.GPA}
+                                startDate={selectedSchool.StartDate}
+                                endDate={selectedSchool.EndDate}
+                                present={selectedSchool.Present}
+                                logo={selectedSchool.Logo}
+                            />
+                        )}
+                    </Modal> :
+                    <Modal opened={opened} onClose={close} size="lg" centered
+                        styles={{
+                            header: {
+                                backgroundColor: "#0B1A33",
+                            },
+                            content: {
+                                backgroundColor: "#0B1A33",
+                            },
+                        }}
+                    >
+                        {selectedSchool && (
+                            <EducationModalComponent
+                                schoolName={selectedSchool.SchoolName}
+                                type={selectedSchool.Type}
+                                title={selectedSchool.Title}
+                                gpa={selectedSchool.GPA}
+                                startDate={selectedSchool.StartDate}
+                                endDate={selectedSchool.EndDate}
+                                present={selectedSchool.Present}
+                                logo={selectedSchool.Logo}
+                            />
+                        )}
+                    </Modal>
+            }
         </div>
     );
 }

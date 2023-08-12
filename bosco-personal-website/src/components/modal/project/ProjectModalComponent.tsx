@@ -30,6 +30,8 @@ export default function ProjectModalComponent({
     setTechStackList(tempTechStackList)
   }, [])
 
+  const textStyle = 'text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] text-[#9A9A9A] dark:text-[#94A3B8]'
+
   return (
     <div className='flex flex-col font-light p-3'>
       {/* project logo */}
@@ -37,17 +39,17 @@ export default function ProjectModalComponent({
         <img src={logo} alt={projectName} />
       </div>
       {/* headline */}
-      <span className='text-[20px] sm:text-[20px] md:text-[20px] lg:text-[25px] font-medium mt-5 mb-1'>{projectName}</span>
+      <span className='text-black dark:text-white text-[20px] sm:text-[20px] md:text-[20px] lg:text-[25px] font-medium mt-5 mb-1'>{projectName}</span>
       {/* description */}
-      <span className='text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] text-[#9A9A9A]'><span className='font-medium'>Description: </span>{description}</span>
-      <span className='text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] text-[#9A9A9A]'><span className='font-medium'>Tech Stack(s): </span>{techStackList}</span>
-      <span className='text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] text-[#9A9A9A]'><span className='font-medium'>Link(s):<br /></span>
+      <span className={textStyle}><span className='font-medium'>Description: </span>{description}</span>
+      <span className={textStyle}><span className='font-medium'>Tech Stack(s): </span>{techStackList}</span>
+      <span className={textStyle}><span className='font-medium'>Link(s):<br /></span>
         <span>
           {
             link.map((link: any) => {
               return (
                 <span>
-                  <a href={link} target='_blank' rel='noreferrer' className='text-[#9A9A9A] hover:underline'>{link}<br /></a>
+                  <a href={link} target='_blank' rel='noreferrer' className='text-[#9A9A9A] dark:text-[#94A3B8] hover:underline'>{link}<br /></a>
                 </span>
               )
             })
