@@ -386,6 +386,7 @@ export default function AddCompanyModalComponent() {
           <Button type="submit" size='md' className='bg-[#4094F4] w-[300px] my-[0.8rem]'>Add Work</Button>
         </div>
       </form>
+      {/* notification */}
       {
         showNotification && (
           <Notification

@@ -1,13 +1,17 @@
-import { TextInput, Button, FileInput, Notification } from '@mantine/core';
+// others
+import { useState } from 'react';
+// mantine
 import { useForm } from '@mantine/form';
-import { uploadBytes, ref, getStorage, getDownloadURL } from "firebase/storage"
+import { TextInput, Button, FileInput, Notification } from '@mantine/core';
+// firebase
 import { firestore } from '../../../firebase';
 import { doc, setDoc } from 'firebase/firestore'
-import { useState } from 'react';
+import { uploadBytes, ref, getStorage, getDownloadURL } from "firebase/storage"
 
 export default function AddSkillModalComponent() {
+  // notification variable
   const [showNotification, setShowNotification] = useState(false);
-
+  // form hook
   const form = useForm({
     initialValues: {
       skillName: '',
@@ -22,10 +26,10 @@ export default function AddSkillModalComponent() {
       },
     },
   });
-
-  // Firebase storage
+  // firebase storage
   const storage = getStorage()
 
+  // add skill function
   const AddSkill = (skill: any) => {
     setShowNotification(true);
 
@@ -53,6 +57,7 @@ export default function AddSkillModalComponent() {
   return (
     <div className='flex flex-col font-light'>
       <form onSubmit={form.onSubmit((values) => AddSkill(values))}>
+        {/* skill name & logo */}
         {
           localStorage.getItem("theme") === "light" ?
             <div className='flex flex-col'>
@@ -112,11 +117,12 @@ export default function AddSkillModalComponent() {
               />
             </div>
         }
+        {/* submit button */}
         <div className='flex justify-center'>
-          {/* submit button */}
           <Button type="submit" size='md' className='bg-[#4094F4] w-[300px] my-[0.8rem]'>Add Skill</Button>
         </div>
       </form>
+      {/* notification */}
       {
         showNotification && (
           <Notification

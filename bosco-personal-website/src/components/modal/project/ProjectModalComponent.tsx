@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+// others
 import { useState, useEffect } from "react";
 
 export default function ProjectModalComponent({
@@ -13,9 +14,10 @@ export default function ProjectModalComponent({
     link: [],
     logo: string
   }) {
-
+  // tech stack list
   const [techStackList, setTechStackList] = useState('')
 
+  // tech stack function
   useEffect(() => {
     var tempTechStackList = ''
 
@@ -30,6 +32,7 @@ export default function ProjectModalComponent({
     setTechStackList(tempTechStackList)
   }, [])
 
+  // style variable
   const textStyle = 'text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] text-[#9A9A9A] dark:text-[#94A3B8]'
 
   return (
@@ -38,11 +41,13 @@ export default function ProjectModalComponent({
       <div className='flex justify-center items-center bg-[#9a9a9a17] p-[2rem] rounded-lg'>
         <img src={logo} alt={projectName} />
       </div>
-      {/* headline */}
+      {/* project name */}
       <span className='text-black dark:text-white text-[20px] sm:text-[20px] md:text-[20px] lg:text-[25px] font-medium mt-5 mb-1'>{projectName}</span>
       {/* description */}
       <span className={textStyle}><span className='font-medium'>Description: </span>{description}</span>
+      {/* tech stack */}
       <span className={textStyle}><span className='font-medium'>Tech Stack(s): </span>{techStackList}</span>
+      {/* link */}
       <span className={textStyle}><span className='font-medium'>Link(s):<br /></span>
         <span>
           {

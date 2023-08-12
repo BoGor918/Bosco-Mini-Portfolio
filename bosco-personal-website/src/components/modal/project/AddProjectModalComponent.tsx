@@ -1,19 +1,25 @@
-import { TextInput, Button, FileInput, Notification, Textarea, MultiSelect } from '@mantine/core';
+// others
+import { useState, useContext } from 'react';
+// mantine
 import { useForm } from '@mantine/form';
-import { uploadBytes, ref, getStorage, getDownloadURL } from "firebase/storage"
+import { TextInput, Button, FileInput, Notification, Textarea, MultiSelect } from '@mantine/core';
+// firebase
 import { firestore } from '../../../firebase';
 import { doc, setDoc } from 'firebase/firestore'
-import { useState, useContext } from 'react';
+import { uploadBytes, ref, getStorage, getDownloadURL } from "firebase/storage"
+// global components
 import { MapperContext } from '../../../globalVariable/MapperContextProvider';
 
 export default function AddProjectModalComponent() {
+  // global variable
   const {
     techStackDataSet,
   } = useContext(MapperContext);
-
+  // collect tech stack data variable
   const [data, setData] = useState<{ value: string; label: string }[]>([]);
+  // notification variable
   const [showNotification, setShowNotification] = useState(false);
-
+  // form hook
   const form = useForm({
     initialValues: {
       projectName: '',
@@ -31,10 +37,10 @@ export default function AddProjectModalComponent() {
       },
     },
   });
-
-  // Firebase storage
+  // firebase storage
   const storage = getStorage()
 
+  // add project function
   const AddProject = (project: any) => {
     setShowNotification(true);
 
@@ -65,6 +71,7 @@ export default function AddProjectModalComponent() {
   return (
     <div className='flex flex-col font-light'>
       <form onSubmit={form.onSubmit((values) => AddProject(values))}>
+        {/* project name & tech stack */}
         {
           localStorage.getItem("theme") === "light" ?
             <div className='flex flex-col'>
@@ -118,6 +125,7 @@ export default function AddProjectModalComponent() {
               />
             </div>
         }
+        {/* description & link */}
         {
           localStorage.getItem("theme") === "light" ?
             <div className='flex flex-col'>
@@ -189,6 +197,7 @@ export default function AddProjectModalComponent() {
               />
             </div>
         }
+        {/* project logo */}
         {
           localStorage.getItem("theme") === "light" ?
             <div className='flex flex-col sm:flex-col md:flex-col lg:flex-row'>
@@ -227,11 +236,12 @@ export default function AddProjectModalComponent() {
               />
             </div>
         }
+                  {/* submit button */}
         <div className='flex justify-center'>
-          {/* submit button */}
           <Button type="submit" size='md' className='bg-[#4094F4] w-[300px] my-[0.8rem]'>Add Project</Button>
         </div>
       </form>
+      {/* notification */}
       {
         showNotification && (
           <Notification

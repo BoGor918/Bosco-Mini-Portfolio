@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+// others
 import { useState, useEffect } from "react";
 
 export default function CompanyModalComponent({
@@ -23,11 +24,14 @@ export default function CompanyModalComponent({
     present: boolean;
     logo: string;
   }) {
-
+  // tech stack list
+  const [techStackList, setTechStackList] = useState('')
+  // date variable
   const [toStartDate, setToStartDate] = useState('')
   const [toEndDate, setToEndDate] = useState('')
   const [resultDate, setResultDate] = useState('')
 
+  // date function
   useEffect(() => {
     if (present === true) {
       setToStartDate(new Date(startDate.seconds * 1000).toLocaleDateString('en-US', { day: '2-digit', month: '2-digit', year: 'numeric' }))
@@ -119,8 +123,7 @@ export default function CompanyModalComponent({
     }
   }, [])
 
-  const [techStackList, setTechStackList] = useState('')
-
+  // tech stack list function
   useEffect(() => {
     var tempTechStackList = ''
 
@@ -135,6 +138,7 @@ export default function CompanyModalComponent({
     setTechStackList(tempTechStackList)
   }, [])
 
+  // text style
   const textStyle = 'text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] text-[#9A9A9A] dark:text-[#94A3B8]'
 
   return (

@@ -1,9 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+// others
 import { useState, createContext, useEffect } from "react";
-import { collection, getDocs, query, orderBy, onSnapshot } from 'firebase/firestore'
-import { onAuthStateChanged } from "firebase/auth";
+// firebase
 import { auth, firestore } from "../firebase";
+import { onAuthStateChanged } from "firebase/auth";
+import { collection, getDocs, query, orderBy, onSnapshot } from 'firebase/firestore'
 
+// variable interface
 interface MapperContextType {
     userArray: any;
     authUser: any;
@@ -15,6 +18,7 @@ interface MapperContextType {
     openURL: (url: string) => void;
 }
 
+// create context
 export const MapperContext = createContext<MapperContextType>({
     userArray: [],
     authUser: null,
@@ -27,31 +31,35 @@ export const MapperContext = createContext<MapperContextType>({
 });
 
 export default function MapperContextProvider(props: any) {
-    const [userData, setUserData] = useState<{ id: string }[]>([]);
+    // auth user
     const [authUser, setAuthUser] = useState<any>(null);
-
-    // set all user data
+    // user data
+    const [userData, setUserData] = useState<{ id: string }[]>([]);
+    // set compareuser data
     const userArray = [
         userData.map((user: any) => user.Username),
         userData.map((user: any) => user.Email),
         userData.length,
     ]
-
+    // company data
     const [companyData, setCompanyData] = useState<{ id: string }[]>([]);
+    // school data
     const [schoolData, setSchoolData] = useState<{ id: string }[]>([]);
+    // project data
     const [projectData, setProjectData] = useState<{ id: string }[]>([]);
+    // skill data
     const [skillData, setSkillData] = useState<{ id: string }[]>([]);
-
+    // tech stack data
     const techStackDataSet = skillData.map((skill: any) => skill.SkillName)
-    
-
     // get users collection from firestore
     const usersCollectionRef = collection(firestore, "Users")
-
-    // get company info
+    // get company collection from firestore
     const companyCollectionRef = collection(firestore, "Company")
+    // get school collection from firestore
     const schoolCollectionRef = collection(firestore, "School")
+    // get project collection from firestore
     const projectCollectionRef = collection(firestore, "Project")
+    // get skill collection from firestore
     const skillCollectionRef = collection(firestore, "Skill")
 
     // set logged user data for authentication
@@ -59,6 +67,7 @@ export default function MapperContextProvider(props: any) {
         setAuthUser(currentUser)
     })
 
+    // get user data from firestore
     useEffect(() => {
         const GetUserData = async () => {
             const userDataRef = await getDocs(usersCollectionRef)
@@ -67,6 +76,7 @@ export default function MapperContextProvider(props: any) {
         GetUserData()
     }, [authUser])
 
+    // get company, school, project, and skill data from firestore
     useEffect(() => {
         const q = query(companyCollectionRef, orderBy("CreateDate", "desc"));
         const w = query(schoolCollectionRef, orderBy("CreateDate", "desc"));
@@ -82,11 +92,13 @@ export default function MapperContextProvider(props: any) {
             setSkillData(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))));
     }, [authUser]);
 
+    // open url function
     const openURL = (url: string) => {
         window.open(url, "_blank");
     }
 
     return (
+        // pass the value in provider and return
         <MapperContext.Provider value={{
             userArray,
             authUser,

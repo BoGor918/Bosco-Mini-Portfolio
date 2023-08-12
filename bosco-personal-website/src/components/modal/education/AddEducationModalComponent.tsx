@@ -1,14 +1,20 @@
-import { TextInput, Button, Checkbox, FileInput, Notification, Select, NumberInput } from '@mantine/core';
-import { DateInput } from '@mantine/dates';
+// others
+import { useState } from 'react';
+// mantine
 import { useForm } from '@mantine/form';
-import { uploadBytes, ref, getStorage, getDownloadURL } from "firebase/storage"
+import { DateInput } from '@mantine/dates';
+import { TextInput, Button, Checkbox, FileInput, Notification, Select, NumberInput } from '@mantine/core';
+// firebase
 import { firestore } from '../../../firebase';
 import { doc, setDoc } from 'firebase/firestore'
-import { useState } from 'react';
+import { uploadBytes, ref, getStorage, getDownloadURL } from "firebase/storage"
 
 export default function AddEducationModalComponent() {
+  // notification hook
   const [showNotification, setShowNotification] = useState(false);
-
+  // firebase storage
+  const storage = getStorage()
+  // form hook
   const form = useForm({
     initialValues: {
       startDate: '',
@@ -30,13 +36,12 @@ export default function AddEducationModalComponent() {
     },
   });
 
+  // set end date to empty string if present is true
   if (form.values.present === true) {
     form.values.endDate = ""
   }
 
-  // Firebase storage
-  const storage = getStorage()
-
+  // add education function
   const AddEdu = (edu: any) => {
     setShowNotification(true);
 
@@ -173,7 +178,7 @@ export default function AddEducationModalComponent() {
               />
             </div>
         }
-        {/* company type field */}
+        {/* school name & type field */}
         {
           localStorage.getItem('theme') === "light" ?
             <div className='flex flex-col sm:flex-col md:flex-col lg:flex-row'>
@@ -237,7 +242,7 @@ export default function AddEducationModalComponent() {
               />
             </div>
         }
-        {/* title */}
+        {/* title field */}
         {
           localStorage.getItem('theme') === "light" ?
             <div className='flex flex-col sm:flex-col md:flex-col lg:flex-row'>
@@ -301,7 +306,7 @@ export default function AddEducationModalComponent() {
               />
             </div>
         }
-        {/* company logo */}
+        {/* school logo input */}
         {
           localStorage.getItem('theme') === "light" ?
             <div className='flex flex-col sm:flex-col md:flex-col lg:flex-row'>
@@ -340,11 +345,12 @@ export default function AddEducationModalComponent() {
               />
             </div>
         }
+        {/* submit button */}
         <div className='flex justify-center'>
-          {/* submit button */}
           <Button type="submit" size='md' className='bg-[#4094F4] w-[300px] my-[0.8rem]'>Add Education</Button>
         </div>
       </form>
+      {/* notification */}
       {
         showNotification && (
           <Notification
