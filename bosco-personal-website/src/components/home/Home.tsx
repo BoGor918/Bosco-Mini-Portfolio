@@ -44,7 +44,7 @@ export default function Home() {
         <>
             {
                 loading ? <Loading /> :
-                    <div className="bg-white dark:bg-[#0B1A33] flex flex-col overflow-hidden my-[5rem]">
+                    <div className="bg-white dark:bg-[#0B1A33] flex flex-col overflow-hidden mb-[5rem]">
                         {/* page components */}
                         <TopComponent />
                         <MiddleComponent />
