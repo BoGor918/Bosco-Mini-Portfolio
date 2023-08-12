@@ -1,29 +1,39 @@
-import { useContext, useState } from 'react';
-import { MapperContext } from '../../globalVariable/MapperContextProvider';
-import SkillModalComponent from '../modal/skill/SkillModalComponent';
+// others
+import { useState, useContext } from 'react';
 import { useDisclosure } from '@mantine/hooks';
+// global variable
+import { MapperContext } from '../../globalVariable/MapperContextProvider';
+// mantine components
 import { Modal } from '@mantine/core';
+// page components
+import SkillModalComponent from '../modal/skill/SkillModalComponent';
 
+// skill interface
 interface Skill {
     SkillName: string;
     Logo: string;
 }
 
 export default function SkillGrid() {
+    // global variable
     const {
         skillData
     } = useContext(MapperContext);
 
+    // modal hook
     const [opened, { open, close }] = useDisclosure(false);
+    // selected skill
     const [selectedSkill, setSelectedSkill] = useState<Skill | null>(null);
 
+    // open modal with set selected skill
     const openModal = (project: Skill) => {
         setSelectedSkill(project);
         open();
     };
 
     return (
-        <div className='animate-fade animate-delay-0 animate-once flex justify-center items-center mt-[1rem] sm:mt-[1rem] md:mt-[1rem] lg:mt-[2rem] mb-[5rem]'>
+        <div className='animate-fade animate-delay-0 animate-once flex justify-center items-center mt-[1rem] sm:mt-[1rem] md:mt-[1rem] lg:mt-[2rem]'>
+            {/* skill grid */}
             <div className='mx-0 sm:mx-0 md:mx-0 lg:mx-2 grid grid-cols-3 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-1'>
                 {skillData.map((skill: any, i: any) => (
                     <div key={i} onClick={() => openModal(skill)} className='bg-white shadow-md flex justify-center items-center h-[115.66px] sm:h-[115.66px] md:h-[115.66px] lg:h-[175px] cursor-pointer'>
@@ -31,6 +41,7 @@ export default function SkillGrid() {
                     </div>
                 ))}
             </div>
+            {/* modal components */}
             {
                 localStorage.getItem('theme') === "light" ?
                     <Modal opened={opened} onClose={close} size="xs" centered>

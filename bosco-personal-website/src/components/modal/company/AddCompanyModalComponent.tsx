@@ -1,19 +1,26 @@
-import { TextInput, Button, Checkbox, FileInput, Notification, MultiSelect } from '@mantine/core';
-import { DateInput } from '@mantine/dates';
+// others
+import { useState, useContext } from 'react';
+// global components
+import { MapperContext } from '../../../globalVariable/MapperContextProvider';
+// mantine
 import { useForm } from '@mantine/form';
-import { uploadBytes, ref, getStorage, getDownloadURL } from "firebase/storage"
+import { DateInput } from '@mantine/dates';
+import { TextInput, Button, Checkbox, FileInput, Notification, MultiSelect } from '@mantine/core';
+// firebase
 import { firestore } from '../../../firebase';
 import { doc, setDoc } from 'firebase/firestore'
-import { useState, useContext } from 'react';
-import { MapperContext } from '../../../globalVariable/MapperContextProvider';
+import { uploadBytes, ref, getStorage, getDownloadURL } from "firebase/storage"
 
 export default function AddCompanyModalComponent() {
+  // global variable
   const {
     techStackDataSet,
   } = useContext(MapperContext);
-
+  // firebase storage
+  const storage = getStorage()
+  // notification hook
   const [showNotification, setShowNotification] = useState(false);
-
+  // form hook
   const form = useForm({
     initialValues: {
       startDate: '',
@@ -37,13 +44,12 @@ export default function AddCompanyModalComponent() {
     },
   });
 
+  // set end date to empty string if present is true
   if (form.values.present === true) {
     form.values.endDate = ""
   }
 
-  // Firebase storage
-  const storage = getStorage()
-
+  // add work function
   const AddWork = (work: any) => {
     setShowNotification(true);
 
@@ -182,7 +188,7 @@ export default function AddCompanyModalComponent() {
               />
             </div>
         }
-        {/* company team field */}
+        {/* company & team field */}
         {
           localStorage.getItem('theme') === "light" ?
             <div className='flex flex-col sm:flex-col md:flex-col lg:flex-row'>
@@ -232,7 +238,7 @@ export default function AddCompanyModalComponent() {
               />
             </div>
         }
-        {/* position job duties field */}
+        {/* position & job duties field */}
         {
           localStorage.getItem('theme') === "light" ?
             <div className='flex flex-col sm:flex-col md:flex-col lg:flex-row'>
@@ -282,7 +288,7 @@ export default function AddCompanyModalComponent() {
               />
             </div>
         }
-        {/* projects skill sets field */}
+        {/* projects & skill sets field */}
         {
           localStorage.getItem('theme') === "light" ?
             <div className='flex flex-col'>
@@ -336,7 +342,7 @@ export default function AddCompanyModalComponent() {
               />
             </div>
         }
-        {/* company logo */}
+        {/* company logo input */}
         {
           localStorage.getItem('theme') === "light" ?
             <div className='flex flex-col sm:flex-col md:flex-col lg:flex-row'>
@@ -375,8 +381,8 @@ export default function AddCompanyModalComponent() {
               />
             </div>
         }
+        {/* submit button */}
         <div className='flex justify-center'>
-          {/* submit button */}
           <Button type="submit" size='md' className='bg-[#4094F4] w-[300px] my-[0.8rem]'>Add Work</Button>
         </div>
       </form>
@@ -391,7 +397,6 @@ export default function AddCompanyModalComponent() {
           </Notification>
         )
       }
-
     </div>
   )
 }

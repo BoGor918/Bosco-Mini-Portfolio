@@ -1,9 +1,14 @@
+// others
 import { useState, useContext } from 'react';
 import { useDisclosure } from '@mantine/hooks';
-import { Modal } from '@mantine/core';
-import ProjectModalComponent from '../modal/project/ProjectModalComponent';
+// global variable
 import { MapperContext } from '../../globalVariable/MapperContextProvider';
+// mantine components
+import { Modal } from '@mantine/core';
+// page components
+import ProjectModalComponent from '../modal/project/ProjectModalComponent';
 
+// project interface
 interface Project {
     ProjectName: string;
     TechStack: [];
@@ -13,20 +18,25 @@ interface Project {
 }
 
 export default function ProjectGrid() {
+    // global variable
     const {
         projectData
     } = useContext(MapperContext);
 
+    // modal hook
     const [opened, { open, close }] = useDisclosure(false);
+    // selected project
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
+    // open modal with set selected project
     const openModal = (project: Project) => {
         setSelectedProject(project);
         open();
     };
 
     return (
-        <div className='animate-fade animate-delay-0 animate-once flex justify-center items-center mt-[1rem] sm:mt-[1rem] md:mt-[1rem] lg:mt-[2rem] mb-[5rem]'>
+        <div className='animate-fade animate-delay-0 animate-once flex justify-center items-center mt-[1rem] sm:mt-[1rem] md:mt-[1rem] lg:mt-[2rem]'>
+            {/* project grid */}
             <div className='mx-0 sm:mx-0 md:mx-0 lg:mx-2 grid grid-cols-3 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-1'>
                 {projectData.map((project: any, i: any) => (
                     <div key={i} onClick={() => openModal(project)} className='bg-white shadow-md flex justify-center items-center h-[115.66px] sm:h-[115.66px] md:h-[115.66px] lg:h-[298px] cursor-pointer'>
@@ -34,6 +44,7 @@ export default function ProjectGrid() {
                     </div>
                 ))}
             </div>
+            {/* modal components */}
             {
                 localStorage.getItem('theme') === "light" ?
                     <Modal opened={opened} onClose={close} size="lg" centered>

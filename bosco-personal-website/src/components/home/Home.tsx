@@ -1,17 +1,24 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect } from "react";
-import { signOut } from "firebase/auth";
+// others
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+// firebase
 import { auth } from "../../firebase";
+import { signOut } from "firebase/auth";
+// page components
 import TopComponent from "./components/TopComponent";
 import MiddleComponent from "./components/MiddleComponent";
 import BottomComponent from "./components/BottomComponent";
+import Loading from "../loading/Loading";
 
-// http://localhost:3000/login?eon=cheungtszlai0918@gmail.com&p=Bc010918
 export default function Home() {
+    // navigate hook
     const navigate = useNavigate();
+    // loading hook
+    const [loading, setLoading] = useState(true);
 
+    // sign out function
     useEffect(() => {
         if (window.location.pathname === "/logout") {
             signOut(auth)
@@ -25,11 +32,25 @@ export default function Home() {
         }
     }, []);
 
+    // loading function
+    useEffect(() => {
+        setLoading(true);
+        setTimeout(() => {
+            setLoading(false);
+        }, 1000);
+    }, [])
+
     return (
-        <div className="bg-white dark:bg-[#0B1A33] flex flex-col overflow-hidden">
-            <TopComponent />
-            <MiddleComponent />
-            <BottomComponent />
-        </div>
+        <>
+            {
+                loading ? <Loading /> :
+                    <div className="bg-white dark:bg-[#0B1A33] flex flex-col overflow-hidden my-[5rem]">
+                        {/* page components */}
+                        <TopComponent />
+                        <MiddleComponent />
+                        <BottomComponent />
+                    </div>
+            }
+        </>
     );
 }

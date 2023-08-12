@@ -1,37 +1,42 @@
+// others
 import { useState, useContext } from 'react'
+// global components
+import { MapperContext } from "../../../globalVariable/MapperContextProvider";
+// mantine components
+import { Modal, Button } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
+// page components
 import CompanyGrid from '../../grids/CompanyGrid'
 import EduGrid from '../../grids/EduGrid'
 import ProjectGrid from '../../grids/ProjectGrid'
 import SkillGrid from '../../grids/SkillGrid'
-import { BiGrid, BiObjectsVerticalBottom, BiBookContent, BiCalendarCheck } from "react-icons/bi";
-import { Button } from '@mantine/core';
-import { MapperContext } from "../../../globalVariable/MapperContextProvider";
-import { Modal } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
 import AddCompanyModalComponent from '../../modal/company/AddCompanyModalComponent';
 import AddEducationModalComponent from '../../modal/education/AddEducationModalComponent';
 import AddProjectModalComponent from '../../modal/project/AddProjectModalComponent';
 import AddSkillModalComponent from '../../modal/skill/AddSkillModalComponent';
+// icons
+import { BiGrid, BiObjectsVerticalBottom, BiBookContent, BiCalendarCheck } from "react-icons/bi";
 
 export default function BottomComponent() {
+    // global variable
     const {
         authUser
     } = useContext(MapperContext);
-
+    // model hook
     const [opened, { open, close }] = useDisclosure(false);
-
+    // nav hook
     const [selected, setSelected] = useState<string | number>("1");
 
+    // set nav function
     const navClicked = (e: any) => {
         setSelected(e)
     }
-
+    
+    // style variable
     const selectedStyle = "opacity-100 w-[50px] sm:w-[50px] md:w-[50px] lg:w-[125px] h-[2px] bg-[#9a9a9a] dark:bg-white mt-[0.5px] rounded-full transition duration-500 ease-in-out"
     const unSelectedStyle = "opacity-0 w-[50px] sm:w-[50px] md:w-[50px] lg:w-[125px] h-[2px] bg-[#9a9a9a] dark:bg-[#94A3B8] mt-[0.5px] rounded-full transition duration-500 ease-in-out"
-
     const iconStyleSelected = "text-[#9A9A9A] dark:text-white"
     const iconStyleUnSelected = "text-[#9A9A9A] dark:text-[#94A3B8]"
-
     const textSytleSelected = "ml-1 mt-[0.3rem] hidden sm:hidden md:hidden lg:block text-[#9A9A9A] dark:text-white"
     const textSytleUnSelected = "ml-1 mt-[0.3rem] hidden sm:hidden md:hidden lg:block text-[#9A9A9A] dark:text-[#94A3B8]"
 
@@ -57,7 +62,7 @@ export default function BottomComponent() {
                 }
                 <div className='w-[355px] sm:w-[355px] md:w-[355px] lg:w-[900px] h-[1px] bg-[#9a9a9a60] dark:bg-[#94A3B860]' />
             </div>
-            {/* nav button pc */}
+            {/* nav button */}
             <div className='flex animate-fade-up animate-delay-200 animate-once mt-[-1px]'>
                 {/* option 1 */}
                 <button onClick={() => navClicked("1")} className='flex flex-col items-center content-center mr-5 sm:mr-5 md:mr-5 lg:mr-12'>
@@ -136,7 +141,6 @@ export default function BottomComponent() {
                         }
                     </Modal>
             }
-
         </div>
     )
 }

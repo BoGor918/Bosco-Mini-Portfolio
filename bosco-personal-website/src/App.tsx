@@ -1,7 +1,9 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Loading from "./components/loading/Loading";
+// others
 import { lazy, Suspense } from "react";
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// page components
+import Loading from "./components/loading/Loading";
+// lazy load components
 const Home = lazy(() => import('./components/home/Home'));
 const Login = lazy(() => import('./components/login/Login'));
 
@@ -10,6 +12,7 @@ function App() {
     <Router>
       <Suspense fallback={<Loading />}>
         <Routes>
+          {/* link setup */}
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Home />} />

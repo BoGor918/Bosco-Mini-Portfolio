@@ -1,16 +1,25 @@
+// others
 import { useRef, useEffect, useState, CSSProperties } from 'react'
-import PersonalIcon from '../../../images/Personal_Icon.png'
 import CountUp from 'react-countup';
+// mantine
 import { Button } from '@mantine/core';
+// files
 import CV from '../../../files/CV.pdf'
+import PersonalIcon from '../../../images/Personal_Icon.png'
+// icons
 import { BiMoon, BiSolidMoon } from "react-icons/bi";
 
 export default function TopComponent() {
+    // icon box
     const boxRef = useRef<HTMLDivElement>(null);
+    // work date set up
     const workStartDate = new Date(2021, 5, 1);
     const currentDate = new Date();
     const totalYear = currentDate.getFullYear() - workStartDate.getFullYear();
+    // color theme
+    const [theme, setTheme] = useState('');
 
+    // icon box animation
     useEffect(() => {
         const boxElement = boxRef.current;
 
@@ -28,10 +37,8 @@ export default function TopComponent() {
         requestAnimationFrame(updateAnimation);
     }, []);
 
-    const [theme, setTheme] = useState('');
-
+    // set color theme from local storage
     useEffect(() => {
-        // Retrieve the theme color from local storage
         const storedTheme = localStorage.getItem('theme');
 
         if (storedTheme) {
@@ -43,6 +50,7 @@ export default function TopComponent() {
         }
     }, []);
 
+    // set color theme to local storage
     useEffect(() => {
         if (theme === "dark") {
             document.documentElement.classList.add("dark");
@@ -53,11 +61,13 @@ export default function TopComponent() {
         // Save the current theme color to local storage
         localStorage.setItem('theme', theme);
     }, [theme]);
-    
+
+    // handle click color theme switch function
     const handleThemeSwitch = () => {
         setTheme(theme === "dark" ? "light" : "dark");
     };
 
+    // set theme color to meta content and body background color
     useEffect(() => {
         const handleThemeColorChange = () => {
             const themeColorMeta = document.querySelector('meta[name="theme-color"]');
@@ -74,7 +84,7 @@ export default function TopComponent() {
     }, [theme]);
 
     return (
-        <div className='self-center w-full max-w-[365px] sm:max-w-[365px] md:max-w-[365px] lg:max-w-[910px] flex flex-col sm:flex-col md:flex-col lg:flex-row justify-center items-center font-light mt-[5rem]'>
+        <div className='self-center w-full max-w-[365px] sm:max-w-[365px] md:max-w-[365px] lg:max-w-[910px] flex flex-col sm:flex-col md:flex-col lg:flex-row justify-center items-center font-light'>
             {/* personal icon */}
             <div
                 ref={boxRef}
