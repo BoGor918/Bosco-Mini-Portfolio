@@ -2,12 +2,15 @@
 import { useRef, useEffect, useState, CSSProperties } from 'react'
 import CountUp from 'react-countup';
 // mantine
-import { Button } from '@mantine/core';
+import { Button, Modal } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
 // files
 import CV from '../../../files/CV.pdf'
 import PersonalIcon from '../../../images/Personal_Icon.png'
 // icons
 import { BiMoon, BiSolidMoon } from "react-icons/bi";
+// page component
+import IntroductionModalComponent from '../../modal/introduction/IntroductionModalComponent';
 
 export default function TopComponent() {
     // icon box
@@ -18,6 +21,8 @@ export default function TopComponent() {
     const totalYear = currentDate.getFullYear() - workStartDate.getFullYear();
     // color theme
     const [theme, setTheme] = useState('');
+    // model hook
+    const [opened, { open, close }] = useDisclosure(false);
 
     // icon box animation
     useEffect(() => {
@@ -87,6 +92,7 @@ export default function TopComponent() {
         <div className='self-center w-full max-w-[365px] sm:max-w-[365px] md:max-w-[365px] lg:max-w-[910px] flex flex-col sm:flex-col md:flex-col lg:flex-row justify-center items-center font-light'>
             {/* personal icon */}
             <div
+                onClick={() => open()}
                 ref={boxRef}
                 style={
                     {
@@ -95,7 +101,7 @@ export default function TopComponent() {
                         "--bg-color": "linear-gradient(#FFFFFF, #FFFFFF)",
                     } as CSSProperties
                 }
-                className="animate-fade-up animate-delay-0 animate-once flex mx-0 sm:mx-0 md:mx-0 lg:mx-10 rounded-full border-[3px] border-[#0000] [background:padding-box_var(--bg-color),border-box_var(--border-color)] mr-0 sm:mr-0 md:mr-0 lg:mr-4"
+                className="cursor-pointer animate-fade-up animate-delay-0 animate-once flex mx-0 sm:mx-0 md:mx-0 lg:mx-10 rounded-full border-[3px] border-[#0000] [background:padding-box_var(--bg-color),border-box_var(--border-color)] mr-0 sm:mr-0 md:mr-0 lg:mr-4"
             >
                 <img src={PersonalIcon} className='rounded-full p-[2px]' alt='Personal Icon' width={190} />
             </div>
@@ -134,6 +140,28 @@ export default function TopComponent() {
                     <span className='text-[#9A9A9A] dark:text-[#94A3B8]'>Phone: +852 6770 8560</span>
                 </div>
             </div>
+            {/* modal components */}
+            {
+                localStorage.getItem('theme') === "light" ?
+                    <Modal opened={opened} onClose={close} size="lg" title="About This Website" centered>
+                        <IntroductionModalComponent />
+                    </Modal> :
+                    <Modal opened={opened} onClose={close} size="lg" title="About This Website" centered
+                        styles={{
+                            header: {
+                                backgroundColor: "#0B1A33",
+                            },
+                            content: {
+                                backgroundColor: "#0B1A33",
+                            },
+                            title: {
+                                color: "#94A3B8",
+                            }
+                        }}
+                    >
+                        <IntroductionModalComponent />
+                    </Modal>
+            }
         </div>
     )
 }

@@ -3,8 +3,8 @@
 import { useEffect, useRef, useContext, CSSProperties, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 // mantine
-import { TextInput, Button } from '@mantine/core';
-// mantine
+import { TextInput, Button, Modal } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
 // global components
 import { MapperContext } from '../../globalVariable/MapperContextProvider';
 // firebase
@@ -16,6 +16,7 @@ import PersonalIcon from '../../images/Personal_Icon.png'
 import { BiMoon, BiSolidMoon } from "react-icons/bi";
 // page components
 import Loading from '../loading/Loading';
+import IntroductionModalComponent from '../modal/introduction/IntroductionModalComponent';
 
 export default function Login(): any {
     // global variable
@@ -30,6 +31,8 @@ export default function Login(): any {
     // Login variables
     const [loginEmailOrUsername, setLoginEmailOrUsername] = useState<string>('');
     const [loginPassword, setLoginPassword] = useState<string>('');
+    // model hook
+    const [opened, { open, close }] = useDisclosure(false);
     // loading hook
     const [loading, setLoading] = useState(true);
     // navigate hook
@@ -148,6 +151,7 @@ export default function Login(): any {
                     <div className='flex flex-col justify-center items-center'>
                         {/* personal icon */}
                         <div
+                            onClick={() => open()}
                             ref={boxRef}
                             style={
                                 {
@@ -156,7 +160,7 @@ export default function Login(): any {
                                     "--bg-color": "linear-gradient(#131219, #131219)",
                                 } as CSSProperties
                             }
-                            className="animate-fade-up animate-delay-0 animate-once flex mb-[1rem] rounded-full border-[3px] border-[#0000] [background:padding-box_var(--bg-color),border-box_var(--border-color)]"
+                            className="cursor-pointer animate-fade-up animate-delay-0 animate-once flex mb-[1rem] rounded-full border-[3px] border-[#0000] [background:padding-box_var(--bg-color),border-box_var(--border-color)]"
                         >
                             <img src={PersonalIcon} className='rounded-full border-[4px] border-white' alt='Personal Icon' width={190} />
                         </div>
@@ -253,6 +257,28 @@ export default function Login(): any {
                             </button>
                         </div>
                     </div>
+                    {/* modal components */}
+                    {
+                        localStorage.getItem('theme') === "light" ?
+                            <Modal opened={opened} onClose={close} size="lg" title="About This Website" centered>
+                                <IntroductionModalComponent />
+                            </Modal> :
+                            <Modal opened={opened} onClose={close} size="lg" title="About This Website" centered
+                                styles={{
+                                    header: {
+                                        backgroundColor: "#0B1A33",
+                                    },
+                                    content: {
+                                        backgroundColor: "#0B1A33",
+                                    },
+                                    title: {
+                                        color: "#94A3B8",
+                                    }
+                                }}
+                            >
+                                <IntroductionModalComponent />
+                            </Modal>
+                    }
                 </div>
     )
 }
