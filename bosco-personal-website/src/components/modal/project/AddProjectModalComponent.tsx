@@ -65,74 +65,168 @@ export default function AddProjectModalComponent() {
   return (
     <div className='flex flex-col font-light'>
       <form onSubmit={form.onSubmit((values) => AddProject(values))}>
-        <div className='flex flex-col'>
-          {/* company name field */}
-          <TextInput
-            className='w-full my-[0.8rem]'
-            size="md"
-            label="Project Name"
-            inputWrapperOrder={['label', 'error', 'input', 'description']}
-            required
-            {...form.getInputProps('projectName')}
-          />
-          {/* type field */}
-          <MultiSelect
-            data={techStackDataSet}
-            className='w-full my-[0.8rem]'
-            size="md"
-            label="Tech Stack(s)"
-            searchable
-            nothingFound="No Result"
-            required
-            {...form.getInputProps('techStack')}
-          />
-        </div>
-        <div className='flex flex-col sm:flex-col md:flex-col lg:flex-row'>
-          {/* position field */}
-          <Textarea
-            className='w-full my-[0.8rem]'
-            size="md"
-            label="Description"
-            inputWrapperOrder={['label', 'error', 'input', 'description']}
-            autosize
-            minRows={1}
-            maxRows={4}
-            required
-            {...form.getInputProps('description')}
-          />
-        </div>
-        <div className='flex flex-col sm:flex-col md:flex-col lg:flex-row'>
-          {/* link */}
-          <MultiSelect
-            data={data}
-            label="Link(s)"
-            size='md'
-            className='w-full my-[0.8rem]'
-            searchable
-            creatable
-            getCreateLabel={(query) => `+ Create ${query}`}
-            onCreate={(query) => {
-              const item = { value: query, label: query };
-              setData((current) => [...current, item]);
-              return item;
-            }}
-            {...form.getInputProps('link')}
-            required
-          />
-        </div>
-        <div className='flex flex-col sm:flex-col md:flex-col lg:flex-row'>
-          {/* company logo */}
-          <FileInput
-            className='w-[202.3px] my-[0.8rem] mr-0 sm:mr-0 md:mr-0 lg:mr-3'
-            placeholder='Select Image'
-            size="md"
-            label="Project Logo"
-            withAsterisk
-            accept="image/*"
-            required
-            {...form.getInputProps('logo')}
-          />
-        </div>
+        {
+          localStorage.getItem("theme") === "light" ?
+            <div className='flex flex-col'>
+              <TextInput
+                className='w-full my-[0.8rem]'
+                size="md"
+                label="Project Name"
+                inputWrapperOrder={['label', 'error', 'input', 'description']}
+                required
+                {...form.getInputProps('projectName')}
+              />
+              <MultiSelect
+                data={techStackDataSet}
+                className='w-full my-[0.8rem]'
+                size="md"
+                label="Tech Stack(s)"
+                searchable
+                nothingFound="No Result"
+                required
+                {...form.getInputProps('techStack')}
+              />
+            </div> :
+            <div className='flex flex-col'>
+              <TextInput
+                className='w-full my-[0.8rem]'
+                size="md"
+                label="Project Name"
+                inputWrapperOrder={['label', 'error', 'input', 'description']}
+                styles={{
+                  label: {
+                    color: "white",
+                  },
+                }}
+                required
+                {...form.getInputProps('projectName')}
+              />
+              <MultiSelect
+                data={techStackDataSet}
+                className='w-full my-[0.8rem]'
+                size="md"
+                label="Tech Stack(s)"
+                searchable
+                nothingFound="No Result"
+                styles={{
+                  label: {
+                    color: "white",
+                  },
+                }}
+                required
+                {...form.getInputProps('techStack')}
+              />
+            </div>
+        }
+        {
+          localStorage.getItem("theme") === "light" ?
+            <div className='flex flex-col'>
+              <Textarea
+                className='w-full my-[0.8rem]'
+                size="md"
+                label="Description"
+                inputWrapperOrder={['label', 'error', 'input', 'description']}
+                autosize
+                minRows={1}
+                maxRows={4}
+                required
+                {...form.getInputProps('description')}
+              />
+              <MultiSelect
+                data={data}
+                label="Link(s)"
+                size='md'
+                className='w-full my-[0.8rem]'
+                searchable
+                creatable
+                getCreateLabel={(query) => `+ Create ${query}`}
+                onCreate={(query) => {
+                  const item = { value: query, label: query };
+                  setData((current) => [...current, item]);
+                  return item;
+                }}
+                {...form.getInputProps('link')}
+                required
+              />
+            </div> :
+            <div className='flex flex-col'>
+              <Textarea
+                className='w-full my-[0.8rem]'
+                size="md"
+                label="Description"
+                inputWrapperOrder={['label', 'error', 'input', 'description']}
+                autosize
+                minRows={1}
+                maxRows={4}
+                styles={{
+                  label: {
+                    color: "white",
+                  },
+                }}
+                required
+                {...form.getInputProps('description')}
+              />
+              <MultiSelect
+                data={data}
+                label="Link(s)"
+                size='md'
+                className='w-full my-[0.8rem]'
+                searchable
+                creatable
+                getCreateLabel={(query) => `+ Create ${query}`}
+                onCreate={(query) => {
+                  const item = { value: query, label: query };
+                  setData((current) => [...current, item]);
+                  return item;
+                }}
+                styles={{
+                  label: {
+                    color: "white",
+                  },
+                }}
+                {...form.getInputProps('link')}
+                required
+              />
+            </div>
+        }
+        {
+          localStorage.getItem("theme") === "light" ?
+            <div className='flex flex-col sm:flex-col md:flex-col lg:flex-row'>
+              <FileInput
+                className='w-[202.3px] my-[0.8rem] mr-0 sm:mr-0 md:mr-0 lg:mr-3'
+                placeholder='Select Image'
+                size="md"
+                label="Project Logo"
+                withAsterisk
+                accept="image/*"
+                required
+                {...form.getInputProps('logo')}
+              />
+            </div> :
+            <div className='flex flex-col sm:flex-col md:flex-col lg:flex-row'>
+              <FileInput
+                className='w-[202.3px] my-[0.8rem] mr-0 sm:mr-0 md:mr-0 lg:mr-3'
+                placeholder='Select Image'
+                size="md"
+                label="Project Logo"
+                withAsterisk
+                accept="image/*"
+                styles={{
+                  label: {
+                    color: "white",
+                  },
+                  input: {
+                    color: "black",
+                  },
+                  wrapper: {
+                    backgroundColor: "white",
+                  },
+                }}
+                required
+                {...form.getInputProps('logo')}
+              />
+            </div>
+        }
         <div className='flex justify-center'>
           {/* submit button */}
           <Button type="submit" size='md' className='bg-[#4094F4] w-[300px] my-[0.8rem]'>Add Project</Button>
