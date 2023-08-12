@@ -1,16 +1,21 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./components/home/Home";
-import Login from "./components/login/Login";
+import Loading from "./components/loading/Loading";
+import { lazy, Suspense } from "react";
+
+const Home = lazy(() => import('./components/home/Home'));
+const Login = lazy(() => import('./components/login/Login'));
 
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/logout" element={<Home />} />
-        <Route path="*" element={<Home />} />
-      </Routes>
+      <Suspense fallback={<Loading />}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/logout" element={<Home />} />
+          <Route path="*" element={<Home />} />
+        </Routes>
+      </Suspense>
     </Router>
   );
 }
