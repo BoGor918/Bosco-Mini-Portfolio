@@ -10,7 +10,7 @@ export default function IntroductionModalComponent() {
       </span>
       {/* description */}
       <span className={textStyle}>
-        The Mini Portfolio Website is a dynamic and efficient web app built with <b>Node</b>, <b>React</b>, <b>TypeScript</b>, <b>Tailwind CSS</b>, <b>Firebase</b>, and <b>Mantine</b>. This powerful stack forms the foundation for showcasing your skills, projects, and accomplishments. With responsive design, it presents my work experience, education, projects, and skills in an engaging manner.
+        This Mini Portfolio Website is a dynamic and efficient web app built with <b>Node</b>, <b>React</b>, <b>TypeScript</b>, <b>Tailwind CSS</b>, <b>Firebase</b>, and <b>Mantine</b>. This powerful stack forms the foundation for showcasing your skills, projects, and accomplishments. With responsive design, it presents my work experience, education, projects, and skills in an engaging manner.
       </span>
     </div>
   )
