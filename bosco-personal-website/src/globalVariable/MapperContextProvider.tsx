@@ -98,17 +98,15 @@ export default function MapperContextProvider(props: any) {
     }
 
     // set color theme to local storage
-    useEffect(() => {
-        const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+    const themeColorMeta = document.querySelector('meta[name="theme-color"]');
 
-        if (localStorage.getItem("theme") === 'dark') {
-            themeColorMeta?.setAttribute('content', '#0B1A33'); // Set the new theme color
-            document.body.style.backgroundColor = '#0B1A33';
-        } else if (localStorage.getItem("theme") === 'light') {
-            themeColorMeta?.setAttribute('content', '#FFFFFF'); // Set the new theme color
-            document.body.style.backgroundColor = '#FFFFFF';
-        }
-    }, []);
+    if (localStorage.getItem("theme") === 'dark') {
+        themeColorMeta?.setAttribute('content', '#0B1A33'); // Set the new theme color
+        document.body.style.backgroundColor = '#0B1A33';
+    } else if (localStorage.getItem("theme") === 'light') {
+        themeColorMeta?.setAttribute('content', '#FFFFFF'); // Set the new theme color
+        document.body.style.backgroundColor = '#FFFFFF';
+    }
 
     return (
         // pass the value in provider and return
