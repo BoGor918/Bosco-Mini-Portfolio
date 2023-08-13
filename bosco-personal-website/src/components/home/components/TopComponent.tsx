@@ -46,13 +46,25 @@ export default function TopComponent() {
     // set color theme from local storage
     useEffect(() => {
         const storedTheme = localStorage.getItem('theme');
+        const themeColorMeta = document.querySelector('meta[name="theme-color"]');
 
         if (storedTheme) {
             setTheme(storedTheme);
+            if (storedTheme === "dark") {
+                themeColorMeta?.setAttribute('content', '#0B1A33'); // Set the new theme color
+                document.body.style.backgroundColor = '#0B1A33';
+            } else {
+                themeColorMeta?.setAttribute('content', '#FFFFFF'); // Set the new theme color
+                document.body.style.backgroundColor = '#FFFFFF';
+            }
         } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
             setTheme('dark');
+            themeColorMeta?.setAttribute('content', '#0B1A33'); // Set the new theme color
+            document.body.style.backgroundColor = '#0B1A33';
         } else {
             setTheme('light');
+            themeColorMeta?.setAttribute('content', '#FFFFFF'); // Set the new theme color
+            document.body.style.backgroundColor = '#FFFFFF';
         }
     }, []);
 
@@ -66,16 +78,6 @@ export default function TopComponent() {
 
         // Save the current theme color to local storage
         localStorage.setItem('theme', theme);
-
-        const themeColorMeta = document.querySelector('meta[name="theme-color"]');
-
-        if (theme === 'dark') {
-            themeColorMeta?.setAttribute('content', '#0B1A33'); // Set the new theme color
-            document.body.style.backgroundColor = '#0B1A33';
-        } else if (theme === 'light') {
-            themeColorMeta?.setAttribute('content', '#FFFFFF'); // Set the new theme color
-            document.body.style.backgroundColor = '#FFFFFF';
-        }
     }, [theme]);
 
     // handle click color theme switch function
