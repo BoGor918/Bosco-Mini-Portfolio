@@ -44,17 +44,17 @@ export default function TopComponent() {
     }, []);
 
     // set color theme from local storage
-    useEffect(() => {
-        const storedTheme = localStorage.getItem('theme');
+    // useEffect(() => {
+    //     const storedTheme = localStorage.getItem('theme');
 
-        if (storedTheme) {
-            setTheme(storedTheme);
-        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            setTheme('dark');
-        } else {
-            setTheme('light');
-        }
-    }, []);
+    //     if (storedTheme) {
+    //         setTheme(storedTheme);
+    //     } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    //         setTheme('dark');
+    //     } else {
+    //         setTheme('light');
+    //     }
+    // }, []);
 
     // set color theme to local storage
     useEffect(() => {
