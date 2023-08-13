@@ -27,7 +27,7 @@ export const MapperContext = createContext<MapperContextType>({
     projectData: [],
     skillData: [],
     techStackDataSet: [],
-    openURL: () => {},
+    openURL: () => { },
 });
 
 export default function MapperContextProvider(props: any) {
@@ -96,6 +96,19 @@ export default function MapperContextProvider(props: any) {
     const openURL = (url: string) => {
         window.open(url, "_blank");
     }
+
+    // set color theme to local storage
+    useEffect(() => {
+        const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+
+        if (themeColorMeta && localStorage.getItem("theme") === 'dark') {
+            themeColorMeta.setAttribute('content', '#0B1A33'); // Set the new theme color
+            document.body.style.backgroundColor = '#0B1A33';
+        } else if (themeColorMeta && localStorage.getItem("theme") === 'light') {
+            themeColorMeta?.setAttribute('content', '#FFFFFF'); // Set the new theme color
+            document.body.style.backgroundColor = '#FFFFFF';
+        }
+    }, []);
 
     return (
         // pass the value in provider and return
