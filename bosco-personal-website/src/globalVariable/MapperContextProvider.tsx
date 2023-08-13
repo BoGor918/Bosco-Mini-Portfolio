@@ -27,7 +27,7 @@ export const MapperContext = createContext<MapperContextType>({
     projectData: [],
     skillData: [],
     techStackDataSet: [],
-    openURL: () => { },
+    openURL: () => {},
 });
 
 export default function MapperContextProvider(props: any) {
