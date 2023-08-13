@@ -58,15 +58,10 @@ export default function TopComponent() {
 
     // set color theme to local storage
     useEffect(() => {
-        const themeColorMeta = document.querySelector('meta[name="theme-color"]');
         if (theme === "dark") {
             document.documentElement.classList.add("dark");
-            themeColorMeta?.setAttribute('content', '#0B1A33'); // Set the new theme color
-            document.body.style.backgroundColor = '#0B1A33';
         } else {
             document.documentElement.classList.remove("dark");
-            themeColorMeta?.setAttribute('content', '#FFFFFF'); // Set the new theme color
-            document.body.style.backgroundColor = '#FFFFFF';
         }
 
         // Save the current theme color to local storage
