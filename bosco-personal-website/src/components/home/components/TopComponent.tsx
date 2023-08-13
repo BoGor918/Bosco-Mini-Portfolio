@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 // others
 import { useRef, useEffect, useState, CSSProperties } from 'react'
 import CountUp from 'react-countup';
@@ -86,7 +87,7 @@ export default function TopComponent() {
             }
         };
         handleThemeColorChange();
-    }, [theme]);
+    }, [theme, localStorage.getItem('theme')]);
 
     return (
         <div className='self-center w-full max-w-[365px] sm:max-w-[365px] md:max-w-[365px] lg:max-w-[910px] flex flex-col sm:flex-col md:flex-col lg:flex-row justify-center items-center font-light mt-[5rem]'>

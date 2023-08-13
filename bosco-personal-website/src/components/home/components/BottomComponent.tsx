@@ -41,7 +41,7 @@ export default function BottomComponent() {
     const textSytleUnSelected = "ml-1 mt-[0.3rem] hidden sm:hidden md:hidden lg:block text-[#9A9A9A] dark:text-[#94A3B8]"
 
     return (
-        <div className='self-center w-full max-w-[355px] sm:max-w-[355px] md:max-w-[355px] lg:max-w-[910px] flex flex-col items-center justify-center font-light'>
+        <div className='self-center w-full max-w-[355px] sm:max-w-[355px] md:max-w-[355px] lg:max-w-[910px] flex flex-col items-center justify-center font-light mb-[5rem]'>
             {/* nav line */}
             <div className='animate-fade-up animate-delay-200 animate-once flex flex-col justify-end items-end'>
                 {/* Add Button= */}
