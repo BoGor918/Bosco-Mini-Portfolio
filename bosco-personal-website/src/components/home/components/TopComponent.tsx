@@ -21,7 +21,7 @@ export default function TopComponent() {
     const currentDate = new Date();
     const totalYear = currentDate.getFullYear() - workStartDate.getFullYear();
     // color theme
-    const [theme, setTheme] = useState('');
+    const [theme, setTheme] = useState('light');
     // model hook
     const [opened, { open, close }] = useDisclosure(false);
 
@@ -69,10 +69,10 @@ export default function TopComponent() {
 
         const themeColorMeta = document.querySelector('meta[name="theme-color"]');
 
-        if (themeColorMeta && theme === 'dark') {
-            themeColorMeta.setAttribute('content', '#0B1A33'); // Set the new theme color
+        if (theme === 'dark') {
+            themeColorMeta?.setAttribute('content', '#0B1A33'); // Set the new theme color
             document.body.style.backgroundColor = '#0B1A33';
-        } else if (themeColorMeta && theme === 'light') {
+        } else if (theme === 'light') {
             themeColorMeta?.setAttribute('content', '#FFFFFF'); // Set the new theme color
             document.body.style.backgroundColor = '#FFFFFF';
         }
@@ -82,22 +82,6 @@ export default function TopComponent() {
     const handleThemeSwitch = () => {
         setTheme(theme === "dark" ? "light" : "dark");
     };
-
-    // set theme color to meta content and body background color
-    // useEffect(() => {
-    //     const handleThemeColorChange = () => {
-    //         const themeColorMeta = document.querySelector('meta[name="theme-color"]');
-
-    //         if (themeColorMeta && theme === 'dark') {
-    //             themeColorMeta.setAttribute('content', '#0B1A33'); // Set the new theme color
-    //             document.body.style.backgroundColor = '#0B1A33';
-    //         } else if (themeColorMeta && theme === 'light') {
-    //             themeColorMeta?.setAttribute('content', '#FFFFFF'); // Set the new theme color
-    //             document.body.style.backgroundColor = '#FFFFFF';
-    //         }
-    //     };
-    //     handleThemeColorChange();
-    // }, [theme, localStorage.getItem('theme')]);
 
     return (
         <div className='self-center w-full max-w-[365px] sm:max-w-[365px] md:max-w-[365px] lg:max-w-[910px] flex flex-col sm:flex-col md:flex-col lg:flex-row justify-center items-center font-light mt-[5rem]'>

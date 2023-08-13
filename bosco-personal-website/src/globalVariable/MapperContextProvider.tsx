@@ -101,10 +101,10 @@ export default function MapperContextProvider(props: any) {
     useEffect(() => {
         const themeColorMeta = document.querySelector('meta[name="theme-color"]');
 
-        if (themeColorMeta && localStorage.getItem("theme") === 'dark') {
-            themeColorMeta.setAttribute('content', '#0B1A33'); // Set the new theme color
+        if (localStorage.getItem("theme") === 'dark') {
+            themeColorMeta?.setAttribute('content', '#0B1A33'); // Set the new theme color
             document.body.style.backgroundColor = '#0B1A33';
-        } else if (themeColorMeta && localStorage.getItem("theme") === 'light') {
+        } else if (localStorage.getItem("theme") === 'light') {
             themeColorMeta?.setAttribute('content', '#FFFFFF'); // Set the new theme color
             document.body.style.backgroundColor = '#FFFFFF';
         }
