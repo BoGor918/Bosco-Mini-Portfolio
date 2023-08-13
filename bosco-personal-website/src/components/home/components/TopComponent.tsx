@@ -46,25 +46,13 @@ export default function TopComponent() {
     // set color theme from local storage
     useEffect(() => {
         const storedTheme = localStorage.getItem('theme');
-        const themeColorMeta = document.querySelector('meta[name="theme-color"]');
 
         if (storedTheme) {
             setTheme(storedTheme);
-            if (storedTheme === "dark") {
-                themeColorMeta?.setAttribute('content', '#0B1A33'); // Set the new theme color
-                document.body.style.backgroundColor = '#0B1A33';
-            } else {
-                themeColorMeta?.setAttribute('content', '#FFFFFF'); // Set the new theme color
-                document.body.style.backgroundColor = '#FFFFFF';
-            }
         } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
             setTheme('dark');
-            themeColorMeta?.setAttribute('content', '#0B1A33'); // Set the new theme color
-            document.body.style.backgroundColor = '#0B1A33';
         } else {
             setTheme('light');
-            themeColorMeta?.setAttribute('content', '#FFFFFF'); // Set the new theme color
-            document.body.style.backgroundColor = '#FFFFFF';
         }
     }, []);
 
@@ -90,16 +78,16 @@ export default function TopComponent() {
         const handleThemeColorChange = () => {
             const themeColorMeta = document.querySelector('meta[name="theme-color"]');
 
-            if (themeColorMeta && theme === 'dark') {
+            if (theme === 'dark') {
                 themeColorMeta?.setAttribute('content', '#0B1A33'); // Set the new theme color
                 document.body.style.backgroundColor = '#0B1A33';
-            } else if (themeColorMeta && theme === 'light') {
+            } else if (theme === 'light') {
                 themeColorMeta?.setAttribute('content', '#FFFFFF'); // Set the new theme color
                 document.body.style.backgroundColor = '#FFFFFF';
             }
         };
         handleThemeColorChange();
-    }, [theme, localStorage.getItem('theme')]);
+    }, [theme]);
 
     return (
         <div className='self-center w-full max-w-[365px] sm:max-w-[365px] md:max-w-[365px] lg:max-w-[910px] flex flex-col sm:flex-col md:flex-col lg:flex-row justify-center items-center font-light mt-[5rem]'>
