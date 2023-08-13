@@ -43,7 +43,7 @@ export default function MiddleComponent() {
                 </div>
                 {/* whatsapp box */}
                 <div className={iconBoxStyle} style={{ flexBasis: "auto", flexGrow: 0, flexShrink: 0 }}>
-                    <button onClick={() => openURL("https://wa.link/mthj8s")} className={buttonStyle}>
+                    <button onClick={() => openURL("https://wa.link/8zfh0o")} className={buttonStyle}>
                         <BsWhatsapp className={iconStyle} />
                     </button>
                     <span className={textStyle}>WhatsApp</span>
