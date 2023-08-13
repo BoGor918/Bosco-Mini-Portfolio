@@ -132,11 +132,20 @@ export default function TopComponent() {
                     <span className='text-black dark:text-white mx-4'><CountUp className='text-black dark:text-white font-bold' start={100} end={5} duration={3} /><span className='text-black dark:text-white font-bold'>+</span> Projects</span>
                     <span className='text-black dark:text-white ml-4'><CountUp className='text-black dark:text-white font-bold' start={100} end={10} duration={3} /><span className='text-black dark:text-white font-bold'>+</span> Skills</span>
                 </div>
-                {/* col-3 */}
-                <div className='flex flex-col text-center sm:text-center md:text-center lg:text-start text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px]'>
+                {/* col-3 pc */}
+                <div className='hidden sm:hidden md:hidden lg:flex flex-col text-center sm:text-center md:text-center lg:text-start text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px]'>
                     <span className='text-black dark:text-white font-bold'>Bosco</span>
                     <span className='text-[#9A9A9A] dark:text-[#94A3B8]'>Solutions Developer</span>
                     <span className='text-[#9A9A9A] dark:text-[#94A3B8]'>Web / App Design + Development, Photo / Video Editing</span>
+                    <span className='text-[#9A9A9A] dark:text-[#94A3B8]'>Email: cheungtszlai0918@gmail.com</span>
+                    <span className='text-[#9A9A9A] dark:text-[#94A3B8]'>Phone: +852 6770 8560</span>
+                </div>
+                {/* col-3 mobile */}
+                <div className='flex sm:flex md:flex lg:hidden flex-col text-center sm:text-center md:text-center lg:text-start text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px]'>
+                    <span className='text-black dark:text-white font-bold'>Bosco</span>
+                    <span className='text-[#9A9A9A] dark:text-[#94A3B8]'>Solutions Developer</span>
+                    <span className='text-[#9A9A9A] dark:text-[#94A3B8]'>Web / App Design + Development</span>
+                    <span className='text-[#9A9A9A] dark:text-[#94A3B8]'>Photo / Video Editing</span>
                     <span className='text-[#9A9A9A] dark:text-[#94A3B8]'>Email: cheungtszlai0918@gmail.com</span>
                     <span className='text-[#9A9A9A] dark:text-[#94A3B8]'>Phone: +852 6770 8560</span>
                 </div>
