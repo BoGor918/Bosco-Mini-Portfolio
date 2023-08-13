@@ -35,6 +35,8 @@ export default function BottomComponent() {
     // style variable
     const selectedStyle = "opacity-100 w-[50px] sm:w-[50px] md:w-[50px] lg:w-[125px] h-[2px] bg-[#9a9a9a] dark:bg-white mt-[0.5px] rounded-full transition duration-500 ease-in-out"
     const unSelectedStyle = "opacity-0 w-[50px] sm:w-[50px] md:w-[50px] lg:w-[125px] h-[2px] bg-[#9a9a9a] dark:bg-[#94A3B8] mt-[0.5px] rounded-full transition duration-500 ease-in-out"
+    const selected3Style = "opacity-100 w-[50px] sm:w-[50px] md:w-[50px] lg:w-[150px] h-[2px] bg-[#9a9a9a] dark:bg-white mt-[0.5px] rounded-full transition duration-500 ease-in-out"
+    const unSelected3Style = "opacity-0 w-[50px] sm:w-[50px] md:w-[50px] lg:w-[150px] h-[2px] bg-[#9a9a9a] dark:bg-[#94A3B8] mt-[0.5px] rounded-full transition duration-500 ease-in-out"
     const iconStyleSelected = "text-[#9A9A9A] dark:text-white"
     const iconStyleUnSelected = "text-[#9A9A9A] dark:text-[#94A3B8]"
     const textSytleSelected = "ml-1 mt-[0.3rem] hidden sm:hidden md:hidden lg:block text-[#9A9A9A] dark:text-white"
@@ -82,7 +84,7 @@ export default function BottomComponent() {
                 </button>
                 {/* option 3 */}
                 <button onClick={() => navClicked("3")} className='flex flex-col items-center content-center mx-5 sm:mx-5 md:mx-5 lg:mx-12'>
-                    <div className={selected === "3" ? selectedStyle : unSelectedStyle} />
+                    <div className={selected === "3" ? selected3Style : unSelected3Style} />
                     <div className='flex items-center mt-[8px] mr-[0rem] sm:mr-[0rem] md:mr-[0rem] lg:mr-[0.4rem]'>
                         <BiBookContent className={selected === "3" ? iconStyleSelected : iconStyleUnSelected} size={30} />
                         <span className={selected === "3" ? textSytleSelected : textSytleUnSelected}>PROJECTS</span>
