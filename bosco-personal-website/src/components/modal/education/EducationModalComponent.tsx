@@ -7,7 +7,6 @@ import { Button, Notification } from "@mantine/core";
 // icons
 import { MdOutlineCancel } from "react-icons/md";
 
-
 export default function EducationModalComponent({
   docID,
   schoolName,

@@ -10,6 +10,7 @@ import SkillModalComponent from '../modal/skill/SkillModalComponent';
 
 // skill interface
 interface Skill {
+    id: string;
     SkillName: string;
     Logo: string;
 }
@@ -44,15 +45,16 @@ export default function SkillGrid() {
             {/* modal components */}
             {
                 localStorage.getItem('theme') === "light" ?
-                    <Modal opened={opened} onClose={close} size="xs" centered>
+                    <Modal opened={opened} onClose={close} size="md" centered>
                         {selectedSkill && (
                             <SkillModalComponent
+                                docID={selectedSkill.id}
                                 skillName={selectedSkill.SkillName}
                                 logo={selectedSkill.Logo}
                             />
                         )}
                     </Modal> :
-                    <Modal opened={opened} onClose={close} size="xs" centered
+                    <Modal opened={opened} onClose={close} size="md" centered
                         styles={{
                             header: {
                                 backgroundColor: "#0B1A33",
@@ -64,6 +66,7 @@ export default function SkillGrid() {
                     >
                         {selectedSkill && (
                             <SkillModalComponent
+                                docID={selectedSkill.id}
                                 skillName={selectedSkill.SkillName}
                                 logo={selectedSkill.Logo}
                             />

@@ -10,6 +10,7 @@ import ProjectModalComponent from '../modal/project/ProjectModalComponent';
 
 // project interface
 interface Project {
+    id: string;
     ProjectName: string;
     TechStack: [];
     Description: string;
@@ -50,6 +51,7 @@ export default function ProjectGrid() {
                     <Modal opened={opened} onClose={close} size="lg" centered>
                         {selectedProject && (
                             <ProjectModalComponent
+                                docID={selectedProject.id}
                                 projectName={selectedProject.ProjectName}
                                 description={selectedProject.Description}
                                 techStack={selectedProject.TechStack}
@@ -70,6 +72,7 @@ export default function ProjectGrid() {
                     >
                         {selectedProject && (
                             <ProjectModalComponent
+                                docID={selectedProject.id}
                                 projectName={selectedProject.ProjectName}
                                 description={selectedProject.Description}
                                 techStack={selectedProject.TechStack}
