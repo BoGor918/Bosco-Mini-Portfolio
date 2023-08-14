@@ -10,6 +10,7 @@ import EducationModalComponent from '../modal/education/EducationModalComponent'
 
 // school interface
 interface School {
+    id: string;
     SchoolName: string;
     Type: string;
     Title: string;
@@ -53,6 +54,7 @@ export default function EduGrid() {
                     <Modal opened={opened} onClose={close} size="lg" centered>
                         {selectedSchool && (
                             <EducationModalComponent
+                                docID={selectedSchool.id}
                                 schoolName={selectedSchool.SchoolName}
                                 type={selectedSchool.Type}
                                 title={selectedSchool.Title}
@@ -76,6 +78,7 @@ export default function EduGrid() {
                     >
                         {selectedSchool && (
                             <EducationModalComponent
+                                docID={selectedSchool.id}
                                 schoolName={selectedSchool.SchoolName}
                                 type={selectedSchool.Type}
                                 title={selectedSchool.Title}
