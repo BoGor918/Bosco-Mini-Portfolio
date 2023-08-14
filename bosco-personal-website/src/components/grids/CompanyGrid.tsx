@@ -10,6 +10,7 @@ import CompanyModalComponent from '../modal/company/CompanyModalComponent';
 
 // company interface
 interface Company {
+    id: string;
     CompanyName: string;
     Team: string;
     Position: string;
@@ -46,6 +47,7 @@ export default function CompanyGrid() {
                 {companyData.map((company: any, i: any) => (
                     <div key={i} onClick={() => openModal(company)} className='bg-white shadow-md flex justify-center items-center h-[115.66px] sm:h-[115.66px] md:h-[115.66px] lg:h-[298px] cursor-pointer'>
                         <img className='p-2 sm:p-2 md:p-2 lg:p-5' src={company.Logo} alt={company.CompanyName} />
+                    
                     </div>
                 ))}
             </div>
@@ -55,6 +57,7 @@ export default function CompanyGrid() {
                     <Modal opened={opened} onClose={close} size="lg" centered>
                         {selectedCompany && (
                             <CompanyModalComponent
+                                docID={selectedCompany.id}
                                 companyName={selectedCompany.CompanyName}
                                 team={selectedCompany.Team}
                                 position={selectedCompany.Position}
@@ -80,6 +83,7 @@ export default function CompanyGrid() {
                     >
                         {selectedCompany && (
                             <CompanyModalComponent
+                                docID={selectedCompany.id}
                                 companyName={selectedCompany.CompanyName}
                                 team={selectedCompany.Team}
                                 position={selectedCompany.Position}

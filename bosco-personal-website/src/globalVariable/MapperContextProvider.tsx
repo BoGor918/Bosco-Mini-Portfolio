@@ -4,7 +4,8 @@ import { useState, createContext, useEffect } from "react";
 // firebase
 import { auth, firestore } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
-import { collection, getDocs, query, orderBy, onSnapshot } from 'firebase/firestore'
+import { getStorage, ref, deleteObject } from "firebase/storage";
+import { collection, getDocs, query, orderBy, onSnapshot, deleteDoc, doc } from 'firebase/firestore'
 
 // variable interface
 interface MapperContextType {
@@ -16,6 +17,7 @@ interface MapperContextType {
     skillData: any;
     techStackDataSet: any;
     openURL: (url: string) => void;
+    deleteDocAndStorage: (deleteStoragePath: any, deleteDocPath: any, deleteDocID: any) => void;
 }
 
 // create context
@@ -27,7 +29,8 @@ export const MapperContext = createContext<MapperContextType>({
     projectData: [],
     skillData: [],
     techStackDataSet: [],
-    openURL: () => {},
+    openURL: () => { },
+    deleteDocAndStorage: () => { },
 });
 
 export default function MapperContextProvider(props: any) {
@@ -97,6 +100,18 @@ export default function MapperContextProvider(props: any) {
         window.open(url, "_blank");
     }
 
+    // delete doc and storage
+    const deleteDocAndStorage = (deleteStoragePath: any, deleteDocPath: any, deleteDocID: any) => {
+        const deleteDocRef = doc(firestore, deleteDocPath, deleteDocID)
+        deleteDoc(deleteDocRef)
+
+        const storage = getStorage();
+
+        const desertRef = ref(storage, `${deleteStoragePath}${deleteDocID}`);
+
+        deleteObject(desertRef)
+    }
+
     return (
         // pass the value in provider and return
         <MapperContext.Provider value={{
@@ -107,7 +122,8 @@ export default function MapperContextProvider(props: any) {
             projectData,
             skillData,
             techStackDataSet,
-            openURL
+            openURL,
+            deleteDocAndStorage
         }}>
             {props.children}
         </MapperContext.Provider>
