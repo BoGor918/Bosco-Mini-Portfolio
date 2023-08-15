@@ -145,7 +145,7 @@ export default function Login(): any {
     }, [])
 
     return (
-        authUser !== null ? navigate('/') :
+        authUser !== null ? navigate('/?w=1') :
             loading ? <Loading /> :
                 <div className='bg-white dark:bg-[#0B1A33] flex justify-center items-center h-screen'>
                     <div className='flex flex-col justify-center items-center'>

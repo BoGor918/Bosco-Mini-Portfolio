@@ -13,8 +13,10 @@ function App() {
   const widget = queryParameters.get("w")
 
   useEffect(() => {
-    if (widget !== "1" && widget !== "2" && widget !== "3" && widget !== "4") {
-      window.location.href = "/?w=1";
+    if (window.location.pathname === "/") {
+      if (widget !== "1" && widget !== "2" && widget !== "3" && widget !== "4") {
+        window.location.href = "/?w=1";
+      }
     }
   }, [widget]);
 
