@@ -145,7 +145,7 @@ export default function EducationModalComponent({
 
     setTimeout(() => {
       setShowNotification(false);
-      window.location.reload();
+      window.location.href = "/?w=2";
     }, 1000);
   }
 

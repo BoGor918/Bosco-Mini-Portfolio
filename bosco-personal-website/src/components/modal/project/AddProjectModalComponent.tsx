@@ -60,9 +60,9 @@ export default function AddProjectModalComponent() {
           CreateDate: new Date(),
         }).then(() => {
           setTimeout(() => {
-            setShowNotification(false)
-            window.location.reload()
-          }, 1000)
+            setShowNotification(false);
+            window.location.href = "/?w=3";
+          }, 1000);
         })
       })
     })

@@ -74,9 +74,9 @@ export default function AddCompanyModalComponent() {
           CreateDate: new Date(),
         }).then(() => {
           setTimeout(() => {
-            setShowNotification(false)
-            window.location.reload()
-          }, 1000)
+            setShowNotification(false);
+            window.location.href = "/?w=1";
+          }, 1000);
         })
       })
     })

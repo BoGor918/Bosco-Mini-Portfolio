@@ -64,9 +64,9 @@ export default function AddEducationModalComponent() {
           CreateDate: new Date(),
         }).then(() => {
           setTimeout(() => {
-            setShowNotification(false)
-            window.location.reload()
-          }, 1000)
+            setShowNotification(false);
+            window.location.href = "/?w=2";
+          }, 1000);
         })
       })
     })

@@ -60,7 +60,7 @@ export default function ProjectModalComponent({
 
     setTimeout(() => {
       setShowNotification(false);
-      window.location.reload();
+      window.location.href = "/?w=4";
     }, 1000);
   }
 

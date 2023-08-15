@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 // others
 import { useState, useEffect, useContext } from "react";
+// global variable
 import { MapperContext } from "../../../globalVariable/MapperContextProvider";
 // Mantine
 import { Button, Notification } from "@mantine/core";
@@ -166,7 +167,7 @@ export default function CompanyModalComponent({
 
     setTimeout(() => {
       setShowNotification(false);
-      window.location.reload();
+      window.location.href = "/?w=1";
     }, 1000);
   }
 
