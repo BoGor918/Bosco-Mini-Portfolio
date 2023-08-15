@@ -21,19 +21,6 @@ function App() {
     }
   }, [widget]);
 
-  // set theme color to meta content and body background color
-  useEffect(() => {
-    const themeColorMeta = document.querySelector('meta[name="theme-color"]');
-
-    if (localStorage.getItem('theme') === 'dark') {
-      themeColorMeta?.setAttribute('content', '#0B1A33'); // Set the new theme color
-      document.body.style.backgroundColor = '#0B1A33';
-    } else if (localStorage.getItem('theme') === 'light') {
-      themeColorMeta?.setAttribute('content', '#FFFFFF'); // Set the new theme color
-      document.body.style.backgroundColor = '#FFFFFF';
-    }
-  }, [localStorage.getItem('theme')]);
-
   return (
     <Router>
       <Suspense fallback={<Loading />}>
