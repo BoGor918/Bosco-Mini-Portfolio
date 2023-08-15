@@ -73,22 +73,6 @@ export default function TopComponent() {
         setTheme(theme === "dark" ? "light" : "dark");
     };
 
-    // set theme color to meta content and body background color
-    useEffect(() => {
-        const handleThemeColorChange = () => {
-            const themeColorMeta = document.querySelector('meta[name="theme-color"]');
-
-            if (theme === 'dark') {
-                themeColorMeta?.setAttribute('content', '#0B1A33'); // Set the new theme color
-                document.body.style.backgroundColor = '#0B1A33';
-            } else if (theme === 'light') {
-                themeColorMeta?.setAttribute('content', '#FFFFFF'); // Set the new theme color
-                document.body.style.backgroundColor = '#FFFFFF';
-            }
-        };
-        handleThemeColorChange();
-    }, [theme]);
-
     return (
         <div className='self-center w-full max-w-[365px] sm:max-w-[365px] md:max-w-[365px] lg:max-w-[910px] flex flex-col sm:flex-col md:flex-col lg:flex-row justify-center items-center font-light mt-[5rem]'>
             {/* personal icon */}
