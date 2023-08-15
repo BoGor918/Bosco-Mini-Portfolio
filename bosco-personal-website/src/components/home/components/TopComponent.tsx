@@ -21,7 +21,7 @@ export default function TopComponent() {
     const currentDate = new Date();
     const totalYear = currentDate.getFullYear() - workStartDate.getFullYear();
     // color theme
-    const [theme, setTheme] = useState('light');
+    const [theme, setTheme] = useState('');
     // model hook
     const [opened, { open, close }] = useDisclosure(false);
 
