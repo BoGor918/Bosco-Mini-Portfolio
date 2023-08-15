@@ -43,7 +43,7 @@ export default function EduGrid() {
             {/* school grid */}
             <div className='mx-0 sm:mx-0 md:mx-0 lg:mx-2 grid grid-cols-3 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-1'>
                 {schoolData.map((school: any, i: any) => (
-                    <div key={i} onClick={() => openModal(school)} className='bg-white shadow-md flex justify-center items-center h-[115.66px] sm:h-[115.66px] md:h-[115.66px] lg:h-[298px] cursor-pointer'>
+                    <div key={i} onClick={() => openModal(school)} className='bg-white shadow-md rounded-sm flex justify-center items-center h-[115.66px] sm:h-[115.66px] md:h-[115.66px] lg:h-[298px] cursor-pointer'>
                         <img className='w-full p-4 sm:p-4 md:p-4 lg:p-10' src={school.Logo} alt={school.SchoolName} />
                     </div>
                 ))}
