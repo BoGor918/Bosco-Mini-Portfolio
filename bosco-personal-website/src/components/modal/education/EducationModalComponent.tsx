@@ -3,7 +3,8 @@
 import { useState, useEffect, useContext } from "react";
 import { MapperContext } from "../../../globalVariable/MapperContextProvider";
 // Mantine
-import { Button, Notification } from "@mantine/core";
+import { useDisclosure } from '@mantine/hooks';
+import { Button, LoadingOverlay } from "@mantine/core";
 // icons
 import { MdOutlineCancel } from "react-icons/md";
 
@@ -38,8 +39,8 @@ export default function EducationModalComponent({
   const [resultDate, setResultDate] = useState('')
   // confirm model
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false)
-  // notification hook
-  const [showNotification, setShowNotification] = useState(false);
+  // loading overlay hook
+  const [visible, { toggle }] = useDisclosure(false);
 
   // date function
   useEffect(() => {
@@ -140,11 +141,10 @@ export default function EducationModalComponent({
 
   // notification
   const handleNotification = () => {
-    setShowNotification(true);
+    toggle()
     deleteDocAndStorage("SchoolLogo/", "School/", docID)
 
     setTimeout(() => {
-      setShowNotification(false);
       window.location.href = "/?w=2";
     }, 1000);
   }
@@ -154,6 +154,8 @@ export default function EducationModalComponent({
 
   return (
     <div className='flex flex-col font-light p-3'>
+      {/* loading overlay */}
+      <LoadingOverlay visible={visible} overlayBlur={2} />
       {
         isConfirmModalOpen === false ?
           <>
@@ -189,21 +191,8 @@ export default function EducationModalComponent({
               <Button onClick={handleConfirmModal} size='md' className='bg-[#9A9A9A] hover:bg-[#666666] w-[150px] my-[0.5rem] mx-5'>Back</Button>
               <Button onClick={handleNotification} size='md' className='bg-[#FF0000] hover:bg-[#cc0000] w-[150px] my-[0.5rem] mx-5'>Delete</Button>
             </div>
-            {/* notification */}
-            {
-              showNotification && (
-                <Notification
-                  loading
-                  title={`Deleting ${schoolName} Education`}
-                  withCloseButton={false}
-                >
-                  Please wait until data is deleted, you cannot close this modal
-                </Notification>
-              )
-            }
           </div>
       }
-
     </div>
   )
 }

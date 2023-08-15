@@ -1,11 +1,12 @@
 // others
-import { useState, useContext } from 'react';
+import { useContext } from 'react';
 // global components
 import { MapperContext } from '../../../globalVariable/MapperContextProvider';
 // mantine
 import { useForm } from '@mantine/form';
 import { DateInput } from '@mantine/dates';
-import { TextInput, Button, Checkbox, FileInput, Notification, MultiSelect } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
+import { TextInput, Button, Checkbox, FileInput, LoadingOverlay, MultiSelect } from '@mantine/core';
 // firebase
 import { firestore } from '../../../firebase';
 import { doc, setDoc } from 'firebase/firestore'
@@ -18,8 +19,8 @@ export default function AddCompanyModalComponent() {
   } = useContext(MapperContext);
   // firebase storage
   const storage = getStorage()
-  // notification hook
-  const [showNotification, setShowNotification] = useState(false);
+  // loading overlay hook
+  const [visible, { toggle }] = useDisclosure(false);
   // form hook
   const form = useForm({
     initialValues: {
@@ -51,7 +52,7 @@ export default function AddCompanyModalComponent() {
 
   // add work function
   const AddWork = (work: any) => {
-    setShowNotification(true);
+    toggle();
 
     const today = new Date()
     const timeCode = work.companyName.replace(/\s+/g, '-') + "-" + today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate() + "-" + today.getHours() + "-" + today.getMinutes() + "-" + today.getSeconds()
@@ -74,7 +75,6 @@ export default function AddCompanyModalComponent() {
           CreateDate: new Date(),
         }).then(() => {
           setTimeout(() => {
-            setShowNotification(false);
             window.location.href = "/?w=1";
           }, 1000);
         })
@@ -84,6 +84,8 @@ export default function AddCompanyModalComponent() {
 
   return (
     <div className='flex flex-col font-light'>
+      {/* loading overlay */}
+      <LoadingOverlay visible={visible} overlayBlur={2} />
       <form onSubmit={form.onSubmit((values) => AddWork(values))}>
         {/* date field */}
         {
@@ -386,18 +388,6 @@ export default function AddCompanyModalComponent() {
           <Button type="submit" size='md' className='bg-[#4094F4] w-[300px] my-[0.8rem]'>Add Work</Button>
         </div>
       </form>
-      {/* notification */}
-      {
-        showNotification && (
-          <Notification
-            loading
-            title="Adding New Work"
-            withCloseButton={false}
-          >
-            Please wait until data is uploaded, you cannot close this modal
-          </Notification>
-        )
-      }
     </div>
   )
 }

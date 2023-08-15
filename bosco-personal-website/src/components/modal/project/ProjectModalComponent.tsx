@@ -3,7 +3,8 @@
 import { useState, useEffect, useContext } from "react";
 import { MapperContext } from "../../../globalVariable/MapperContextProvider";
 // Mantine
-import { Button, Notification } from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
+import { Button, LoadingOverlay } from "@mantine/core";
 // icons
 import { MdOutlineCancel } from "react-icons/md";
 
@@ -30,8 +31,8 @@ export default function ProjectModalComponent({
   const [techStackList, setTechStackList] = useState('')
   // confirm model
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false)
-  // notification hook
-  const [showNotification, setShowNotification] = useState(false);
+  // loading overlay hook
+  const [visible, { toggle }] = useDisclosure(false);
 
   // tech stack function
   useEffect(() => {
@@ -55,12 +56,11 @@ export default function ProjectModalComponent({
 
   // notification
   const handleNotification = () => {
-    setShowNotification(true);
+    toggle()
     deleteDocAndStorage("ProjectLogo/", "Project/", docID)
 
     setTimeout(() => {
-      setShowNotification(false);
-      window.location.href = "/?w=4";
+      window.location.href = "/?w=3";
     }, 1000);
   }
 
@@ -69,6 +69,8 @@ export default function ProjectModalComponent({
 
   return (
     <div className='flex flex-col font-light p-3'>
+      {/* loading overlay */}
+      <LoadingOverlay visible={visible} overlayBlur={2} />
       {
         isConfirmModalOpen === false ?
           <>
@@ -86,9 +88,9 @@ export default function ProjectModalComponent({
             <span className={textStyle}><span className='font-medium'>Link(s):<br /></span>
               <span>
                 {
-                  link.map((link: any) => {
+                  link.map((link: any, i: number) => {
                     return (
-                      <span>
+                      <span key={i}>
                         <a href={link} target='_blank' rel='noreferrer' className='text-[#9A9A9A] dark:text-[#94A3B8] hover:underline'>{link}<br /></a>
                       </span>
                     )
@@ -110,18 +112,6 @@ export default function ProjectModalComponent({
               <Button onClick={handleConfirmModal} size='md' className='bg-[#9A9A9A] hover:bg-[#666666] w-[150px] my-[0.5rem] mx-5'>Back</Button>
               <Button onClick={handleNotification} size='md' className='bg-[#FF0000] hover:bg-[#cc0000] w-[150px] my-[0.5rem] mx-5'>Delete</Button>
             </div>
-            {/* notification */}
-            {
-              showNotification && (
-                <Notification
-                  loading
-                  title={`Deleting ${projectName} Project`}
-                  withCloseButton={false}
-                >
-                  Please wait until data is deleted, you cannot close this modal
-                </Notification>
-              )
-            }
           </div>
       }
     </div>

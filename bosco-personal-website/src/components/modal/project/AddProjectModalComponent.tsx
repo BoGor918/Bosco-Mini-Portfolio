@@ -2,7 +2,8 @@
 import { useState, useContext } from 'react';
 // mantine
 import { useForm } from '@mantine/form';
-import { TextInput, Button, FileInput, Notification, Textarea, MultiSelect } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
+import { TextInput, Button, FileInput, Textarea, MultiSelect, LoadingOverlay } from '@mantine/core';
 // firebase
 import { firestore } from '../../../firebase';
 import { doc, setDoc } from 'firebase/firestore'
@@ -17,8 +18,8 @@ export default function AddProjectModalComponent() {
   } = useContext(MapperContext);
   // collect tech stack data variable
   const [data, setData] = useState<{ value: string; label: string }[]>([]);
-  // notification variable
-  const [showNotification, setShowNotification] = useState(false);
+  // loading overlay hook
+  const [visible, { toggle }] = useDisclosure(false);
   // form hook
   const form = useForm({
     initialValues: {
@@ -42,7 +43,7 @@ export default function AddProjectModalComponent() {
 
   // add project function
   const AddProject = (project: any) => {
-    setShowNotification(true);
+    toggle();
 
     const today = new Date()
     const timeCode = project.projectName.replace(/\s+/g, '-') + "-" + today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate() + "-" + today.getHours() + "-" + today.getMinutes() + "-" + today.getSeconds()
@@ -60,7 +61,6 @@ export default function AddProjectModalComponent() {
           CreateDate: new Date(),
         }).then(() => {
           setTimeout(() => {
-            setShowNotification(false);
             window.location.href = "/?w=3";
           }, 1000);
         })
@@ -70,6 +70,8 @@ export default function AddProjectModalComponent() {
 
   return (
     <div className='flex flex-col font-light'>
+      {/* loading overlay */}
+      <LoadingOverlay visible={visible} overlayBlur={2} />
       <form onSubmit={form.onSubmit((values) => AddProject(values))}>
         {/* project name & tech stack */}
         {
@@ -236,23 +238,11 @@ export default function AddProjectModalComponent() {
               />
             </div>
         }
-                  {/* submit button */}
+        {/* submit button */}
         <div className='flex justify-center'>
           <Button type="submit" size='md' className='bg-[#4094F4] w-[300px] my-[0.8rem]'>Add Project</Button>
         </div>
       </form>
-      {/* notification */}
-      {
-        showNotification && (
-          <Notification
-            loading
-            title="Adding New Project"
-            withCloseButton={false}
-          >
-            Please wait until data is uploaded, you cannot close this modal
-          </Notification>
-        )
-      }
     </div>
   )
 }

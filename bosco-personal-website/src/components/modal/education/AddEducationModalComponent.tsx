@@ -1,17 +1,16 @@
-// others
-import { useState } from 'react';
 // mantine
 import { useForm } from '@mantine/form';
 import { DateInput } from '@mantine/dates';
-import { TextInput, Button, Checkbox, FileInput, Notification, Select, NumberInput } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
+import { TextInput, Button, Checkbox, FileInput, LoadingOverlay, Select, NumberInput } from '@mantine/core';
 // firebase
 import { firestore } from '../../../firebase';
 import { doc, setDoc } from 'firebase/firestore'
 import { uploadBytes, ref, getStorage, getDownloadURL } from "firebase/storage"
 
 export default function AddEducationModalComponent() {
-  // notification hook
-  const [showNotification, setShowNotification] = useState(false);
+  // loading overlay hook
+  const [visible, { toggle }] = useDisclosure(false);
   // firebase storage
   const storage = getStorage()
   // form hook
@@ -43,7 +42,7 @@ export default function AddEducationModalComponent() {
 
   // add education function
   const AddEdu = (edu: any) => {
-    setShowNotification(true);
+    toggle()
 
     const today = new Date()
     const timeCode = edu.schoolName.replace(/\s+/g, '-') + "-" + today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate() + "-" + today.getHours() + "-" + today.getMinutes() + "-" + today.getSeconds()
@@ -64,7 +63,6 @@ export default function AddEducationModalComponent() {
           CreateDate: new Date(),
         }).then(() => {
           setTimeout(() => {
-            setShowNotification(false);
             window.location.href = "/?w=2";
           }, 1000);
         })
@@ -74,6 +72,8 @@ export default function AddEducationModalComponent() {
 
   return (
     <div className='flex flex-col font-light'>
+      {/* loading overlay */}
+      <LoadingOverlay visible={visible} overlayBlur={2} />
       <form onSubmit={form.onSubmit((values) => AddEdu(values))}>
         {/* date field */}
         {
@@ -350,19 +350,6 @@ export default function AddEducationModalComponent() {
           <Button type="submit" size='md' className='bg-[#4094F4] w-[300px] my-[0.8rem]'>Add Education</Button>
         </div>
       </form>
-      {/* notification */}
-      {
-        showNotification && (
-          <Notification
-            loading
-            title="Adding New Education"
-            withCloseButton={false}
-          >
-            Please wait until data is uploaded, you cannot close this modal
-          </Notification>
-        )
-      }
-
     </div>
   )
 }

@@ -1,16 +1,15 @@
-// others
-import { useState } from 'react';
 // mantine
 import { useForm } from '@mantine/form';
-import { TextInput, Button, FileInput, Notification } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
+import { TextInput, Button, FileInput, LoadingOverlay } from '@mantine/core';
 // firebase
 import { firestore } from '../../../firebase';
 import { doc, setDoc } from 'firebase/firestore'
 import { uploadBytes, ref, getStorage, getDownloadURL } from "firebase/storage"
 
 export default function AddSkillModalComponent() {
-  // notification variable
-  const [showNotification, setShowNotification] = useState(false);
+  // loading overlay hook
+  const [visible, { toggle }] = useDisclosure(false);
   // form hook
   const form = useForm({
     initialValues: {
@@ -31,7 +30,7 @@ export default function AddSkillModalComponent() {
 
   // add skill function
   const AddSkill = (skill: any) => {
-    setShowNotification(true);
+    toggle()
 
     const today = new Date()
     const timeCode = skill.skillName.replace(/\s+/g, '-') + "-" + today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate() + "-" + today.getHours() + "-" + today.getMinutes() + "-" + today.getSeconds()
@@ -46,8 +45,7 @@ export default function AddSkillModalComponent() {
           CreateDate: new Date(),
         }).then(() => {
           setTimeout(() => {
-            setShowNotification(false)
-            window.location.reload()
+            window.location.href = "/?w=4";
           }, 1000)
         })
       })
@@ -56,6 +54,8 @@ export default function AddSkillModalComponent() {
 
   return (
     <div className='flex flex-col font-light'>
+      {/* loading overlay */}
+      <LoadingOverlay visible={visible} overlayBlur={2} />
       <form onSubmit={form.onSubmit((values) => AddSkill(values))}>
         {/* skill name & logo */}
         {
@@ -122,19 +122,6 @@ export default function AddSkillModalComponent() {
           <Button type="submit" size='md' className='bg-[#4094F4] w-[300px] my-[0.8rem]'>Add Skill</Button>
         </div>
       </form>
-      {/* notification */}
-      {
-        showNotification && (
-          <Notification
-            loading
-            title="Adding New Skill"
-            withCloseButton={false}
-          >
-            Please wait until data is uploaded, you cannot close this modal
-          </Notification>
-        )
-      }
-
     </div>
   )
 }
