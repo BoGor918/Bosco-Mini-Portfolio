@@ -146,7 +146,7 @@ export default function TopComponent() {
                 <div className='flex justify-center sm:justify-center md:justify-center lg:justify-start items-center text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px] my-4'>
                     <span className='text-black dark:text-white mr-4'><CountUp className='text-black dark:text-white font-bold' start={100} end={totalYear} duration={3} /><span className='text-black dark:text-white font-bold'>+</span> Yrs Exp</span>
                     <span className='text-black dark:text-white mx-4'><CountUp className='text-black dark:text-white font-bold' start={100} end={5} duration={3} /><span className='text-black dark:text-white font-bold'>+</span> Projects</span>
-                    <span className='text-black dark:text-white ml-4'><CountUp className='text-black dark:text-white font-bold' start={100} end={10} duration={3} /><span className='text-black dark:text-white font-bold'>+</span> Skills</span>
+                    <span className='text-black dark:text-white ml-4'><CountUp className='text-black dark:text-white font-bold' start={100} end={20} duration={3} /><span className='text-black dark:text-white font-bold'>+</span> Skills</span>
                 </div>
                 {/* col-3 pc */}
                 <div className='hidden sm:hidden md:hidden lg:flex flex-col text-center sm:text-center md:text-center lg:text-start text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px]'>
