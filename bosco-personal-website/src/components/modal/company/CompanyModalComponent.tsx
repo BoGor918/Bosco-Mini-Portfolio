@@ -217,8 +217,7 @@ export default function CompanyModalComponent({
       toggle();
       deleteDocAndStorage("CompanyLogo/", "Company/", docID)
 
-      const originalDocID = docID.split('-');
-      const modifyDocID = originalDocID.slice(2).join('-');
+      const modifyDocID = docID.match(/\d[\d-]*/);
       const timeCode = work.companyName.replace(/\s+/g, '-') + "-" + modifyDocID
 
       const companyLogoRef = ref(storage, "CompanyLogo/" + timeCode);

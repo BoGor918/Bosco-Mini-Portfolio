@@ -65,8 +65,7 @@ export default function SkillModalComponent({
       toggle()
       deleteDocAndStorage("SkillLogo/", "Skill/", docID)
 
-      const originalDocID = docID.split('-');
-      const modifyDocID = originalDocID.slice(2).join('-');
+      const modifyDocID = docID.match(/\d[\d-]*/);
       const timeCode = skill.skillName.replace(/\s+/g, '-') + "-" + modifyDocID
 
       const skillLogoRef = ref(storage, "SkillLogo/" + timeCode);

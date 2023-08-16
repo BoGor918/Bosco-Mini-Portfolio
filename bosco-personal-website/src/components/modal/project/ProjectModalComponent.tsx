@@ -96,8 +96,7 @@ export default function ProjectModalComponent({
       toggle();
       deleteDocAndStorage("ProjectLogo/", "Project/", docID)
 
-      const originalDocID = docID.split('-');
-      const modifyDocID = originalDocID.slice(2).join('-');
+      const modifyDocID = docID.match(/\d[\d-]*/);
       const timeCode = project.projectName.replace(/\s+/g, '-') + "-" + modifyDocID
 
       const projectLogoRef = ref(storage, "ProjectLogo/" + timeCode);

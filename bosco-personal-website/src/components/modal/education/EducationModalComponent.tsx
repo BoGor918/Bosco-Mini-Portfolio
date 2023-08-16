@@ -192,8 +192,7 @@ export default function EducationModalComponent({
       toggle()
       deleteDocAndStorage("SchoolLogo/", "School/", docID)
 
-      const originalDocID = docID.split('-');
-      const modifyDocID = originalDocID.slice(2).join('-');
+      const modifyDocID = docID.match(/\d[\d-]*/);
       const timeCode = edu.schoolName.replace(/\s+/g, '-') + "-" + modifyDocID
 
       const schoolLogoRef = ref(storage, "SchoolLogo/" + timeCode);
