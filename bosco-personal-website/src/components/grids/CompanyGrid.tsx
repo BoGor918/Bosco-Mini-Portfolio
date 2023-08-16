@@ -101,7 +101,6 @@ export default function CompanyGrid() {
                         )}
                     </Modal>
             }
-
         </div>
     );
 }
