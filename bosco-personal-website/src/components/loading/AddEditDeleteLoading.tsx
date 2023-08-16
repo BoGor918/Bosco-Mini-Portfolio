@@ -1,7 +1,7 @@
 // mantine
 import { Loader } from '@mantine/core';
 
-export default function MainLoading() {
+export default function AddEditDeleteLoading() {
     return (
         <div>
             {/* loader on different color theme */}
