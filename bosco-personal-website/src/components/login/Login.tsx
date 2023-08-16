@@ -15,7 +15,7 @@ import PersonalIcon from '../../images/Personal_Icon.png'
 // icons
 import { BiMoon, BiSolidMoon } from "react-icons/bi";
 // page components
-import Loading from '../loading/MainLoading';
+import MainLoading from '../loading/MainLoading';
 import IntroductionModalComponent from '../modal/introduction/IntroductionModalComponent';
 
 export default function Login(): any {
@@ -146,7 +146,7 @@ export default function Login(): any {
 
     return (
         authUser !== null ? navigate('/?w=1') :
-            loading ? <Loading /> :
+            loading ? <MainLoading /> :
                 <div className='bg-white dark:bg-[#0B1A33] flex justify-center items-center h-screen'>
                     <div className='flex flex-col justify-center items-center'>
                         {/* personal icon */}
