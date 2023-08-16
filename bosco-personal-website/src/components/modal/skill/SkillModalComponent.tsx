@@ -49,8 +49,19 @@ export default function SkillModalComponent({
 
   // update skill function
   const UpdateSkill = (skill: any) => {
-    if (skill.skillName !== skillName && skill.logo !== "") {
-      // update skill name and logo at the same time
+    if (skill.logo === "") {
+      // update data without logo
+      toggle()
+
+      updateDoc(doc(firestore, "Skill", docID), {
+        SkillName: skill.skillName,
+      }).then(() => {
+        setTimeout(() => {
+          window.location.href = "/?w=4";
+        }, 1000)
+      })
+    } else if (skill.logo !== "") {
+      // update data with logo
       toggle()
       deleteDocAndStorage("SkillLogo/", "Skill/", docID)
 
@@ -64,41 +75,6 @@ export default function SkillModalComponent({
         getDownloadURL(skillLogoRef).then((url) => {
           setDoc(doc(firestore, "Skill", timeCode), {
             SkillName: skill.skillName,
-            Logo: url,
-            CreateDate: createDate,
-          }).then(() => {
-            setTimeout(() => {
-              window.location.href = "/?w=4";
-            }, 1000)
-          })
-        })
-      })
-    } else if (skill.skillName !== skillName && skill.logo === "") {
-      // update skill name only
-      toggle()
-
-      updateDoc(doc(firestore, "Skill", docID), {
-        SkillName: skill.skillName,
-      }).then(() => {
-        setTimeout(() => {
-          window.location.href = "/?w=4";
-        }, 1000)
-      })
-    } else if (skill.skillName === skillName && skill.logo !== "") { 
-      // update skill logo only
-      toggle()
-      deleteDocAndStorage("SkillLogo/", "Skill/", docID)
-
-      const originalDocID = docID.split('-');
-      const modifyDocID = originalDocID.slice(2).join('-');
-      const timeCode = skill.skillName.replace(/\s+/g, '-') + "-" + modifyDocID
-
-      const skillLogoRef = ref(storage, "SkillLogo/" + timeCode);
-
-      uploadBytes(skillLogoRef, skill.logo).then(() => {
-        getDownloadURL(skillLogoRef).then((url) => {
-          setDoc(doc(firestore, "Skill", timeCode), {
-            SkillName: skillName,
             Logo: url,
             CreateDate: createDate,
           }).then(() => {
@@ -229,6 +205,7 @@ export default function SkillModalComponent({
                       required
                       {...form.getInputProps('logo')}
                     />
+                    {/* current logo */}
                     <img src={logo} alt={skillName} width={80} />
                   </div>
               }
@@ -238,6 +215,7 @@ export default function SkillModalComponent({
                 <Button type="submit" size='md' className='bg-[#4094F4] hover:bg-[#0d6cd9] w-[150px] my-[0.5rem] mx-5'>Update</Button>
               </div>
             </form>
+            {/* delete button */}
             <button onClick={handleDeleteModal} className="ml-auto text-[#FF0000] hover:underline text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px]">Delete Skill</button>
           </div> : <></>
       }

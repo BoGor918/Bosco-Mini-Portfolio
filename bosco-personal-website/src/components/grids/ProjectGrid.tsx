@@ -16,6 +16,7 @@ interface Project {
     Description: string;
     Link: []
     Logo: string;
+    CreateDate: Date;
 }
 
 export default function ProjectGrid() {
@@ -57,6 +58,7 @@ export default function ProjectGrid() {
                                 techStack={selectedProject.TechStack}
                                 link={selectedProject.Link}
                                 logo={selectedProject.Logo}
+                                createDate={selectedProject.CreateDate}
                             />
                         )}
                     </Modal> :
@@ -78,6 +80,7 @@ export default function ProjectGrid() {
                                 techStack={selectedProject.TechStack}
                                 link={selectedProject.Link}
                                 logo={selectedProject.Logo}
+                                createDate={selectedProject.CreateDate}
                             />
                         )}
                     </Modal>
