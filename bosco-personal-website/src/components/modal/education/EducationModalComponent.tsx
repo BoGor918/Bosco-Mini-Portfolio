@@ -78,7 +78,7 @@ export default function EducationModalComponent({
   // date function
   useEffect(() => {
     if (present === true) {
-      setToStartDate(new Date(startDate.seconds * 1000).toLocaleDateString('en-US', { day: '2-digit', month: '2-digit', year: 'numeric' }))
+      setToStartDate(new Date(startDate.seconds * 1000).toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' }))
       setToEndDate("Present")
       // New date instances
       const dt_date1 = new Date(startDate.toDate());
