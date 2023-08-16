@@ -5,8 +5,20 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // page components
 import MainLoading from "./components/loading/MainLoading";
 // lazy load components
-const Home = lazy(() => import('./components/home/Home'));
-const Login = lazy(() => import('./components/login/Login'));
+const Home = lazy(() => {
+  return new Promise<{ default: React.ComponentType<any> }>((resolve) => {
+    setTimeout(() => {
+      resolve(import('./components/home/Home'));
+    }, 300);
+  });
+});
+const Login = lazy(() => {
+  return new Promise<{ default: React.ComponentType<any> }>((resolve) => {
+    setTimeout(() => {
+      resolve(import('./components/login/Login'));
+    }, 300);
+  });
+});
 
 function App() {
   // url parameter

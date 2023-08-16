@@ -15,7 +15,6 @@ import PersonalIcon from '../../images/Personal_Icon.png'
 // icons
 import { BiMoon, BiSolidMoon } from "react-icons/bi";
 // page components
-import MainLoading from '../loading/MainLoading';
 import IntroductionModalComponent from '../modal/introduction/IntroductionModalComponent';
 
 export default function Login(): any {
@@ -33,8 +32,6 @@ export default function Login(): any {
     const [loginPassword, setLoginPassword] = useState<string>('');
     // model hook
     const [opened, { open, close }] = useDisclosure(false);
-    // loading hook
-    const [loading, setLoading] = useState(true);
     // navigate hook
     const navigate = useNavigate()
 
@@ -136,149 +133,140 @@ export default function Login(): any {
         handleThemeColorChange();
     }, [theme]);
 
-    // loading function
-    useEffect(() => {
-        setLoading(true);
-        setTimeout(() => {
-            setLoading(false);
-        }, 500);
-    }, [])
-
     return (
         authUser !== null ? navigate('/?w=1') :
-            loading ? <MainLoading /> :
-                <div className='bg-white dark:bg-[#0B1A33] flex justify-center items-center h-screen'>
-                    <div className='flex flex-col justify-center items-center'>
-                        {/* personal icon */}
-                        <div
-                            onClick={() => open()}
-                            ref={boxRef}
-                            style={
-                                {
-                                    "--angle": "0deg",
-                                    "--border-color": "linear-gradient(var(--angle), #00A3FF, #21FAC6)",
-                                    "--bg-color": "linear-gradient(#131219, #131219)",
-                                } as CSSProperties
-                            }
-                            className="cursor-pointer animate-fade-up animate-delay-0 animate-once flex mb-[1rem] rounded-full border-[3px] border-[#0000] [background:padding-box_var(--bg-color),border-box_var(--border-color)]"
-                        >
-                            <img src={PersonalIcon} className='rounded-full border-[4px] border-white' alt='Personal Icon' width={190} />
-                        </div>
-                        {/* email field */}
-                        {
-                            theme === 'dark' ?
-                                <TextInput
-                                    onChange={(event) => setLoginEmailOrUsername(event.currentTarget.value)}
-                                    onKeyDown={(event) => {
-                                        if (event.key === 'Enter') {
-                                            event.preventDefault();
-                                            Login();
-                                        }
-                                    }}
-                                    className='w-[300px] my-[0.2rem] animate-fade-up animate-delay-75 animate-once'
-                                    size="md"
-                                    label="Email or Username"
-                                    inputWrapperOrder={['label', 'error', 'input', 'description']}
-                                    styles={{
-                                        label: {
-                                            color: "white",
-                                        },
-                                    }}
-                                /> :
-                                <TextInput
-                                    onChange={(event) => setLoginEmailOrUsername(event.currentTarget.value)}
-                                    onKeyDown={(event) => {
-                                        if (event.key === 'Enter') {
-                                            event.preventDefault();
-                                            Login();
-                                        }
-                                    }}
-                                    className='w-[300px] my-[0.2rem] animate-fade-up animate-delay-75 animate-once'
-                                    size="md"
-                                    label="Email or Username"
-                                    inputWrapperOrder={['label', 'error', 'input', 'description']}
-                                />
+            <div className='bg-white dark:bg-[#0B1A33] flex justify-center items-center h-screen'>
+                <div className='flex flex-col justify-center items-center'>
+                    {/* personal icon */}
+                    <div
+                        onClick={() => open()}
+                        ref={boxRef}
+                        style={
+                            {
+                                "--angle": "0deg",
+                                "--border-color": "linear-gradient(var(--angle), #00A3FF, #21FAC6)",
+                                "--bg-color": "linear-gradient(#131219, #131219)",
+                            } as CSSProperties
                         }
-                        {/* password field */}
-                        {
-                            theme === 'dark' ?
-                                <TextInput
-                                    onChange={(event) => setLoginPassword(event.currentTarget.value)}
-                                    onKeyDown={(event) => {
-                                        if (event.key === 'Enter') {
-                                            event.preventDefault();
-                                            Login();
-                                        }
-                                    }}
-                                    type='password'
-                                    className='w-[300px] my-[0.2rem] animate-fade-up animate-delay-100 animate-once'
-                                    size="md"
-                                    label="Password"
-                                    inputWrapperOrder={['label', 'error', 'input', 'description']}
-                                    styles={{
-                                        label: {
-                                            color: "white",
-                                        },
-                                    }}
-                                /> :
-                                <TextInput
-                                    onChange={(event) => setLoginPassword(event.currentTarget.value)}
-                                    onKeyDown={(event) => {
-                                        if (event.key === 'Enter') {
-                                            event.preventDefault();
-                                            Login();
-                                        }
-                                    }}
-                                    type='password'
-                                    className='w-[300px] my-[0.2rem] animate-fade-up animate-delay-100 animate-once'
-                                    size="md"
-                                    label="Password"
-                                    inputWrapperOrder={['label', 'error', 'input', 'description']}
-                                />
-                        }
-                        {/* login button */}
-                        <Button onClick={Login} size='md' className='bg-[#4094F4] w-[300px] my-[0.5rem] animate-fade-up animate-delay-150 animate-once'>Login</Button>
-                        {/* sec line */}
-                        <div className='text-[#9A9A9A] dark:text-[#94A3B8] animate-fade-up animate-delay-200 animate-once flex justify-center items-center w-[300px] bg-[#9A9A9A] dark:bg-[#94A3B8] h-[0.5px] my-[1.5rem]'>
-                            <span className='bg-white dark:bg-[#0B1A33] px-2'>Or</span>
-                        </div>
-                        {/* back to home page */}
-                        <div className='text-[#9A9A9A] dark:text-[#94A3B8] animate-fade-up animate-delay-300 animate-once'>
-                            <span>Back To <button className='underline' onClick={() => navigate("/")}>Home Page</button></span>
-                        </div>
-                        {/* theme button */}
-                        <div className='flex items-center mt-4 animate-fade-up animate-delay-500 animate-once'>
-                            <button onClick={handleThemeSwitch}>
-                                {
-                                    theme === 'light' ?
-                                        <BiMoon className='text-[22px] sm:text-[22px] md:text-[22px] lg:text-[24px]' /> :
-                                        <BiSolidMoon className='text-white text-[22px] sm:text-[22px] md:text-[22px] lg:text-[24px]' />
-                                }
-                            </button>
-                        </div>
+                        className="cursor-pointer animate-fade-up animate-delay-0 animate-once flex mb-[1rem] rounded-full border-[3px] border-[#0000] [background:padding-box_var(--bg-color),border-box_var(--border-color)]"
+                    >
+                        <img src={PersonalIcon} className='rounded-full border-[4px] border-white' alt='Personal Icon' width={190} />
                     </div>
-                    {/* modal components */}
+                    {/* email field */}
                     {
-                        localStorage.getItem('theme') === "light" ?
-                            <Modal opened={opened} onClose={close} size="lg" title="About This Website" centered>
-                                <IntroductionModalComponent />
-                            </Modal> :
-                            <Modal opened={opened} onClose={close} size="lg" title="About This Website" centered
-                                styles={{
-                                    header: {
-                                        backgroundColor: "#0B1A33",
-                                    },
-                                    content: {
-                                        backgroundColor: "#0B1A33",
-                                    },
-                                    title: {
-                                        color: "#94A3B8",
+                        theme === 'dark' ?
+                            <TextInput
+                                onChange={(event) => setLoginEmailOrUsername(event.currentTarget.value)}
+                                onKeyDown={(event) => {
+                                    if (event.key === 'Enter') {
+                                        event.preventDefault();
+                                        Login();
                                     }
                                 }}
-                            >
-                                <IntroductionModalComponent />
-                            </Modal>
+                                className='w-[300px] my-[0.2rem] animate-fade-up animate-delay-75 animate-once'
+                                size="md"
+                                label="Email or Username"
+                                inputWrapperOrder={['label', 'error', 'input', 'description']}
+                                styles={{
+                                    label: {
+                                        color: "white",
+                                    },
+                                }}
+                            /> :
+                            <TextInput
+                                onChange={(event) => setLoginEmailOrUsername(event.currentTarget.value)}
+                                onKeyDown={(event) => {
+                                    if (event.key === 'Enter') {
+                                        event.preventDefault();
+                                        Login();
+                                    }
+                                }}
+                                className='w-[300px] my-[0.2rem] animate-fade-up animate-delay-75 animate-once'
+                                size="md"
+                                label="Email or Username"
+                                inputWrapperOrder={['label', 'error', 'input', 'description']}
+                            />
                     }
+                    {/* password field */}
+                    {
+                        theme === 'dark' ?
+                            <TextInput
+                                onChange={(event) => setLoginPassword(event.currentTarget.value)}
+                                onKeyDown={(event) => {
+                                    if (event.key === 'Enter') {
+                                        event.preventDefault();
+                                        Login();
+                                    }
+                                }}
+                                type='password'
+                                className='w-[300px] my-[0.2rem] animate-fade-up animate-delay-100 animate-once'
+                                size="md"
+                                label="Password"
+                                inputWrapperOrder={['label', 'error', 'input', 'description']}
+                                styles={{
+                                    label: {
+                                        color: "white",
+                                    },
+                                }}
+                            /> :
+                            <TextInput
+                                onChange={(event) => setLoginPassword(event.currentTarget.value)}
+                                onKeyDown={(event) => {
+                                    if (event.key === 'Enter') {
+                                        event.preventDefault();
+                                        Login();
+                                    }
+                                }}
+                                type='password'
+                                className='w-[300px] my-[0.2rem] animate-fade-up animate-delay-100 animate-once'
+                                size="md"
+                                label="Password"
+                                inputWrapperOrder={['label', 'error', 'input', 'description']}
+                            />
+                    }
+                    {/* login button */}
+                    <Button onClick={Login} size='md' className='bg-[#4094F4] w-[300px] my-[0.5rem] animate-fade-up animate-delay-150 animate-once'>Login</Button>
+                    {/* sec line */}
+                    <div className='text-[#9A9A9A] dark:text-[#94A3B8] animate-fade-up animate-delay-200 animate-once flex justify-center items-center w-[300px] bg-[#9A9A9A] dark:bg-[#94A3B8] h-[0.5px] my-[1.5rem]'>
+                        <span className='bg-white dark:bg-[#0B1A33] px-2'>Or</span>
+                    </div>
+                    {/* back to home page */}
+                    <div className='text-[#9A9A9A] dark:text-[#94A3B8] animate-fade-up animate-delay-300 animate-once'>
+                        <span>Back To <button className='underline' onClick={() => navigate("/")}>Home Page</button></span>
+                    </div>
+                    {/* theme button */}
+                    <div className='flex items-center mt-4 animate-fade-up animate-delay-500 animate-once'>
+                        <button onClick={handleThemeSwitch}>
+                            {
+                                theme === 'light' ?
+                                    <BiMoon className='text-[22px] sm:text-[22px] md:text-[22px] lg:text-[24px]' /> :
+                                    <BiSolidMoon className='text-white text-[22px] sm:text-[22px] md:text-[22px] lg:text-[24px]' />
+                            }
+                        </button>
+                    </div>
                 </div>
+                {/* modal components */}
+                {
+                    localStorage.getItem('theme') === "light" ?
+                        <Modal opened={opened} onClose={close} size="lg" title="About This Website" centered>
+                            <IntroductionModalComponent />
+                        </Modal> :
+                        <Modal opened={opened} onClose={close} size="lg" title="About This Website" centered
+                            styles={{
+                                header: {
+                                    backgroundColor: "#0B1A33",
+                                },
+                                content: {
+                                    backgroundColor: "#0B1A33",
+                                },
+                                title: {
+                                    color: "#94A3B8",
+                                }
+                            }}
+                        >
+                            <IntroductionModalComponent />
+                        </Modal>
+                }
+            </div>
     )
 }

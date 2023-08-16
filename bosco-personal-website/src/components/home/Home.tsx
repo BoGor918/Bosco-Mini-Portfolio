@@ -1,7 +1,7 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable react-hooks/exhaustive-deps */
 // others
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 // firebase
 import { auth } from "../../firebase";
@@ -10,13 +10,10 @@ import { signOut } from "firebase/auth";
 import TopComponent from "./components/TopComponent";
 import MiddleComponent from "./components/MiddleComponent";
 import BottomComponent from "./components/BottomComponent";
-import MainLoading from "../loading/MainLoading";
 
 export default function Home() {
     // navigate hook
     const navigate = useNavigate();
-    // loading hook
-    const [loading, setLoading] = useState(true);
 
     // sign out function
     useEffect(() => {
@@ -32,25 +29,12 @@ export default function Home() {
         }
     }, []);
 
-    // loading function
-    useEffect(() => {
-        setLoading(true);
-        setTimeout(() => {
-            setLoading(false);
-        }, 1000);
-    }, [])
-
     return (
-        <>
-            {
-                loading ? <MainLoading /> :
-                    <div className="bg-white dark:bg-[#0B1A33] flex flex-col overflow-hidden">
-                        {/* page components */}
-                        <TopComponent />
-                        <MiddleComponent />
-                        <BottomComponent />
-                    </div>
-            }
-        </>
+        <div className="bg-white dark:bg-[#0B1A33] flex flex-col overflow-hidden">
+            {/* page components */}
+            <TopComponent />
+            <MiddleComponent />
+            <BottomComponent />
+        </div>
     );
 }
