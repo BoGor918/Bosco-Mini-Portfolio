@@ -19,6 +19,7 @@ interface School {
     EndDate: any;
     Present: boolean;
     Logo: string;
+    CreateDate: Date;
 }
 
 export default function EduGrid() {
@@ -63,6 +64,7 @@ export default function EduGrid() {
                                 endDate={selectedSchool.EndDate}
                                 present={selectedSchool.Present}
                                 logo={selectedSchool.Logo}
+                                createDate={selectedSchool.CreateDate}
                             />
                         )}
                     </Modal> :
@@ -87,6 +89,7 @@ export default function EduGrid() {
                                 endDate={selectedSchool.EndDate}
                                 present={selectedSchool.Present}
                                 logo={selectedSchool.Logo}
+                                createDate={selectedSchool.CreateDate}
                             />
                         )}
                     </Modal>
