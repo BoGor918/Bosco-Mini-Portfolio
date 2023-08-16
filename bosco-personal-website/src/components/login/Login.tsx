@@ -15,7 +15,7 @@ import PersonalIcon from '../../images/Personal_Icon.png'
 // icons
 import { BiMoon, BiSolidMoon } from "react-icons/bi";
 // page components
-import Loading from '../loading/Loading';
+import Loading from '../loading/MainLoading';
 import IntroductionModalComponent from '../modal/introduction/IntroductionModalComponent';
 
 export default function Login(): any {

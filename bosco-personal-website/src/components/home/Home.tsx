@@ -10,7 +10,7 @@ import { signOut } from "firebase/auth";
 import TopComponent from "./components/TopComponent";
 import MiddleComponent from "./components/MiddleComponent";
 import BottomComponent from "./components/BottomComponent";
-import Loading from "../loading/Loading";
+import MainLoading from "../loading/MainLoading";
 
 export default function Home() {
     // navigate hook
@@ -43,7 +43,7 @@ export default function Home() {
     return (
         <>
             {
-                loading ? <Loading /> :
+                loading ? <MainLoading /> :
                     <div className="bg-white dark:bg-[#0B1A33] flex flex-col overflow-hidden">
                         {/* page components */}
                         <TopComponent />

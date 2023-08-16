@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 // mantine
 import { Loader } from '@mantine/core';
 
-export default function Loading() {
+export default function MainLoading() {
     // set theme color to meta content and body background color
     useEffect(() => {
         const handleThemeColorChange = () => {

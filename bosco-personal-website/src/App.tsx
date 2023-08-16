@@ -3,7 +3,7 @@
 import { lazy, Suspense, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // page components
-import Loading from "./components/loading/Loading";
+import MainLoading from "./components/loading/MainLoading";
 // lazy load components
 const Home = lazy(() => import('./components/home/Home'));
 const Login = lazy(() => import('./components/login/Login'));
@@ -23,7 +23,7 @@ function App() {
 
   return (
     <Router>
-      <Suspense fallback={<Loading />}>
+      <Suspense fallback={<MainLoading />}>
         <Routes>
           {/* link setup */}
           <Route path="/?w=1" element={<Home />} />
