@@ -331,7 +331,7 @@ export default function ProjectModalComponent({
               {/* project logo */}
               {
                 localStorage.getItem("theme") === "light" ?
-                  <div className='flex flex-col sm:flex-col md:flex-col lg:flex-row'>
+                  <div className='flex flex-col'>
                     <FileInput
                       className='w-[202.3px] my-[0.8rem] mr-0 sm:mr-0 md:mr-0 lg:mr-3'
                       placeholder='Select Image'
@@ -342,6 +342,8 @@ export default function ProjectModalComponent({
                       required
                       {...form.getInputProps('logo')}
                     />
+                    {/* current logo */}
+                    <img src={logo} alt={projectName} width={150} />
                   </div> :
                   <div className='flex flex-col'>
                     <FileInput

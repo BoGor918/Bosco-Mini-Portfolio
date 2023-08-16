@@ -169,6 +169,8 @@ export default function SkillModalComponent({
                       required
                       {...form.getInputProps('logo')}
                     />
+                    {/* current logo */}
+                    <img src={logo} alt={skillName} width={80} />
                   </div> :
                   <div className='flex flex-col'>
                     <TextInput

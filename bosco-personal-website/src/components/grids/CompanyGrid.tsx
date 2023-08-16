@@ -21,6 +21,7 @@ interface Company {
     EndDate: any;
     Present: boolean;
     Logo: string;
+    CreateDate: Date;
 }
 
 export default function CompanyGrid() {
@@ -68,6 +69,7 @@ export default function CompanyGrid() {
                                 endDate={selectedCompany.EndDate}
                                 present={selectedCompany.Present}
                                 logo={selectedCompany.Logo}
+                                createDate={selectedCompany.CreateDate}
                             />
                         )}
                     </Modal> :
@@ -94,6 +96,7 @@ export default function CompanyGrid() {
                                 endDate={selectedCompany.EndDate}
                                 present={selectedCompany.Present}
                                 logo={selectedCompany.Logo}
+                                createDate={selectedCompany.CreateDate}
                             />
                         )}
                     </Modal>

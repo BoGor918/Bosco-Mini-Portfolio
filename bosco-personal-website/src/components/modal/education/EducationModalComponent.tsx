@@ -70,6 +70,11 @@ export default function EducationModalComponent({
   // firebase storage
   const storage = getStorage()
 
+  // set end date to empty string if present is true
+  if (form.values.present === true) {
+    form.values.endDate = ""
+  }
+
   // date function
   useEffect(() => {
     if (present === true) {
@@ -525,7 +530,7 @@ export default function EducationModalComponent({
               {/* school logo input */}
               {
                 localStorage.getItem('theme') === "light" ?
-                  <div className='flex flex-col sm:flex-col md:flex-col lg:flex-row'>
+                  <div className='flex flex-col'>
                     <FileInput
                       className='my-[0.8rem] w-[202.3px]'
                       placeholder='Select Image'
@@ -536,6 +541,8 @@ export default function EducationModalComponent({
                       required
                       {...form.getInputProps('logo')}
                     />
+                    {/* current logo */}
+                    <img src={logo} alt={schoolName} width={150} />
                   </div> :
                   <div className='flex flex-col'>
                     <FileInput
