@@ -13,6 +13,7 @@ interface Skill {
     id: string;
     SkillName: string;
     Logo: string;
+    CreateDate: Date;
 }
 
 export default function SkillGrid() {
@@ -51,6 +52,7 @@ export default function SkillGrid() {
                                 docID={selectedSkill.id}
                                 skillName={selectedSkill.SkillName}
                                 logo={selectedSkill.Logo}
+                                createDate={selectedSkill.CreateDate}
                             />
                         )}
                     </Modal> :
@@ -69,6 +71,7 @@ export default function SkillGrid() {
                                 docID={selectedSkill.id}
                                 skillName={selectedSkill.SkillName}
                                 logo={selectedSkill.Logo}
+                                createDate={selectedSkill.CreateDate}
                             />
                         )}
                     </Modal>

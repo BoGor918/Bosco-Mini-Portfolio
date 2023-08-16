@@ -85,10 +85,10 @@ export default function AddCompanyModalComponent() {
   return (
     <div className='flex flex-col font-light'>
       {/* loading overlay */}
-            {
+      {
         localStorage.getItem("theme") === "light" ?
-        <LoadingOverlay visible={visible} overlayBlur={2} /> :
-        <LoadingOverlay visible={visible} overlayBlur={2} overlayColor="#0B1A33" />
+          <LoadingOverlay visible={visible} overlayBlur={2} /> :
+          <LoadingOverlay visible={visible} overlayBlur={2} overlayColor="#0B1A33" />
       }
       <form onSubmit={form.onSubmit((values) => AddWork(values))}>
         {/* date field */}
