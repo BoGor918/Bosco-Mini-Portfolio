@@ -5,3 +5,6 @@
 2. cd bosco-personal-website
 3. npm i
 4. npm start
+
+# Deployed Link
+https://cheungtszlai.netlify.app/
