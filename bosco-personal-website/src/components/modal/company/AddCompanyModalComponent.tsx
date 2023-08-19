@@ -124,6 +124,7 @@ export default function AddCompanyModalComponent() {
                   size='md'
                   className='w-full my-[0.8rem] ml-0 sm:ml-0 md:ml-0 lg:ml-3'
                   disabled={form.values.present}
+                  maxDate={new Date()}
                   minDate={new Date(form.values.startDate)}
                   clearable
                   required
@@ -164,6 +165,7 @@ export default function AddCompanyModalComponent() {
                   size='md'
                   className='w-full my-[0.8rem] ml-0 sm:ml-0 md:ml-0 lg:ml-3'
                   disabled={form.values.present}
+                  maxDate={new Date()}
                   minDate={new Date(form.values.startDate)}
                   clearable
                   styles={{
