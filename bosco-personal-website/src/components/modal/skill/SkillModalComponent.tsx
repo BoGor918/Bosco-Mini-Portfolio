@@ -28,6 +28,8 @@ export default function SkillModalComponent({
   const {
     authUser,
     deleteDocAndStorage,
+    companyData,
+    projectData,
   } = useContext(MapperContext);
   // confirm model
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(true)
@@ -53,6 +55,33 @@ export default function SkillModalComponent({
       // update data without logo
       toggle()
 
+      // update all company data that contain the skill set name
+      companyData.forEach((company: any) => {
+        const companyRef = doc(firestore, "Company", company.id);
+
+        for (let i = 0; i < company.SkillSets.length; i++) {
+          if (company.SkillSets[i] === skillName) {
+            updateDoc(companyRef, {
+              SkillSets: [...company.SkillSets.slice(0, i), skill.skillName, ...company.SkillSets.slice(i + 1)],
+            })
+          }
+        }
+      })
+
+      // update all project data that contain the skill set name
+      projectData.forEach((project: any) => {
+        const projectRef = doc(firestore, "Project", project.id);
+
+        for (let i = 0; i < project.TechStack.length; i++) {
+          if (project.TechStack[i] === skillName) {
+            updateDoc(projectRef, {
+              TechStack: [...project.TechStack.slice(0, i), skill.skillName, ...project.TechStack.slice(i + 1)],
+            })
+          }
+        }
+      })
+
+      // update doc
       updateDoc(doc(firestore, "Skill", docID), {
         SkillName: skill.skillName,
       }).then(() => {
@@ -70,6 +99,33 @@ export default function SkillModalComponent({
 
       const skillLogoRef = ref(storage, "SkillLogo/" + timeCode);
 
+      // update all company data that contain the skill set name
+      companyData.forEach((company: any) => {
+        const companyRef = doc(firestore, "Company", company.id);
+
+        for (let i = 0; i < company.SkillSets.length; i++) {
+          if (company.SkillSets[i] === skillName) {
+            updateDoc(companyRef, {
+              SkillSets: [...company.SkillSets.slice(0, i), skill.skillName, ...company.SkillSets.slice(i + 1)],
+            })
+          }
+        }
+      })
+
+      // update all project data that contain the skill set name
+      projectData.forEach((project: any) => {
+        const projectRef = doc(firestore, "Project", project.id);
+
+        for (let i = 0; i < project.TechStack.length; i++) {
+          if (project.TechStack[i] === skillName) {
+            updateDoc(projectRef, {
+              TechStack: [...project.TechStack.slice(0, i), skill.skillName, ...project.TechStack.slice(i + 1)],
+            })
+          }
+        }
+      })
+
+      // update doc
       uploadBytes(skillLogoRef, skill.logo).then(() => {
         getDownloadURL(skillLogoRef).then((url) => {
           setDoc(doc(firestore, "Skill", timeCode), {
