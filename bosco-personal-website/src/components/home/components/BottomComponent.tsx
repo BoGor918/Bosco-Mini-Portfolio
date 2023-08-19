@@ -50,7 +50,7 @@ export default function BottomComponent() {
         <div className='self-center w-full max-w-[365px] sm:max-w-[355px] md:max-w-[355px] lg:max-w-[910px] flex flex-col items-center justify-center font-light mb-[5rem]'>
             <nav className='py-[1rem] flex flex-col justify-between items-center sticky top-0 z-10 bg-white dark:bg-[#0B1A33] w-full max-w-[365px] sm:max-w-[355px] md:max-w-[355px] lg:max-w-[910px]'>
                 {/* nav line */}
-                <div className='animate-fade-up animate-delay-200 animate-once flex flex-col justify-end items-end'>
+                <div className='overflow-hidden animate-fade-up animate-delay-200 animate-once flex flex-col justify-end items-end'>
                     {/* Add Button= */}
                     {
                         authUser !== null ?
