@@ -37,10 +37,10 @@ export default function BottomComponent() {
     }
 
     // style variable
-    const selectedStyle = "opacity-100 w-[50px] sm:w-[50px] md:w-[50px] lg:w-[125px] h-[2px] bg-[#9a9a9a] dark:bg-white mt-[0.5px] rounded-full transition duration-500 ease-in-out"
-    const unSelectedStyle = "opacity-0 w-[50px] sm:w-[50px] md:w-[50px] lg:w-[125px] h-[2px] bg-[#9a9a9a] dark:bg-[#94A3B8] mt-[0.5px] rounded-full transition duration-500 ease-in-out"
-    const selected3Style = "opacity-100 w-[50px] sm:w-[50px] md:w-[50px] lg:w-[150px] h-[2px] bg-[#9a9a9a] dark:bg-white mt-[0.5px] rounded-full transition duration-500 ease-in-out"
-    const unSelected3Style = "opacity-0 w-[50px] sm:w-[50px] md:w-[50px] lg:w-[150px] h-[2px] bg-[#9a9a9a] dark:bg-[#94A3B8] mt-[0.5px] rounded-full transition duration-500 ease-in-out"
+    const selectedStyle = "opacity-100 w-[50px] sm:w-[50px] md:w-[50px] lg:w-[125px] h-[2px] bg-[#9a9a9a] dark:bg-white mt-[-0.76px] rounded-full transition duration-500 ease-in-out"
+    const unSelectedStyle = "opacity-0 w-[50px] sm:w-[50px] md:w-[50px] lg:w-[125px] h-[2px] bg-[#9a9a9a] dark:bg-[#94A3B8] mt-[-0.76px] rounded-full transition duration-500 ease-in-out"
+    const selected3Style = "opacity-100 w-[50px] sm:w-[50px] md:w-[50px] lg:w-[150px] h-[2px] bg-[#9a9a9a] dark:bg-white mt-[-0.76px] rounded-full transition duration-500 ease-in-out"
+    const unSelected3Style = "opacity-0 w-[50px] sm:w-[50px] md:w-[50px] lg:w-[150px] h-[2px] bg-[#9a9a9a] dark:bg-[#94A3B8] mt-[-0.76px] rounded-full transition duration-500 ease-in-out"
     const iconStyleSelected = "text-[#9A9A9A] dark:text-white"
     const iconStyleUnSelected = "text-[#9A9A9A] dark:text-[#94A3B8]"
     const textSytleSelected = "ml-1 mt-[0.3rem] hidden sm:hidden md:hidden lg:block text-[#9A9A9A] dark:text-white"
