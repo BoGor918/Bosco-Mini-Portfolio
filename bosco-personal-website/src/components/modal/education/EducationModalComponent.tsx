@@ -309,6 +309,8 @@ export default function EducationModalComponent({
                         label="Start Date"
                         size='md'
                         className='w-full my-[0.8rem] mr-0 sm:mr-0 md:mr-0 lg:mr-3'
+                        maxDate={new Date()}
+                        clearable
                         required
                         {...form.getInputProps('startDate')}
                       />
@@ -325,6 +327,8 @@ export default function EducationModalComponent({
                         className='w-full my-[0.8rem] ml-0 sm:ml-0 md:ml-0 lg:ml-3'
                         disabled={form.values.present}
                         minDate={new Date(form.values.startDate)}
+                        maxDate={new Date()}
+                        clearable
                         required
                         {...form.getInputProps('endDate')}
                       />
@@ -346,6 +350,8 @@ export default function EducationModalComponent({
                             color: "white",
                           },
                         }}
+                        maxDate={new Date()}
+                        clearable
                         required
                         {...form.getInputProps('startDate')}
                       />
@@ -362,6 +368,8 @@ export default function EducationModalComponent({
                         className='w-full my-[0.8rem] ml-0 sm:ml-0 md:ml-0 lg:ml-3'
                         disabled={form.values.present}
                         minDate={new Date(form.values.startDate)}
+                        maxDate={new Date()}
+                        clearable
                         styles={{
                           label: {
                             color: "white",
