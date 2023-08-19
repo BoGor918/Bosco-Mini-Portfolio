@@ -1,5 +1,5 @@
 // others
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 // global components
 import { MapperContext } from "../../../globalVariable/MapperContextProvider";
 // icons
