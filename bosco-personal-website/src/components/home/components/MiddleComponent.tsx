@@ -18,7 +18,7 @@ export default function MiddleComponent() {
     const iconBoxStyle = "flex flex-col mx-[1.1rem] sm:mx-[1.1rem] md:mx-[1.1rem] lg:mx-[2rem]"
 
     return (
-        <div className="self-center w-full max-w-[415px] sm:max-w-[415px] md:max-w-[415px] lg:max-w-[910px] animate-fade-up animate-delay-150 animate-once ml-[0px] sm:md:ml-[0px] md:ml-[0px] lg:ml-[30px] mt-[2rem] sm:mt-[2rem] md:mt-[2rem] lg:mt-[4rem] mb-[3rem]">
+        <div className="self-center w-full max-w-[415px] sm:max-w-[415px] md:max-w-[415px] lg:max-w-[910px] animate-fade-up animate-delay-150 animate-once ml-[0px] sm:md:ml-[0px] md:ml-[0px] lg:ml-[30px] mt-[2rem] sm:mt-[2rem] md:mt-[2rem] lg:mt-[4rem] mb-[2rem] sm:mb-[2rem] md:mb-[2rem] lg:mb-[3rem]">
             <div className="flex overflow-x-scroll scroll-smooth no-scrollbar">
                 {/* instragm box */}
                 <div className={iconBoxStyle} style={{ flexBasis: "auto", flexGrow: 0, flexShrink: 0 }}>
