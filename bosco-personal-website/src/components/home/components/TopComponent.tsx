@@ -62,7 +62,9 @@ export default function TopComponent() {
 
         if (storedTheme) {
             setTheme(storedTheme);
-            themeColorMeta?.setAttribute('content', storedTheme === "dark" ? "#0B1A33" : "#FFFFFF");
+            storedTheme === "dark" ?
+                themeColorMeta?.setAttribute('content', "#0B1A33") :
+                themeColorMeta?.setAttribute('content', "#FFFFFF");
         } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
             setTheme('dark');
             themeColorMeta?.setAttribute('content', "#0B1A33");
