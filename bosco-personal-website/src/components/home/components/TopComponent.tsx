@@ -43,6 +43,19 @@ export default function TopComponent() {
         requestAnimationFrame(updateAnimation);
     }, []);
 
+    // set color theme from local storage
+    useEffect(() => {
+        const storedTheme = localStorage.getItem('theme');
+
+        if (storedTheme) {
+            setTheme(storedTheme);
+        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            setTheme('dark');
+        } else {
+            setTheme('light');
+        }
+    }, []);
+
     // set color theme to local storage
     useEffect(() => {
         if (theme === "dark") {
@@ -50,26 +63,8 @@ export default function TopComponent() {
         } else {
             document.documentElement.classList.remove("dark");
         }
-
         localStorage.setItem('theme', theme);
     }, [theme]);
-
-    // set color theme from local storage
-    useEffect(() => {
-        const storedTheme = localStorage.getItem('theme');
-
-        if (storedTheme) {
-            setTheme(storedTheme);
-        }
-
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            setTheme('dark');
-        } 
-        
-        if (window.matchMedia('(prefers-color-scheme: light)').matches) {
-            setTheme('light');
-        }
-    }, []);
 
     // set theme color to meta content and body background color
     useEffect(() => {
@@ -79,10 +74,10 @@ export default function TopComponent() {
 
             if (themeColorMeta && theme === 'dark') {
                 themeColorMeta.setAttribute('content', '#0B1A33'); // Set the new theme color
-                // document.body.style.backgroundColor = '#0B1A33';
+                document.body.style.backgroundColor = '#0B1A33';
             } else if (themeColorMeta && theme === 'light') {
                 themeColorMeta?.setAttribute('content', '#FFFFFF'); // Set the new theme color
-                // document.body.style.backgroundColor = '#FFFFFF';
+                document.body.style.backgroundColor = '#FFFFFF';
             }
         };
         handleThemeColorChange();
