@@ -24,6 +24,8 @@ export default function TopComponent() {
     const [theme, setTheme] = useState('');
     // model hook
     const [opened, { open, close }] = useDisclosure(false);
+    // theme color meta
+    const themeColorMeta = document.querySelector('meta[name="theme-color"]');
 
     // icon box animation
     useEffect(() => {
@@ -43,19 +45,6 @@ export default function TopComponent() {
         requestAnimationFrame(updateAnimation);
     }, []);
 
-    // set color theme from local storage
-    useEffect(() => {
-        const storedTheme = localStorage.getItem('theme');
-
-        if (storedTheme) {
-            setTheme(storedTheme);
-        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            setTheme('dark');
-        } else {
-            setTheme('light');
-        }
-    }, []);
-
     // set color theme to local storage
     useEffect(() => {
         if (theme === "dark") {
@@ -64,21 +53,32 @@ export default function TopComponent() {
             document.documentElement.classList.remove("dark");
         }
 
-        // Save the current theme color to local storage
         localStorage.setItem('theme', theme);
     }, [theme]);
+
+    // set color theme from local storage
+    useEffect(() => {
+        const storedTheme = localStorage.getItem('theme');
+
+        if (storedTheme) {
+            setTheme(storedTheme);
+            themeColorMeta?.setAttribute('content', storedTheme === "dark" ? "#0B1A33" : "#FFFFFF");
+        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            setTheme('dark');
+            themeColorMeta?.setAttribute('content', "#0B1A33");
+        } else {
+            setTheme('light');
+            themeColorMeta?.setAttribute('content', "#FFFFFF");
+        }
+    }, []);
 
     // set theme color to meta content and body background color
     useEffect(() => {
         const handleThemeColorChange = () => {
-            const themeColorMeta = document.querySelector('meta[name="theme-color"]');
-
             if (themeColorMeta && theme === 'dark') {
                 themeColorMeta.setAttribute('content', '#0B1A33'); // Set the new theme color
-                document.body.style.backgroundColor = '#0B1A33';
             } else if (themeColorMeta && theme === 'light') {
                 themeColorMeta?.setAttribute('content', '#FFFFFF'); // Set the new theme color
-                document.body.style.backgroundColor = '#FFFFFF';
             }
         };
         handleThemeColorChange();
