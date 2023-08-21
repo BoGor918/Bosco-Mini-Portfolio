@@ -69,6 +69,7 @@ export default function TopComponent() {
             document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#FFFFFF')
         }
 
+        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === "dark" ? '#0B1A33' : '#FFFFFF')
         localStorage.setItem('theme', theme);
     }, [theme]);
 
