@@ -47,30 +47,30 @@ export default function TopComponent() {
     useEffect(() => {
         const storedTheme = localStorage.getItem('theme');
         const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      
+
         if (storedTheme) {
-          setTheme(storedTheme);
+            setTheme(storedTheme);
         } else if (prefersDarkMode) {
-          setTheme('dark');
+            setTheme('dark');
         } else {
-          setTheme('light');
+            setTheme('light');
         }
-      }, []);
-      
-      // color theme
-      useEffect(() => {
+    }, []);
+
+    // color theme
+    useEffect(() => {
         if (theme === 'dark') {
-          document.documentElement.classList.add('dark');
-          document.body.style.backgroundColor = '#0B1A33';
-          document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#0B1A33')
+            document.documentElement.classList.add('dark');
+            document.body.style.backgroundColor = '#0B1A33';
+            document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#0B1A33')
         } else {
-          document.documentElement.classList.remove('dark');
-          document.body.style.backgroundColor = '#FFFFFF';
-          document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#FFFFFF')
+            document.documentElement.classList.remove('dark');
+            document.body.style.backgroundColor = '#FFFFFF';
+            document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#FFFFFF')
         }
-      
+
         localStorage.setItem('theme', theme);
-      }, [theme]);
+    }, [theme]);
 
     // handle click color theme switch function
     const handleThemeSwitch = () => {
