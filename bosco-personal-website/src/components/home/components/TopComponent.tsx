@@ -57,16 +57,16 @@ export default function TopComponent() {
     }, []);
 
     // set color theme to local storage
-    useEffect(() => {
-        if (theme === "dark") {
-            document.documentElement.classList.add("dark");
-        } else {
-            document.documentElement.classList.remove("dark");
-        }
+    // useEffect(() => {
+    //     if (theme === "dark") {
+    //         document.documentElement.classList.add("dark");
+    //     } else {
+    //         document.documentElement.classList.remove("dark");
+    //     }
 
-        // Save the current theme color to local storage
-        localStorage.setItem('theme', theme);
-    }, [theme]);
+    //     // Save the current theme color to local storage
+    //     localStorage.setItem('theme', theme);
+    // }, [theme]);
 
     // set theme color to meta content and body background color
     useEffect(() => {
