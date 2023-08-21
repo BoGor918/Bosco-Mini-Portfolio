@@ -30,7 +30,7 @@ export default function Home() {
     }, []);
 
     return (
-        <div className="flex flex-col">
+        <div className="bg-white dark:bg-[#0B1A33] flex flex-col">
             {/* page components */}
             <TopComponent />
             <MiddleComponent />
