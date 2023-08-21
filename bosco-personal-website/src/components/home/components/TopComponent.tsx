@@ -24,6 +24,8 @@ export default function TopComponent() {
     const [theme, setTheme] = useState('');
     // model hook
     const [opened, { open, close }] = useDisclosure(false);
+    // scroll hook
+    const scrollRef = useRef<HTMLDivElement>(null); 
 
     // icon box animation
     useEffect(() => {
@@ -79,6 +81,11 @@ export default function TopComponent() {
             } else if (themeColorMeta && theme === 'light') {
                 themeColorMeta?.setAttribute('content', '#FFFFFF'); // Set the new theme color
                 document.body.style.backgroundColor = '#FFFFFF';
+            }
+
+            // Scroll to the top after changing the theme to prevent automatic reversion to dark mode
+            if (scrollRef.current) {
+                scrollRef.current.scrollIntoView({ behavior: 'smooth' });
             }
         };
         handleThemeColorChange();
