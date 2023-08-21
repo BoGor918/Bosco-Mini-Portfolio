@@ -66,7 +66,7 @@ export default function TopComponent() {
         } else {
           document.documentElement.classList.remove('dark');
           document.body.style.backgroundColor = '#FFFFFF';
-          document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#0B1A33')
+          document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#FFFFFF')
         }
       
         localStorage.setItem('theme', theme);
