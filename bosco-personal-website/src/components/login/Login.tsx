@@ -120,11 +120,13 @@ export default function Login(): any {
     // set theme color to meta content and body background color
     useEffect(() => {
         const handleThemeColorChange = () => {
-            if (theme === 'dark') {
+            const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+
+            if (themeColorMeta && theme === 'dark') {
+                themeColorMeta.setAttribute('content', '#0B1A33'); // Set the new theme color
                 document.body.style.backgroundColor = '#0B1A33';
-            } 
-            
-            if (theme === 'light') {
+            } else if (themeColorMeta && theme === 'light') {
+                themeColorMeta?.setAttribute('content', '#FFFFFF'); // Set the new theme color
                 document.body.style.backgroundColor = '#FFFFFF';
             }
         };

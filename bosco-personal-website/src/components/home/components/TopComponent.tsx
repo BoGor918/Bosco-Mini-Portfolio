@@ -76,13 +76,11 @@ export default function TopComponent() {
     // set theme color to meta content and body background color
     useEffect(() => {
         const handleThemeColorChange = () => {
-            const themeColorMeta = document.querySelector('meta[name="theme-color"]');
-
-            if (themeColorMeta && theme === 'dark') {
-                themeColorMeta.setAttribute('content', '#0B1A33'); // Set the new theme color
+            if (theme === 'dark') {
                 document.body.style.backgroundColor = '#0B1A33';
-            } else if (themeColorMeta && theme === 'light') {
-                themeColorMeta?.setAttribute('content', '#FFFFFF'); // Set the new theme color
+            }
+
+            if (theme === 'light') {
                 document.body.style.backgroundColor = '#FFFFFF';
             }
         };
