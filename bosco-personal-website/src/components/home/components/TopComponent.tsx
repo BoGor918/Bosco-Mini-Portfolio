@@ -60,13 +60,11 @@ export default function TopComponent() {
 
         if (storedTheme) {
             setTheme(storedTheme);
-        } 
-        
+        }
+
         if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
             setTheme('dark');
-        } 
-        
-        if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+        } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
             setTheme('light');
         }
     }, []);
