@@ -24,8 +24,6 @@ export default function TopComponent() {
     const [theme, setTheme] = useState('');
     // model hook
     const [opened, { open, close }] = useDisclosure(false);
-    // theme color meta
-    const themeColorMeta = document.querySelector('meta[name="theme-color"]');
 
     // icon box animation
     useEffect(() => {
@@ -62,21 +60,23 @@ export default function TopComponent() {
 
         if (storedTheme) {
             setTheme(storedTheme);
-            storedTheme === "dark" ?
-                themeColorMeta?.setAttribute('content', "#0B1A33") :
-                themeColorMeta?.setAttribute('content', "#FFFFFF");
-        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        } 
+        
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
             setTheme('dark');
-            themeColorMeta?.setAttribute('content', "#0B1A33");
-        } else {
+        } 
+        
+        if (window.matchMedia('(prefers-color-scheme: light)').matches) {
             setTheme('light');
-            themeColorMeta?.setAttribute('content', "#FFFFFF");
         }
     }, []);
 
     // set theme color to meta content and body background color
     useEffect(() => {
         const handleThemeColorChange = () => {
+            // theme color meta
+            const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+
             if (themeColorMeta && theme === 'dark') {
                 themeColorMeta.setAttribute('content', '#0B1A33'); // Set the new theme color
             } else if (themeColorMeta && theme === 'light') {

@@ -34,8 +34,6 @@ export default function Login(): any {
     const [opened, { open, close }] = useDisclosure(false);
     // navigate hook
     const navigate = useNavigate()
-    // theme color meta
-    const themeColorMeta = document.querySelector('meta[name="theme-color"]');
 
     // login function
     const Login = async () => {
@@ -107,19 +105,23 @@ export default function Login(): any {
 
         if (storedTheme) {
             setTheme(storedTheme);
-            themeColorMeta?.setAttribute('content', storedTheme === "dark" ? "#0B1A33" : "#FFFFFF");
-        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        }
+
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
             setTheme('dark');
-            themeColorMeta?.setAttribute('content', "#0B1A33");
-        } else {
+        }
+
+        if (window.matchMedia('(prefers-color-scheme: light)').matches) {
             setTheme('light');
-            themeColorMeta?.setAttribute('content', "#FFFFFF");
         }
     }, []);
 
     // set theme color to meta content and body background color
     useEffect(() => {
         const handleThemeColorChange = () => {
+            // theme color meta
+            const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+
             if (themeColorMeta && theme === 'dark') {
                 themeColorMeta.setAttribute('content', '#0B1A33'); // Set the new theme color
             } else if (themeColorMeta && theme === 'light') {
