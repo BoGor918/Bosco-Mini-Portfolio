@@ -43,22 +43,6 @@ export default function TopComponent() {
         requestAnimationFrame(updateAnimation);
     }, []);
 
-    // set theme color to meta content and body background color
-    useEffect(() => {
-        const handleThemeColorChange = () => {
-            const themeColorMeta = document.querySelector('meta[name="theme-color"]');
-
-            if (themeColorMeta && theme === 'dark') {
-                themeColorMeta.setAttribute('content', '#0B1A33'); // Set the new theme color
-                document.body.style.backgroundColor = '#0B1A33';
-            } else if (themeColorMeta && theme === 'light') {
-                themeColorMeta?.setAttribute('content', '#FFFFFF'); // Set the new theme color
-                document.body.style.backgroundColor = '#FFFFFF';
-            }
-        };
-        handleThemeColorChange();
-    }, [theme]);
-
     // set color theme from local storage
     useEffect(() => {
         const storedTheme = localStorage.getItem('theme');
@@ -82,6 +66,36 @@ export default function TopComponent() {
 
         // Save the current theme color to local storage
         localStorage.setItem('theme', theme);
+    }, [theme]);
+
+    // set theme color to meta content and body background color
+    useEffect(() => {
+        const handleThemeColorChange = () => {
+            const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+
+            if (themeColorMeta && theme === 'dark') {
+                themeColorMeta.setAttribute('content', '#0B1A33'); // Set the new theme color
+                document.body.style.backgroundColor = '#0B1A33';
+
+                window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+                    if (e.matches) {
+                        themeColorMeta.setAttribute('content', '#0B1A33'); // Set the new theme color
+                        document.body.style.backgroundColor = '#0B1A33';
+                    }
+                });
+            } else if (themeColorMeta && theme === 'light') {
+                themeColorMeta?.setAttribute('content', '#FFFFFF'); // Set the new theme color
+                document.body.style.backgroundColor = '#FFFFFF';
+
+                window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
+                    if (e.matches) {
+                        themeColorMeta.setAttribute('content', '#FFFFFF'); // Set the new theme color
+                        document.body.style.backgroundColor = '#FFFFFF';
+                    }
+                });
+            }
+        };
+        handleThemeColorChange();
     }, [theme]);
 
     // handle click color theme switch function
