@@ -71,13 +71,16 @@ export default function TopComponent() {
     // set theme color to meta content and body background color
     useEffect(() => {
         const handleThemeColorChange = () => {
-            const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+            const themeColorMeta1 = document.querySelector('meta[name="theme-color-1"]');
+            const themeColorMeta2 = document.querySelector('meta[name="theme-color-2"]');
 
-            if (themeColorMeta && theme === 'dark') {
-                themeColorMeta.setAttribute('content', '#0B1A33'); // Set the new theme color
+            if (theme === 'dark') {
+                themeColorMeta1?.remove(); // Remove the theme color
+                themeColorMeta2?.append(); // Add the theme color
                 document.body.style.backgroundColor = '#0B1A33';
-            } else if (themeColorMeta && theme === 'light') {
-                themeColorMeta?.setAttribute('content', '#FFFFFF'); // Set the new theme color
+            } else if (theme === 'light') {
+                themeColorMeta2?.remove(); // Remove the theme color
+                themeColorMeta1?.append(); // Add the theme color
                 document.body.style.backgroundColor = '#FFFFFF';
             }
         };
