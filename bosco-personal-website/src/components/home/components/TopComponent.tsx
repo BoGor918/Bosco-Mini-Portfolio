@@ -43,47 +43,32 @@ export default function TopComponent() {
         requestAnimationFrame(updateAnimation);
     }, []);
 
-    // set color theme from local storage
+    // color theme
     useEffect(() => {
         const storedTheme = localStorage.getItem('theme');
-
+        const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      
         if (storedTheme) {
-            setTheme(storedTheme);
-        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            setTheme('dark');
+          setTheme(storedTheme);
+        } else if (prefersDarkMode) {
+          setTheme('dark');
         } else {
-            setTheme('light');
+          setTheme('light');
         }
-    }, []);
-
-    // set color theme to local storage
-    useEffect(() => {
-        if (theme === "dark") {
-            document.documentElement.classList.add("dark");
+      }, []);
+      
+      // color theme
+      useEffect(() => {
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark');
+          document.body.style.backgroundColor = '#0B1A33';
         } else {
-            document.documentElement.classList.remove("dark");
+          document.documentElement.classList.remove('dark');
+          document.body.style.backgroundColor = '#FFFFFF';
         }
+      
         localStorage.setItem('theme', theme);
-    }, [theme]);
-
-    // set theme color to meta content and body background color
-    useEffect(() => {
-        const handleThemeColorChange = () => {
-            // theme color meta
-            const themeColorMeta = document.querySelector('meta[name="theme-color"]');
-
-            if (themeColorMeta && theme === 'dark') {
-                themeColorMeta.setAttribute('content', '#0B1A33'); // Set the new theme color
-                document.body.style.backgroundColor = '#0B1A33';
-                setTheme('dark');
-            } else if (themeColorMeta && theme === 'light') {
-                themeColorMeta?.setAttribute('content', '#FFFFFF'); // Set the new theme color
-                document.body.style.backgroundColor = '#FFFFFF';
-                setTheme('light');
-            }
-        };
-        handleThemeColorChange();
-    }, [theme]);
+      }, [theme]);
 
     // handle click color theme switch function
     const handleThemeSwitch = () => {
