@@ -24,8 +24,6 @@ export default function TopComponent() {
     const [theme, setTheme] = useState('');
     // model hook
     const [opened, { open, close }] = useDisclosure(false);
-    // scroll hook
-    const scrollRef = useRef<HTMLDivElement>(null);
 
     // icon box animation
     useEffect(() => {
@@ -72,24 +70,18 @@ export default function TopComponent() {
 
     // set theme color to meta content and body background color
     useEffect(() => {
-        const handleScroll = () => {
+        const handleThemeColorChange = () => {
             const themeColorMeta = document.querySelector('meta[name="theme-color"]');
-            const scrollPosition = window.scrollY;
 
-            if (themeColorMeta && theme === 'dark' && scrollPosition >= 100) {
-                themeColorMeta.setAttribute('content', '#0B1A33');
+            if (themeColorMeta && theme === 'dark') {
+                themeColorMeta.setAttribute('content', '#0B1A33'); // Set the new theme color
                 document.body.style.backgroundColor = '#0B1A33';
-            } else if (themeColorMeta && theme === 'light' && scrollPosition < 100) {
-                themeColorMeta.setAttribute('content', '#FFFFFF');
+            } else if (themeColorMeta && theme === 'light') {
+                themeColorMeta?.setAttribute('content', '#FFFFFF'); // Set the new theme color
                 document.body.style.backgroundColor = '#FFFFFF';
             }
         };
-
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
+        handleThemeColorChange();
     }, [theme]);
 
     // handle click color theme switch function
