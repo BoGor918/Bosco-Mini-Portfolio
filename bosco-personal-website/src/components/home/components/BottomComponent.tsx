@@ -4,17 +4,17 @@ import { useNavigate } from 'react-router-dom';
 // global components
 import { MapperContext } from "../../../globalVariable/MapperContextProvider";
 // mantine components
-import { Modal, Button } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
+import { Button } from '@mantine/core';
+// import { useDisclosure } from '@mantine/hooks';
 // page components
 import CompanyGrid from '../../grids/CompanyGrid'
 import EduGrid from '../../grids/EduGrid'
 import ProjectGrid from '../../grids/ProjectGrid'
 import SkillGrid from '../../grids/SkillGrid'
-import AddCompanyModalComponent from '../../modal/company/AddCompanyModalComponent';
-import AddEducationModalComponent from '../../modal/education/AddEducationModalComponent';
-import AddProjectModalComponent from '../../modal/project/AddProjectModalComponent';
-import AddSkillModalComponent from '../../modal/skill/AddSkillModalComponent';
+// import AddCompanyModalComponent from '../../modal/company/AddCompanyModalComponent';
+// import AddEducationModalComponent from '../../modal/education/AddEducationModalComponent';
+// import AddProjectModalComponent from '../../modal/project/AddProjectModalComponent';
+// import AddSkillModalComponent from '../../modal/skill/AddSkillModalComponent';
 // icons
 import { BiGrid, BiObjectsVerticalBottom, BiBookContent, BiCalendarCheck } from "react-icons/bi";
 
@@ -24,7 +24,7 @@ export default function BottomComponent() {
         authUser
     } = useContext(MapperContext);
     // model hook
-    const [opened, { open, close }] = useDisclosure(false);
+    // const [opened, { open, close }] = useDisclosure(false);
     // navigate hook
     const navigate = useNavigate();
     // url parameter
@@ -54,7 +54,7 @@ export default function BottomComponent() {
                     {/* Add Button= */}
                     {
                         authUser !== null ?
-                            <Button onClick={open} className='text-[12px] sm:text-[12px] md:text-[12px] lg:text-[14px] mt-[-0.5rem] mr-[-1.1rem] hover:bg-transparent text-[#9A9A9A] dark:text-[#94A3B8] font-normal'>
+                            <Button className='text-[12px] sm:text-[12px] md:text-[12px] lg:text-[14px] mt-[-0.5rem] mr-[-1.1rem] hover:bg-transparent text-[#9A9A9A] dark:text-[#94A3B8] font-normal'>
                                 {
                                     widget === "1" || widget === null ?
                                         "+ Add Work" :
@@ -113,7 +113,7 @@ export default function BottomComponent() {
                 }
             </div>
             {/* add item modal */}
-            {
+            {/* {
                 localStorage.getItem('theme') === "light" ?
                     <Modal opened={opened} onClose={close} size="lg" padding="xl" title={widget === "1" || widget === null ? "Add Work" : widget === "2" ? "Add Education" : widget === "3" ? "Add Project" : "Add Skill"} centered>
                         {
@@ -154,7 +154,7 @@ export default function BottomComponent() {
                                             <></>
                         }
                     </Modal>
-            }
+            } */}
         </div>
     )
 }
