@@ -24,7 +24,7 @@ export default function Login(): any {
         authUser,
     } = useContext(MapperContext);
     // theme color variable
-    const [theme, setTheme] = useState('');
+    const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
     // icon box
     const boxRef = useRef<HTMLDivElement>(null);
     // Login variables
