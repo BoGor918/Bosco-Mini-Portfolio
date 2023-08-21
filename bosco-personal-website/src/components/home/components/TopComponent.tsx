@@ -61,10 +61,12 @@ export default function TopComponent() {
     useEffect(() => {
         if (theme === 'dark') {
             document.documentElement.classList.add('dark');
+            document.body.classList.add('dark');
             document.body.style.backgroundColor = '#0B1A33';
             document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#0B1A33')
         } else {
             document.documentElement.classList.remove('dark');
+            document.body.classList.remove('dark');
             document.body.style.backgroundColor = '#FFFFFF';
             document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#FFFFFF')
         }
