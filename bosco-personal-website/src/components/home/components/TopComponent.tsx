@@ -83,6 +83,12 @@ export default function TopComponent() {
                 document.body.style.backgroundColor = '#0B1A33';
                 document.body.style.color = 'black'; // Set the text color to black
             }
+
+            if (themeColorMeta && theme === 'light') {
+                themeColorMeta.setAttribute('content', '#FFFFFF'); // Set the new theme color
+                document.body.style.backgroundColor = '#FFFFFF';
+                document.body.style.color = 'black'; // Set the text color to black
+            }
         };
         handleThemeColorChange();
     }, [theme]);
