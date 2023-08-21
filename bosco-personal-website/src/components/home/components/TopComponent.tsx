@@ -74,17 +74,35 @@ export default function TopComponent() {
     };
 
     // set theme color to meta content and body background color
-    useEffect(() => {
-        const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+    // useEffect(() => {
+    //     const themeColorMeta = document.querySelector('meta[name="theme-color"]');
 
-        if (theme === 'dark') {
-            themeColorMeta?.setAttribute('content', '#0B1A33'); // Set the new theme color
-            document.body.style.backgroundColor = '#0B1A33';
-        } else if (theme === 'light') {
-            themeColorMeta?.setAttribute('content', '#FFFFFF'); // Set the new theme color
-            document.body.style.backgroundColor = '#FFFFFF';
-        }
-    }, [theme]);
+    //     if (theme === 'dark') {
+    //         themeColorMeta?.setAttribute('content', '#0B1A33'); // Set the new theme color
+    //         document.body.style.backgroundColor = '#0B1A33';
+    //     } else if (theme === 'light') {
+    //         themeColorMeta?.setAttribute('content', '#FFFFFF'); // Set the new theme color
+    //         document.body.style.backgroundColor = '#FFFFFF';
+    //     }
+    // }, [theme]);
+
+    useEffect(() => {
+        const setStatusBarColor = (color: any) => {
+            const statusBarMetaTag = document.getElementById('status-bar-color');
+            statusBarMetaTag?.setAttribute('content', color);
+        };
+
+        // Example code to change the status bar color dynamically
+        const changeStatusBarColor = () => {
+            const isLightTheme = theme === 'light';
+            const color = isLightTheme ? '#FFFFFF' : '#0B1A33';
+
+            setStatusBarColor(color);
+        };
+
+        // Call the function whenever the theme changes
+        changeStatusBarColor();
+    }, []);
 
     return (
         <div className='self-center w-full max-w-[365px] sm:max-w-[365px] md:max-w-[365px] lg:max-w-[910px] flex flex-col sm:flex-col md:flex-col lg:flex-row justify-center items-center font-light mt-[5rem]'>
