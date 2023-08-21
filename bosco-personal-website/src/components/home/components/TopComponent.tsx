@@ -24,8 +24,6 @@ export default function TopComponent() {
     const [theme, setTheme] = useState('');
     // model hook
     const [opened, { open, close }] = useDisclosure(false);
-    // scroll hook
-    const scrollRef = useRef<HTMLDivElement>(null); 
 
     // icon box animation
     useEffect(() => {
@@ -70,6 +68,12 @@ export default function TopComponent() {
         localStorage.setItem('theme', theme);
     }, [theme]);
 
+    const [scrollTop, setScrollTop] = useState(0);
+
+    const handleScroll = (event: any) => {
+        setScrollTop(event.currentTarget.scrollTop);
+    };
+
     // set theme color to meta content and body background color
     useEffect(() => {
         const handleThemeColorChange = () => {
@@ -82,14 +86,9 @@ export default function TopComponent() {
                 themeColorMeta?.setAttribute('content', '#FFFFFF'); // Set the new theme color
                 document.body.style.backgroundColor = '#FFFFFF';
             }
-
-            // Scroll to the top after changing the theme to prevent automatic reversion to dark mode
-            if (scrollRef.current) {
-                scrollRef.current.scrollIntoView({ behavior: 'smooth' });
-            }
         };
         handleThemeColorChange();
-    }, [theme]);
+    }, [theme, scrollTop]);
 
     // handle click color theme switch function
     const handleThemeSwitch = () => {
@@ -97,7 +96,7 @@ export default function TopComponent() {
     };
 
     return (
-        <div className='self-center w-full max-w-[365px] sm:max-w-[365px] md:max-w-[365px] lg:max-w-[910px] flex flex-col sm:flex-col md:flex-col lg:flex-row justify-center items-center font-light mt-[5rem]'>
+        <div onScroll={handleScroll} className='self-center w-full max-w-[365px] sm:max-w-[365px] md:max-w-[365px] lg:max-w-[910px] flex flex-col sm:flex-col md:flex-col lg:flex-row justify-center items-center font-light mt-[5rem]'>
             {/* personal icon */}
             {
                 theme === "light" ?
