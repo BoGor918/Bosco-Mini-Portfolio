@@ -8,7 +8,7 @@ import { auth } from "../../firebase";
 import { signOut } from "firebase/auth";
 // page components
 import TopComponent from "./components/TopComponent";
-// import MiddleComponent from "./components/MiddleComponent";
+import MiddleComponent from "./components/MiddleComponent";
 // import BottomComponent from "./components/BottomComponent";
 
 export default function Home() {
@@ -33,8 +33,8 @@ export default function Home() {
         <div className="bg-white dark:bg-[#0B1A33] flex flex-col">
             {/* page components */}
             <TopComponent />
-            {/* <MiddleComponent />
-            <BottomComponent /> */}
+            <MiddleComponent />
+            {/* <BottomComponent /> */}
         </div>
     );
 }
