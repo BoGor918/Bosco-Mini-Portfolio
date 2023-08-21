@@ -33,8 +33,8 @@ export default function Home() {
         <div className="bg-white dark:bg-[#0B1A33] flex flex-col">
             {/* page components */}
             <TopComponent />
-            <MiddleComponent />
-            <BottomComponent />
+            {/* <MiddleComponent />
+            <BottomComponent /> */}
         </div>
     );
 }
