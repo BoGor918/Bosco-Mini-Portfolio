@@ -125,7 +125,6 @@ export default function TopComponent() {
                         <img src={PersonalIcon} className='rounded-full p-[4px]' alt='Personal Icon' width={190} />
                     </div>
             }
-
             {/* info */}
             <div className='animate-fade-up animate-delay-100 animate-once mx-10'>
                 {/* col-1 */}
@@ -172,7 +171,7 @@ export default function TopComponent() {
             </div>
             {/* modal components */}
             {
-                localStorage.getItem('theme') === "light" ?
+                theme === "light" ?
                     <Modal opened={opened} onClose={close} size="lg" title="About This Website" centered>
                         <IntroductionModalComponent />
                     </Modal> :
