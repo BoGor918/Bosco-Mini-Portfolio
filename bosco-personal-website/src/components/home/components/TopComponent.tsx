@@ -62,11 +62,11 @@ export default function TopComponent() {
         if (theme === 'dark') {
             document.documentElement.classList.add('dark');
             document.body.style.backgroundColor = '#0B1A33';
-            document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#0B1A33')
+            document.querySelector('meta[name="apple-mobile-web-app-status-bar-style"]')?.setAttribute('content', '#0B1A33')
         } else {
             document.documentElement.classList.remove('dark');
             document.body.style.backgroundColor = '#FFFFFF';
-            document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#FFFFFF')
+            document.querySelector('meta[name="apple-mobile-web-app-status-bar-style"]')?.setAttribute('content', '#FFFFFF')
         }
         
         localStorage.setItem('theme', theme);
