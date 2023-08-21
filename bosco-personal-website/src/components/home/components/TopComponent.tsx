@@ -64,7 +64,9 @@ export default function TopComponent() {
 
         if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
             setTheme('dark');
-        } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+        } 
+        
+        if (window.matchMedia('(prefers-color-scheme: light)').matches) {
             setTheme('light');
         }
     }, []);
@@ -77,8 +79,10 @@ export default function TopComponent() {
 
             if (themeColorMeta && theme === 'dark') {
                 themeColorMeta.setAttribute('content', '#0B1A33'); // Set the new theme color
+                document.body.style.backgroundColor = '#0B1A33';
             } else if (themeColorMeta && theme === 'light') {
                 themeColorMeta?.setAttribute('content', '#FFFFFF'); // Set the new theme color
+                document.body.style.backgroundColor = '#FFFFFF';
             }
         };
         handleThemeColorChange();
