@@ -8,8 +8,8 @@ import { auth } from "../../firebase";
 import { signOut } from "firebase/auth";
 // page components
 import TopComponent from "./components/TopComponent";
-import MiddleComponent from "./components/MiddleComponent";
-import BottomComponent from "./components/BottomComponent";
+// import MiddleComponent from "./components/MiddleComponent";
+// import BottomComponent from "./components/BottomComponent";
 
 export default function Home() {
     // navigate hook
