@@ -34,6 +34,8 @@ export default function Login(): any {
     const [opened, { open, close }] = useDisclosure(false);
     // navigate hook
     const navigate = useNavigate()
+    // theme color meta
+    const themeColorMeta = document.querySelector('meta[name="theme-color"]');
 
     // login function
     const Login = async () => {
@@ -88,19 +90,6 @@ export default function Login(): any {
         requestAnimationFrame(updateAnimation);
     }, []);
 
-    // set color theme from local storage
-    useEffect(() => {
-        const storedTheme = localStorage.getItem('theme');
-
-        if (storedTheme) {
-            setTheme(storedTheme);
-        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            setTheme('dark');
-        } else {
-            setTheme('light');
-        }
-    }, []);
-
     // set color theme to local storage
     useEffect(() => {
         if (theme === "dark") {
@@ -112,26 +101,38 @@ export default function Login(): any {
         localStorage.setItem('theme', theme);
     }, [theme]);
 
-    // handle click color theme switch function
-    const handleThemeSwitch = () => {
-        setTheme(theme === "dark" ? "light" : "dark");
-    };
+    // set color theme from local storage
+    useEffect(() => {
+        const storedTheme = localStorage.getItem('theme');
+
+        if (storedTheme) {
+            setTheme(storedTheme);
+            themeColorMeta?.setAttribute('content', storedTheme === "dark" ? "#0B1A33" : "#FFFFFF");
+        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            setTheme('dark');
+            themeColorMeta?.setAttribute('content', "#0B1A33");
+        } else {
+            setTheme('light');
+            themeColorMeta?.setAttribute('content', "#FFFFFF");
+        }
+    }, []);
 
     // set theme color to meta content and body background color
     useEffect(() => {
         const handleThemeColorChange = () => {
-            const themeColorMeta = document.querySelector('meta[name="theme-color"]');
-
             if (themeColorMeta && theme === 'dark') {
                 themeColorMeta.setAttribute('content', '#0B1A33'); // Set the new theme color
-                document.body.style.backgroundColor = '#0B1A33';
             } else if (themeColorMeta && theme === 'light') {
                 themeColorMeta?.setAttribute('content', '#FFFFFF'); // Set the new theme color
-                document.body.style.backgroundColor = '#FFFFFF';
             }
         };
         handleThemeColorChange();
     }, [theme]);
+
+    // handle click color theme switch function
+    const handleThemeSwitch = () => {
+        setTheme(theme === "dark" ? "light" : "dark");
+    };
 
     return (
         authUser !== null ? navigate('/?w=1') :
