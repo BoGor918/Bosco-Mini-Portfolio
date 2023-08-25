@@ -139,7 +139,7 @@ export default function Login(): any {
                         }
                         className="cursor-pointer animate-fade-up animate-delay-0 animate-once flex mb-[1rem] rounded-full border-[3px] border-[#0000] [background:padding-box_var(--bg-color),border-box_var(--border-color)]"
                     >
-                        <img loading='lazy' src={PersonalIcon} className='rounded-full border-[4px] border-white' alt='Personal Icon' width={190} />
+                        <img src={PersonalIcon} className='rounded-full border-[4px] border-white' alt='Personal Icon' width={190} />
                     </div>
                     {/* email field */}
                     {

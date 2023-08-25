@@ -168,7 +168,7 @@ export default function ProjectModalComponent({
             <>
               {/* project logo */}
               <div className='flex justify-center items-center bg-[#9a9a9a17] p-[2rem] rounded-lg'>
-                <img loading='lazy' src={logo} alt={projectName} />
+                <img src={logo} alt={projectName} />
               </div>
               {/* project name */}
               <span className='text-black dark:text-white text-[20px] sm:text-[20px] md:text-[20px] lg:text-[25px] font-medium mt-5 mb-1'>{projectName}</span>
@@ -343,7 +343,7 @@ export default function ProjectModalComponent({
                         {...form.getInputProps('logo')}
                       />
                       {/* current logo */}
-                      <img loading='lazy' src={logo} alt={projectName} width={150} />
+                      <img src={logo} alt={projectName} width={150} />
                     </div> :
                     <div className='flex flex-col'>
                       <FileInput
@@ -368,7 +368,7 @@ export default function ProjectModalComponent({
                         {...form.getInputProps('logo')}
                       />
                       {/* current logo */}
-                      <img loading='lazy' src={logo} alt={projectName} width={150} />
+                      <img src={logo} alt={projectName} width={150} />
                     </div>
                 }
                 {/* submit button */}

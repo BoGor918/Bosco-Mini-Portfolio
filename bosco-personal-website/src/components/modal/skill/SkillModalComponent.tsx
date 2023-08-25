@@ -187,7 +187,7 @@ export default function SkillModalComponent({
             <>
               {/* skill logo */}
               <div className='flex justify-center items-center bg-[#9a9a9a17] p-[2rem] rounded-lg'>
-                <img loading='lazy' src={logo} alt={skillName} width={150} />
+                <img src={logo} alt={skillName} width={150} />
               </div>
               {/* skill name */}
               <span className='text-black dark:text-white text-[20px] sm:text-[20px] md:text-[20px] lg:text-[25px] font-medium mt-5 mb-1'>{skillName}</span>
@@ -226,7 +226,7 @@ export default function SkillModalComponent({
                         {...form.getInputProps('logo')}
                       />
                       {/* current logo */}
-                      <img loading='lazy' src={logo} alt={skillName} width={80} />
+                      <img src={logo} alt={skillName} width={80} />
                     </div> :
                     <div className='flex flex-col'>
                       <TextInput
@@ -264,7 +264,7 @@ export default function SkillModalComponent({
                         {...form.getInputProps('logo')}
                       />
                       {/* current logo */}
-                      <img loading='lazy' src={logo} alt={skillName} width={80} />
+                      <img src={logo} alt={skillName} width={80} />
                     </div>
                 }
                 {/* submit button */}

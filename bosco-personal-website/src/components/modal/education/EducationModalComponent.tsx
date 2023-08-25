@@ -266,7 +266,7 @@ export default function EducationModalComponent({
             <>
               {/* school logo */}
               <div className='flex justify-center items-center bg-[#9a9a9a17] p-[2rem] rounded-lg'>
-                <img loading='lazy' src={logo} alt={schoolName} />
+                <img src={logo} alt={schoolName} />
               </div>
               {/* school name */}
               <span className='text-black dark:text-white text-[20px] sm:text-[20px] md:text-[20px] lg:text-[25px] font-medium mt-5 mb-1'>{schoolName}</span>
@@ -550,7 +550,7 @@ export default function EducationModalComponent({
                         {...form.getInputProps('logo')}
                       />
                       {/* current logo */}
-                      <img loading='lazy' src={logo} alt={schoolName} width={150} />
+                      <img src={logo} alt={schoolName} width={150} />
                     </div> :
                     <div className='flex flex-col'>
                       <FileInput
@@ -575,7 +575,7 @@ export default function EducationModalComponent({
                         {...form.getInputProps('logo')}
                       />
                       {/* current logo */}
-                      <img loading='lazy' src={logo} alt={schoolName} width={150} />
+                      <img src={logo} alt={schoolName} width={150} />
                     </div>
                 }
                 {/* submit button */}
