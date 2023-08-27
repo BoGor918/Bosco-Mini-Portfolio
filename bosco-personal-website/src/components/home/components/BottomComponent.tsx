@@ -1,22 +1,47 @@
 // others
-import { useContext } from 'react'
+import { useContext, lazy, Suspense } from 'react'
 import { useNavigate } from 'react-router-dom';
 // global components
 import { MapperContext } from "../../../globalVariable/MapperContextProvider";
 // mantine components
-import { Modal, Button } from '@mantine/core';
+import { Modal, Button, Loader } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 // page components
-import CompanyGrid from '../../grids/CompanyGrid'
-import EduGrid from '../../grids/EduGrid'
-import ProjectGrid from '../../grids/ProjectGrid'
-import SkillGrid from '../../grids/SkillGrid'
 import AddCompanyModalComponent from '../../modal/company/AddCompanyModalComponent';
 import AddEducationModalComponent from '../../modal/education/AddEducationModalComponent';
 import AddProjectModalComponent from '../../modal/project/AddProjectModalComponent';
 import AddSkillModalComponent from '../../modal/skill/AddSkillModalComponent';
 // icons
 import { BiGrid, BiObjectsVerticalBottom, BiBookContent, BiCalendarCheck } from "react-icons/bi";
+// lazy load component
+const CompanyGrid = lazy(() => {
+    return new Promise<{ default: React.ComponentType<any> }>((resolve) => {
+        setTimeout(() => {
+            resolve(import('../../grids/CompanyGrid'));
+        });
+    });
+});
+const EduGrid = lazy(() => {
+    return new Promise<{ default: React.ComponentType<any> }>((resolve) => {
+        setTimeout(() => {
+            resolve(import('../../grids/EduGrid'));
+        });
+    });
+})
+const ProjectGrid = lazy(() => {
+    return new Promise<{ default: React.ComponentType<any> }>((resolve) => {
+        setTimeout(() => {
+            resolve(import('../../grids/ProjectGrid'));
+        });
+    });
+})
+const SkillGrid = lazy(() => {
+    return new Promise<{ default: React.ComponentType<any> }>((resolve) => {
+        setTimeout(() => {
+            resolve(import('../../grids/SkillGrid'));
+        });
+    });
+})
 
 export default function BottomComponent() {
     // global variable
@@ -107,10 +132,12 @@ export default function BottomComponent() {
                 </div>
             </nav>
             {/* display grid */}
-            <div className='animate-fade-up animate-delay-300 animate-once w-full max-w-[355px] sm:max-w-[355px] md:max-w-[355px] lg:max-w-[910px]'>
-                {
-                    widget === "1" || widget === null ? <CompanyGrid /> : widget === "2" ? <EduGrid /> : widget === "3" ? <ProjectGrid /> : widget === "4" ? <SkillGrid /> : <></>
-                }
+            <div className='flex flex-col justify-center items-center animate-fade-up animate-delay-300 animate-once w-full max-w-[355px] sm:max-w-[355px] md:max-w-[355px] lg:max-w-[910px]'>
+                <Suspense fallback={<Loader className='my-[2rem]' />}>
+                    {
+                        widget === "1" || widget === null ? <CompanyGrid /> : widget === "2" ? <EduGrid /> : widget === "3" ? <ProjectGrid /> : widget === "4" ? <SkillGrid /> : <></>
+                    }
+                </Suspense>
             </div>
             {/* add item modal */}
             {

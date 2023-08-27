@@ -16,6 +16,9 @@ import PersonalIcon from '../../images/Personal_Icon.png'
 import { BiMoon, BiSolidMoon } from "react-icons/bi";
 // page components
 import IntroductionModalComponent from '../modal/introduction/IntroductionModalComponent';
+// react lazy load image
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 export default function Login(): any {
     // global variable
@@ -127,20 +130,38 @@ export default function Login(): any {
             <div className='bg-white dark:bg-[#0B1A33] flex justify-center items-center h-screen'>
                 <div className='flex flex-col justify-center items-center'>
                     {/* personal icon */}
-                    <div
-                        onClick={() => open()}
-                        ref={boxRef}
-                        style={
-                            {
-                                "--angle": "0deg",
-                                "--border-color": "linear-gradient(var(--angle), #00A3FF, #21FAC6)",
-                                "--bg-color": "linear-gradient(#131219, #131219)",
-                            } as CSSProperties
-                        }
-                        className="cursor-pointer animate-fade-up animate-delay-0 animate-once flex mb-[1rem] rounded-full border-[3px] border-[#0000] [background:padding-box_var(--bg-color),border-box_var(--border-color)]"
-                    >
-                        <img src={PersonalIcon} className='rounded-full border-[4px] border-white' alt='Personal Icon' width={190} />
-                    </div>
+                    {
+                        theme === "light" ?
+                            <div
+                                onClick={() => open()}
+                                ref={boxRef}
+                                style={
+                                    {
+                                        "--angle": "0deg",
+                                        "--border-color": "linear-gradient(var(--angle), #00A3FF, #21FAC6)",
+
+                                        "--bg-color": "linear-gradient(#FFFFFF, #FFFFFF)",
+                                    } as CSSProperties
+                                }
+                                className="cursor-pointer animate-fade-up animate-delay-0 animate-once flex mb-[1rem] rounded-full border-[3px] border-[#0000] [background:padding-box_var(--bg-color),border-box_var(--border-color)]"
+                            >
+                                <LazyLoadImage src={PersonalIcon} effect='blur' className='rounded-full p-[4px]' alt='Personal Icon' width={190} />
+                            </div> :
+                            <div
+                                onClick={() => open()}
+                                ref={boxRef}
+                                style={
+                                    {
+                                        "--angle": "0deg",
+                                        "--border-color": "linear-gradient(var(--angle), #00A3FF, #21FAC6)",
+                                        "--bg-color": "linear-gradient(#0B1A33, #0B1A33)",
+                                    } as CSSProperties
+                                }
+                                className="cursor-pointer animate-fade-up animate-delay-0 animate-once flex mb-[1rem] rounded-full border-[3px] border-[#0000] [background:padding-box_var(--bg-color),border-box_var(--border-color)]"
+                            >
+                                <LazyLoadImage src={PersonalIcon} effect='blur' className='rounded-full p-[4px]' alt='Personal Icon' width={190} />
+                            </div>
+                    }
                     {/* email field */}
                     {
                         theme === 'dark' ?

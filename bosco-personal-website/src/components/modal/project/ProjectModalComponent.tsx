@@ -12,6 +12,9 @@ import { useDisclosure } from "@mantine/hooks";
 import { Button, LoadingOverlay, TextInput, MultiSelect, FileInput, Textarea, Box } from "@mantine/core";
 // icons
 import { MdOutlineCancel } from "react-icons/md";
+// react lazy load image
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 export default function ProjectModalComponent({
   docID,
@@ -168,7 +171,7 @@ export default function ProjectModalComponent({
             <>
               {/* project logo */}
               <div className='flex justify-center items-center bg-[#9a9a9a17] p-[2rem] rounded-lg'>
-                <img src={logo} alt={projectName} />
+                <LazyLoadImage src={logo} alt={projectName} effect='blur' />
               </div>
               {/* project name */}
               <span className='text-black dark:text-white text-[20px] sm:text-[20px] md:text-[20px] lg:text-[25px] font-medium mt-5 mb-1'>{projectName}</span>
@@ -343,7 +346,7 @@ export default function ProjectModalComponent({
                         {...form.getInputProps('logo')}
                       />
                       {/* current logo */}
-                      <img src={logo} alt={projectName} width={150} />
+                      <LazyLoadImage src={logo} alt={projectName} width={150} effect='blur' />
                     </div> :
                     <div className='flex flex-col'>
                       <FileInput
@@ -368,7 +371,7 @@ export default function ProjectModalComponent({
                         {...form.getInputProps('logo')}
                       />
                       {/* current logo */}
-                      <img src={logo} alt={projectName} width={150} />
+                      <LazyLoadImage src={logo} alt={projectName} width={150} effect='blur' />
                     </div>
                 }
                 {/* submit button */}

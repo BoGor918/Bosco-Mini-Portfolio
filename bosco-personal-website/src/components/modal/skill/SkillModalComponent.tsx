@@ -12,6 +12,9 @@ import { useDisclosure } from "@mantine/hooks";
 import { Button, LoadingOverlay, TextInput, FileInput, Box } from "@mantine/core";
 // icons
 import { MdOutlineCancel } from "react-icons/md";
+// react lazy load image
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 export default function SkillModalComponent({
   docID,
@@ -187,7 +190,7 @@ export default function SkillModalComponent({
             <>
               {/* skill logo */}
               <div className='flex justify-center items-center bg-[#9a9a9a17] p-[2rem] rounded-lg'>
-                <img src={logo} alt={skillName} width={150} />
+                <LazyLoadImage src={logo} alt={skillName} width={150} effect='blur' />
               </div>
               {/* skill name */}
               <span className='text-black dark:text-white text-[20px] sm:text-[20px] md:text-[20px] lg:text-[25px] font-medium mt-5 mb-1'>{skillName}</span>
@@ -226,7 +229,7 @@ export default function SkillModalComponent({
                         {...form.getInputProps('logo')}
                       />
                       {/* current logo */}
-                      <img src={logo} alt={skillName} width={80} />
+                      <LazyLoadImage src={logo} alt={skillName} width={80} effect='blur' />
                     </div> :
                     <div className='flex flex-col'>
                       <TextInput
@@ -264,7 +267,7 @@ export default function SkillModalComponent({
                         {...form.getInputProps('logo')}
                       />
                       {/* current logo */}
-                      <img src={logo} alt={skillName} width={80} />
+                      <LazyLoadImage src={logo} alt={skillName} width={80} effect='blur' />
                     </div>
                 }
                 {/* submit button */}
