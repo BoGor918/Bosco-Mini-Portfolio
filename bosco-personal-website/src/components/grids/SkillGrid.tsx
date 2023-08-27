@@ -84,8 +84,6 @@ export default function SkillGrid() {
                         )}
                     </Modal>
             }
-
         </div>
-
     );
 }
