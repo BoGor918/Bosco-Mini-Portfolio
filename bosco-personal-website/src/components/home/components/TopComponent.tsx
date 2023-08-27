@@ -12,6 +12,10 @@ import PersonalIcon from '../../../images/Personal_Icon.png'
 import { BiMoon, BiSolidMoon } from "react-icons/bi";
 // page component
 import IntroductionModalComponent from '../../modal/introduction/IntroductionModalComponent';
+// react lazy load image
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+
 
 export default function TopComponent() {
     // icon box
@@ -95,7 +99,7 @@ export default function TopComponent() {
                         }
                         className="cursor-pointer animate-fade-up animate-delay-0 animate-once flex mx-0 sm:mx-0 md:mx-0 lg:mx-10 rounded-full border-[3px] border-[#0000] [background:padding-box_var(--bg-color),border-box_var(--border-color)] mr-0 sm:mr-0 md:mr-0 lg:mr-4"
                     >
-                        <img src={PersonalIcon} className='rounded-full p-[4px]' alt='Personal Icon' width={190} />
+                        <LazyLoadImage src={PersonalIcon} effect='blur' className='rounded-full p-[4px]' alt='Personal Icon' width={190} />
                     </div> :
                     <div
                         onClick={() => open()}

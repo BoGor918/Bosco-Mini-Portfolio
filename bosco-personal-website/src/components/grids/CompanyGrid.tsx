@@ -7,6 +7,9 @@ import { MapperContext } from '../../globalVariable/MapperContextProvider';
 import { Modal } from '@mantine/core';
 // page components
 import CompanyModalComponent from '../modal/company/CompanyModalComponent';
+// react lazy load image
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 // company interface
 interface Company {
@@ -47,8 +50,12 @@ export default function CompanyGrid() {
             <div className='mx-0 sm:mx-0 md:mx-0 lg:mx-2 grid grid-cols-3 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-1'>
                 {companyData.map((company: any, i: any) => (
                     <div key={i} onClick={() => openModal(company)} className='bg-white shadow-md rounded-sm flex justify-center items-center h-[115.66px] sm:h-[115.66px] md:h-[115.66px] lg:h-[298px] cursor-pointer'>
-                        <img className='p-2 sm:p-2 md:p-2 lg:p-5' src={company.Logo} alt={company.CompanyName} />
-                    
+                        <LazyLoadImage
+                            className='p-2 sm:p-2 md:p-2 lg:p-5'
+                            src={company.Logo}
+                            alt={company.CompanyName}
+                            effect="blur"
+                        />
                     </div>
                 ))}
             </div>
@@ -79,7 +86,7 @@ export default function CompanyGrid() {
                                 backgroundColor: "#0B1A33",
                             },
                             content: {
-                                backgroundColor: "#0B1A33", 
+                                backgroundColor: "#0B1A33",
                             },
                         }}
                     >

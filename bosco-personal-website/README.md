@@ -35,6 +35,10 @@
 1. npm i react-countup
 2. https://www.npmjs.com/package/react-countup
 
+# React Lazy Loading Image
+1. npm i --save react-lazy-load-image-component
+2. https://www.npmjs.com/package/react-lazy-load-image-component
+
 # Mapping Condition
 {
     mappedVariable.map((tempVariable) => {
