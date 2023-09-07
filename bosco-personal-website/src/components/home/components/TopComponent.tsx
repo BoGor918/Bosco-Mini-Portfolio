@@ -145,7 +145,7 @@ export default function TopComponent() {
                 {/* col-3 pc */}
                 <div className='hidden sm:hidden md:hidden lg:flex flex-col text-center sm:text-center md:text-center lg:text-start text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px]'>
                     <span className='text-black dark:text-white font-bold'>Bosco</span>
-                    <span className='text-[#9A9A9A] dark:text-[#94A3B8]'>Solutions Developer</span>
+                    <span className='text-[#9A9A9A] dark:text-[#94A3B8]'>Full Stack Developer</span>
                     <span className='text-[#9A9A9A] dark:text-[#94A3B8]'>Web / App Design + Development, Photo / Video Editing</span>
                     <span className='text-[#9A9A9A] dark:text-[#94A3B8]'>Email: cheungtszlai0918@gmail.com</span>
                     <span className='text-[#9A9A9A] dark:text-[#94A3B8]'>Phone: +852 6770 8560</span>
