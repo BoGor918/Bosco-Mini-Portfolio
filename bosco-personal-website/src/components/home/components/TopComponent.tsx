@@ -153,7 +153,7 @@ export default function TopComponent() {
                 {/* col-3 mobile */}
                 <div className='flex sm:flex md:flex lg:hidden flex-col text-center sm:text-center md:text-center lg:text-start text-[14px] sm:text-[14px] md:text-[14px] lg:text-[16px]'>
                     <span className='text-black dark:text-white font-bold'>Bosco</span>
-                    <span className='text-[#9A9A9A] dark:text-[#94A3B8]'>Solutions Developer</span>
+                    <span className='text-[#9A9A9A] dark:text-[#94A3B8]'>Full Stack Developer</span>
                     <span className='text-[#9A9A9A] dark:text-[#94A3B8]'>Web / App Design + Development</span>
                     <span className='text-[#9A9A9A] dark:text-[#94A3B8]'>Photo / Video Editing</span>
                     <span className='text-[#9A9A9A] dark:text-[#94A3B8]'>Email: cheungtszlai0918@gmail.com</span>
